@@ -578,8 +578,6 @@ Route::get('/lang/{language}', [Docs\DocumentsExtController::class, 'lang'])->na
 Route::get('visor-pdf-documentos-digitales-externo/{id}', [Docs\DocumentsExtController::class, 'visordocs'])->name('visor-pdf-documentos-digitales-externo');
 Route::get('visor-pdf-documentos-digitales-externo-docentes/{id}', [Docs\DocumentsExtController::class, 'visordocsdoc'])->name('visor-pdf-documentos-digitales-externo-docentes');
 
-Route::get('storage-link', [Docs\DocumentsExtController::class, 'storgelink'])->name('storage-link');
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////// Visor Pdf Ext /////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////

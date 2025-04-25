@@ -45,8 +45,6 @@ use Illuminate\Support\Facades\Crypt;
 
 use Session;
 
-use Illuminate\Support\Facades\Artisan;
-
 
 class DocumentsExtController extends Controller
 
@@ -134,12 +132,6 @@ class DocumentsExtController extends Controller
             array_push($array, array('titulo' => trans('inst.'.$dat->titulo), 'imagen' => $dat->img, 'inst' => trans('inst.'.$dat->inst), 'url' => trans('inst.'.$dat->nombreurl) ) );
         }
         return response()->json(['ok' => 'Datos Enviados', 'datos' => $datos, 'array' => $array], 200);
-    }
-
-    public function storgelink()
-    {
-        Artisan::call('storage:link');
-        dd('link simbólico realizado con éxito 2');
     }
 
 }
