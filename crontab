@@ -1,0 +1,1 @@
+* * * * * cd /home3/cco92479/public_html/reddocenteinnovador.congresocied.cl && php artisan schedule:run >> /dev/null 2>&1
