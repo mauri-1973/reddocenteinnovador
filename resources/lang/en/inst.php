@@ -36,9 +36,9 @@ return [
 
     '17' => '1.- Enter the tag name (Required)\r\n2.- If all required fields are completed, you will enter the new tag by pressing this button.',
 
-    '0018' => 'Con Observaciones',
+    '18' => 'Edit Tag/User Profile',
 
-    '0019' => 'Ver Avances',
+    '19' => '1.- Edit the tag name (Required)\r\n2.- If all required fields are filled out, you will be able to edit the selected tag by pressing this button.',
 
     '0020' => 'Volver a Revisar',
 

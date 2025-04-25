@@ -36,9 +36,9 @@ return [
 
     '17' => '1.- Ingrese el nombre del tag (Obligatorio)\r\n2.- Si todos los campos obligatorios están completos, ingresará el nuevo tag, al presionar este botón.',
 
-    '0018' => 'Con Observaciones',
+    '18' => 'Editar Tag/Perfil-Usuario',
 
-    '0019' => 'Ver Avances',
+    '19' => '1.- Edite el nombre del tag (Obligatorio)\r\n2.- Si todos los campos obligatorios están completos, podrá editar el tag seleccionado, al presionar este botón.',
 
     '0020' => 'Volver a Revisar',
 
