@@ -32,9 +32,9 @@ return [
 
     '15' => 'Table containing the tags that will identify your user profile. Enter the ones that best identify you when searching for other users who use the platform and create your affinity network.\r\n1.- Button that allows you to enter new tags\r\n2.- Text field to search for entered tags\r\n3.- Button that allows you to edit the selected tag\r\n4.- Button that allows you to delete the selected tag.',
 
-    '0016' => 'Rechazada',
+    '16' => 'Add Tags/User-Profile',
 
-    '0017' => 'Aprobada',
+    '17' => '1.- Enter the tag name (Required)\r\n2.- If all required fields are completed, you will enter the new tag by pressing this button.',
 
     '0018' => 'Con Observaciones',
 

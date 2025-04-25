@@ -32,9 +32,9 @@ return [
 
     '15' => 'Tabla que contiene los tags, que identificarán tu perfil de usuario. Ingresa los que mas te identifiquen en la búsqueda de otros usuarios, que utilizan la plataforma y crea tu red de afinidades.\r\n1.- Botón que permite el ingreso de nuevos tags\r\n2.- Campo de texto, para busqueda de los tags, ingresados\r\n3.- Botón que te permite editar el tag seleccionado\r\n4.- Botón que te permite eliminar el tag seleccionado.',
 
-    '0016' => 'Rechazada',
+    '16' => 'Agregar Tags/Perfil-Usuario',
 
-    '0017' => 'Aprobada',
+    '17' => '1.- Ingrese el nombre del tag (Obligatorio)\r\n2.- Si todos los campos obligatorios están completos, ingresará el nuevo tag, al presionar este botón.',
 
     '0018' => 'Con Observaciones',
 
