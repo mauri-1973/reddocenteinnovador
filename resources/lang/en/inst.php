@@ -36,7 +36,7 @@ return [
 
     '17' => '1.- Enter the tag name (Required)\r\n2.- If all required fields are completed, you will enter the new tag by pressing this button.',
 
-    '0018' => 'Con Observaciones',
+    '0018' => 'Con Observaciones', 
 
     '0019' => 'Ver Avances',
 

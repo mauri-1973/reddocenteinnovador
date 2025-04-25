@@ -36,7 +36,7 @@ return [
 
     '17' => '1.- Ingrese el nombre del tag (Obligatorio)\r\n2.- Si todos los campos obligatorios están completos, ingresará el nuevo tag, al presionar este botón.',
 
-    '0018' => 'Con Observaciones',
+    '0018' => 'Con Observaciones', 
 
     '0019' => 'Ver Avances',
 
