@@ -40,9 +40,9 @@ return [
 
     '19' => '1.- Edite el nombre del tag (Obligatorio)\r\n2.- Si todos los campos obligatorios están completos, podrá editar el tag seleccionado, al presionar este botón.',
 
-    '0020' => 'Volver a Revisar',
+    '20' => 'Eliminar Tag/Perfil-Usuario',
 
-    '0021' => 'Puntaje',
+    '21' => 'Al presionar este botón, se eliminará automáticamente el tag seleccionado. Esta acci+on no es reversible.',
 
     '0022' => 'Historial',
 

@@ -40,9 +40,9 @@ return [
 
     '19' => '1.- Edit the tag name (Required)\r\n2.- If all required fields are filled out, you will be able to edit the selected tag by pressing this button.',
 
-    '0020' => 'Volver a Revisar',
+    '20' => 'Delete Tag/User Profile',
 
-    '0021' => 'Puntaje',
+    '21' => 'Pressing this button will automatically delete the selected tag. This action is not reversible.',
 
     '0022' => 'Historial',
 
