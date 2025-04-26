@@ -36,11 +36,11 @@ return [
 
     '17' => '1.- Enter the tag name (Required)\r\n2.- If all required fields are completed, you will enter the new tag by pressing this button.',
 
-    '18' => 'Edit Tag/User Profile',
+    '18' => 'Edit Tag/User-Profile',
 
     '19' => '1.- Edit the tag name (Required)\r\n2.- If all required fields are filled out, you will be able to edit the selected tag by pressing this button.',
 
-    '20' => 'Delete Tag/User Profile',
+    '20' => 'Delete Tag/User-Profile',
 
     '21' => 'Pressing this button will automatically delete the selected tag. This action is not reversible.',
 

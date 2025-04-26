@@ -42,7 +42,7 @@ return [
 
     '20' => 'Eliminar Tag/Perfil-Usuario',
 
-    '21' => 'Al presionar este botón, se eliminará automáticamente el tag seleccionado. Esta acci+on no es reversible.',
+    '21' => 'Al presionar este botón, se eliminará automáticamente el tag seleccionado. Esta acción no es reversible.',
 
     '0022' => 'Historial',
 
