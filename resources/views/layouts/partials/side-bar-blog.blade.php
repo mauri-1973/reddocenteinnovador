@@ -123,7 +123,7 @@
             </li>
             <li class=active>
 
-                <a href="#" onclick="instruc('{{ request()->path() }}','{{ Auth::user()->cargo_us }}')">
+                <a href="#" onclick="instruc('{{ Route::currentRouteName() }}','{{ Auth::user()->cargo_us }}')">
 
                     <i class="nc-icon nc-album-2"></i>
 

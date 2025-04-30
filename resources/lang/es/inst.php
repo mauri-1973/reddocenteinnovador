@@ -22,7 +22,7 @@ return [
 
     '10' => '1.- Ingrese su contraseña antigua(Obligatorio)\r\n2.- Ingrese su nueva contraseña(Obligatorio)\r\n3.- Repita su nueva contraseña(Obligatorio)\r\n4.- Una vez completado el formulario en su totalidad, para los campos obligatorios, proceda a actualizar su nueva contraseña. Una vez completada esta acción recibirá una notificación en la dirección electrónica, registrada en nuestra plataforma.',
 
-    '11' => 'Perfi-Usuario/Blog',
+    '11' => 'Perfil-Usuario/Blog',
 
     '12' => 'Perfil-Usuario',
 
@@ -44,47 +44,65 @@ return [
 
     '21' => 'Al presionar este botón, se eliminará automáticamente el tag seleccionado. Esta acción no es reversible.',
 
-    '0022' => 'Historial',
+    '22' => 'Ver-Publicaciones/Blog',
 
-    '0023' => 'Proyectos Seleccionados',
+    '23' => 'Ver Publicaciones',
 
-    '0024' => 'Deseleccionar',
+    '24' => '1.- Botón que permite agregar una nueva publicación\r\n2.- Campo de texto, para filtrar y buscar publicaciones.\r\n3.- Botón que permite desplegar la información adicional de la publicación seleccionada.\r\n4.- Botón que permite ver completa la publicación seleccionada.\r\n5.- Botón que permite editar la publicación seleccionada.\r\n6.- Botón que permite eliminar la publicación seleccionada.\r\n7.- Botonera de búsqueda de publicaciones anteriores.',
 
-    '0025' => 'Historial del Proyecto',
+    '25' => 'Editar-Publicación/Blog',
 
-    '0026' => 'Estado del Proyecto',
+    '26' => 'Editar-Publicación',
 
-    '0027' => 'Cerrar',
+    '27' => '1.- Campo de texto con el título de la publicación\r\n2.- Campo seleccionable de la categoría a la que pertenece la publicación.\r\n3.- Capo de texto enriquecido, con el contenido de la publicación.\r\n4.- Campo seleccionable a los tags asociados a la publicación.\r\n5.- Vista de la imagen referencial a la publicación.\r\n6.- Botón que permite cambiar la imagen referencial a la publicación.\r\n7.- Botón que permite realizar la edición de la publicación, sólo si se mantiene la restricción de los campos abligatorios completos.',
 
-    '0028' => 'Error al Actualizar',
+    '28' => 'Agregar-Publicación/Blog',
 
-    '0029' => 'Presentamos un error al tratar de actualizar su Proyecto. Inténtelo más tarde.',
+    '29' => 'Agregar-Publicación',
 
-    '0030' => 'El proyecto a sido seleccionado correctamente',
+    '30' => '1.- Campo de texto con el título de la publicación (Campo Obligatorio)\r\n2.- Campo seleccionable de la categoría a la que pertenece la publicación (Campo Obligatorio).\r\n3.- Capo de texto enriquecido, con el contenido de la publicación (Campo Obligatorio).\r\n4.- Campo seleccionable a los tags asociados a la publicación (Campo No Obligatorio).\r\n5.- Vista de la imagen referencial a la publicación (Campo Obligatorio).\r\n6.- Botón que permite cambiar la imagen referencial a la publicación (Campo Obligatorio).\r\n7.- Botón que agrega la publicación, sólo si se mantiene la restricción de los campos abligatorios completos.',
 
-    '0031' => 'El proyecto a sido deseleccionado correctamente',
+    '31' => 'Está seguro de eliminar esta publicación. Esta acción no es reversible.',
 
-    '0032' => 'Seleccionado',
+    '32' => 'Eliminar-Publicación',
 
-    '0033' => 'Notificación General',
+    '33' => '1.- Botón que al presionarlo, despliega una ventana modal, con dos opciones de uso.\r\n2.- Botón que al ser clickeado eliminará permanentemente la publicación.\r\n3.- Botón que cancela la eliminación de la publicación.',
 
-    '0034' => 'Esta funcionalidad le permite enviar una notificación general a todos los docentes, con sus proyectos seleccionados.',
+    '34' => 'Agregar-Tags/Blog',
 
-    '0035' => 'Mensaje',
+    '35' => 'Agregar-Tags',
 
-    '0036' => 'Acciones',
+    '36' => '1.- Botón que permite agregar un tag\r\n2.- Campo de texto, para filtrar y buscar tags ingresados.\r\n3.- Botón que permite editar el tag seleccionado.\r\n4.- Botón que permite eliminar el tag seleccionado.\r\n5.- Botonera de búsqueda de tags ingresdos.',
 
-    '0037' => 'Fecha de Creación',
+    '37' => 'Agregar Tag',
 
-    '0038' => 'Ingrese la notificación',
+    '38' => 'Campo de texto, para ingresar el nombre del Tag (Campo obligatorio).\r\n2.- Botón que al ser clickeado agregará el tag, sólo si se mantiene la restricción del campo abligatorio completo.\r\n3.- Botón que cancela el agregar un nuevo tag.',
 
-    '0039' => 'Enviar',
+    '39' => 'Editar Tag',
 
-    '0040' => 'Información Requerida',
+    '40' => 'Campo de texto, con nombre del Tag a editar (Campo obligatorio).\r\n2.- Botón que al ser clickeado editará el tag, sólo si se mantiene la restricción del campo abligatorio completo.\r\n3.- Botón que cancela el editar el tag.',
 
-    '0041' => 'Mínimo 2 caracteres, máximo 1000 caracteres',
+    '41' => 'Eliminar Tag',
 
-    '0042' => 'Ingrese un mínimo 2 caracteres con un máximo 1000 caracteres',
+    '42' => 'Campo de texto, con nombre del Tag a eliminar.\r\n2.- Botón que al ser clickeado eliminará el tag seleccionado.\r\n3.- Botón que cancela el eliminar el tag.',
+
+    '43' => 'Agregar-Categorias/Blog',
+
+    '44' => 'Agregar-Categoría',
+
+    '45' => '1.- Botón que permite agregar una categoría\r\n2.- Campo de texto, para filtrar y buscar categorías ingresadas.\r\n3.- Botón que permite editar la categoría seleccionada.\r\n4.- Botón que permite eliminar la categoría seleccionada.\r\n5.- Botonera de búsqueda de categorías ingresdas.',
+
+    '46' => 'Agregar Categoría',
+
+    '47' => 'Campo de texto, para ingresar el nombre de la categoría (Campo obligatorio).\r\n2.- Botón que al ser clickeado agregará la categoría, sólo si se mantiene la restricción del campo abligatorio completo.\r\n3.- Botón que cancela el agregar la nueva categoría.',
+
+    '48' => 'Editar Categoría',
+
+    '49' => 'Campo de texto, con nombre de la categoría editar (Campo obligatorio).\r\n2.- Botón que al ser clickeado editará la categoría, sólo si se mantiene la restricción del campo abligatorio completo.\r\n3.- Botón que cancela el editar la categoría.',
+
+    '50' => 'Eliminar Categoría',
+
+    '51' => 'Campo de texto, con nombre de la categoría a eliminar.\r\n2.- Botón que al ser clickeado eliminará la categoría seleccionada.\r\n3.- Botón que cancela el eliminar la categoría.',
 
     '0043' => 'Esta funcionalidad le permite eliminar una notificación general, enviada a todos los docentes.',
 

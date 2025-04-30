@@ -63,7 +63,7 @@
                                         <input type="hidden" id="idpost" name="idpost" value="{{ $post->id }}">
                                     </form>
                                     <a href="javascript:void(0)" class="btn btn-danger btn-sm btn-block" onclick="
-                                        if(confirm('Are you sure, You want to Delete this ??'))
+                                        if(confirm('{{ trans("inst.31") }}'))
                                         {
                                         event.preventDefault();
                                         document.getElementById('delete-form-{{ $post->id }}').submit();

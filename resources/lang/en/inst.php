@@ -44,47 +44,65 @@ return [
 
     '21' => 'Pressing this button will automatically delete the selected tag. This action is not reversible.',
 
-    '0022' => 'Historial',
+    '22' => 'View Posts/Blog',
 
-    '0023' => 'Proyectos Seleccionados',
+    '23' => 'View Posts',
 
-    '0024' => 'Deseleccionar',
+    '24' => '1.- Button that allows you to add a new post.\r\n2.- Text field for filtering and searching for posts.\r\n3.- Button that allows you to display additional information about the selected post.\r\n4.- Button that allows you to view the entire selected post.\r\n5.- Button that allows you to edit the selected post.\r\n6.- Button that allows you to delete the selected post.\r\n7.- Button for searching for previous posts.',
 
-    '0025' => 'Historial del Proyecto',
+    '25' => 'Edit Post/Blog',
 
-    '0026' => 'Estado del Proyecto',
+    '26' => 'Edit Post',
 
-    '0027' => 'Cerrar',
+    '27' => '1.- Text field with the post title.\r\n2.- Selectable field for the category to which the post belongs.\r\n3.- Rich text field with the post content.\r\n4.- Selectable field for the tags associated with the post.\r\n5.- View of the reference image for the post.\r\n6.- Button that allows you to change the reference image for the post.\r\n7.- Button that allows you to edit the post, only if the restriction on complete mandatory fields is maintained.',
 
-    '0028' => 'Error al Actualizar',
+    '28' => 'Add Post/Blog',
 
-    '0029' => 'Presentamos un error al tratar de actualizar su Proyecto. Inténtelo más tarde.',
+    '29' => 'Add Post',
 
-    '0030' => 'El proyecto a sido seleccionado correctamente',
+    '30' => '1.- Text field with the title of the publication (Required Field)\r\n2.- Selectable field of the category to which the publication belongs (Required Field).\r\n3.- Rich text field, with the content of the publication (Required Field).\r\n4.- Selectable field with the tags associated with the publication (Non-Required Field).\r\n5.- View of the reference image to the publication (Required Field).\r\n6.- Button that allows changing the reference image to the publication (Required Field).\r\n7.- Button to add the publication, only if the restriction of the complete mandatory fields is maintained.',
 
-    '0031' => 'El proyecto a sido deseleccionado correctamente',
+    '31' => 'Are you sure you want to delete this post? This action is not reversible.',
 
-    '0032' => 'Seleccionado',
+    '32' => 'Delete Post',
 
-    '0033' => 'Notificación General',
+    '33' => '1.- Button that, when clicked, displays a modal window with two options.\r\n2.- Button that, when clicked, will permanently delete the post.\r\n3.- Button that cancels the deletion of the post.',
 
-    '0034' => 'Esta funcionalidad le permite enviar una notificación general a todos los docentes, con sus proyectos seleccionados.',
+    '34' => 'Add Tags/Blog',
 
-    '0035' => 'Mensaje',
+    '35' => 'Add Tags',
 
-    '0036' => 'Acciones',
+    '36' => '1.- Button that allows you to add a tag.\r\n2.- Text field, to filter and search for entered tags.\r\n3.- Button that allows you to edit the selected tag.\r\n4.- Button that allows you to delete the selected tag.\r\n5.- Button for searching for entered tags.',
 
-    '0037' => 'Fecha de Creación',
+    '0037' => 'Add Tag',
 
-    '0038' => 'Ingrese la notificación',
+    '0038' => 'Text field, to enter the name of the Tag (Required field).\r\n2.- Button that, when clicked, will add the tag, only if the restriction of the mandatory field being complete is maintained.\r\n3.- Button that cancels adding a new tag.',
 
-    '0039' => 'Enviar',
+    '39' => 'Edit Tag',
 
-    '0040' => 'Información Requerida',
+    '40' => 'Text field, with the name of the tag to edit (Required field).\r\n2.- Button that, when clicked, will edit the tag, only if the restriction of the mandatory field being complete is maintained.\r\n3.- Button that cancels editing the tag.',
 
-    '0041' => 'Mínimo 2 caracteres, máximo 1000 caracteres',
+    '41' => 'Delete Tag',
 
-    '0042' => 'Ingrese un mínimo 2 caracteres con un máximo 1000 caracteres',
+    '42' => 'Text field, with the name of the tag to delete.\r\n2.- Button that, when clicked, will delete the selected tag.\r\n3.- Button that cancels deleting the tag.',
+
+    '43' => 'Add Categories/Blog',
+
+    '44' => 'Add Category',
+
+    '45' => '1.- Button to add a category.\r\n2.- Text field to filter and search for entered categories.\r\n3.- Button to edit the selected category.\r\n4.- Button to delete the selected category.\r\n5.- Button to search for entered categories.',
+
+    '46' => 'Add Category',
+
+    '47' => 'Text field to enter the category name (Required field).\r\n2.- Button that, when clicked, will add the category only if the restriction of the mandatory field being complete is maintained.\r\n3.- Button to cancel adding the new category.',
+
+    '48' => 'Edit Category',
+
+    '49' => 'Text field Text field, with the name of the category to edit (Required field).\r\n2.- Button that, when clicked, will edit the category, only if the restriction of the mandatory field being complete is maintained.\r\n3.- Button that cancels editing the category.',
+
+    '50' => 'Delete Category',
+
+    '51' => 'Text field, with the name of the category to delete.\r\n2.- Button that, when clicked, will delete the selected category.\r\n3.- Button that cancels deleting the category.',
 
     '0043' => 'Esta funcionalidad le permite eliminar una notificación general, enviada a todos los docentes.',
 
