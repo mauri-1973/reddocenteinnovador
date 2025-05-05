@@ -86,15 +86,13 @@
                                         </div>
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">
+                                            
+                                            
                                             <label for="preg2a" class="textlabel text-dark"><b>3.2.- Proyecto (s) anterior(es) Adjuntar tres o más evidencias cuantitativas y/o cualitativas (anexar informes finales del proceso anterior o fase 1) y datos (máximo 400 palabras)</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ __('multi-leng.a97') }}" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="Máximo 400 palabras" id="preg2a" name="preg2a" rows="30">{{ $finalstus->pregunta2 }}</textarea>
-                                            <span class="help-block">
-                                                <p id="mensaje_ayuda2" class="help-block" style="color:#000;"></p>
-                                            </span>
                                             <hr style="border-top: 2px solid #000;">
                                             <table class="table table-bordered table-sm" style="background-color:#fff;" id="tabla2">
-                                                <caption>Acá puede adjuntar documentación anexa al proyecto &nbsp; 
-                                                    <button type="button" class="btn btn-success btn-sm" style="font-size:12px;" onclick="addcat(1);">Adjuntar Documentos&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Formatos permitidos: .docx, .pdf, .xlsx, .png, .jpeg, .jpg" data-html="true"></i></button>
+                                                <caption class="text-white bg-success pl-2" style="font-size:16px;">Acá puede adjuntar documentación anexa al proyecto &nbsp; 
+                                                    <button type="button" class="btn btn-warning btn-sm" style="font-size:12px;" onclick="addcat(1);">Adjuntar Documentos&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Formatos permitidos: .docx, .pdf, .xlsx, .png, .jpeg, .jpg" data-html="true"></i></button>
                                                 </caption>
                                                 <thead>
                                                     <tr>
@@ -118,6 +116,11 @@
                                                     
                                                 </tbody>
                                             </table>
+                                            <textarea class="form-control input-lg textarea1 text-dark mt-4" placeholder="Máximo 400 palabras" id="preg2a" name="preg2a" rows="30">{{ $finalstus->pregunta2 }}</textarea>
+                                            <span class="help-block">
+                                                <p id="mensaje_ayuda2" class="help-block" style="color:#000;"></p>
+                                            </span>
+                                            
                                         </div>
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">
