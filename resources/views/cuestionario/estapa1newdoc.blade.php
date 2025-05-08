@@ -180,7 +180,7 @@
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">
                                             <label for="numeropar" class="textlabel text-dark"><b>2.1.- Número de Participantes</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese el número de participantes del proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <input class="form-control input-lg text-dark" id="numeropar" name="numeropar" type="text" minlength="1" maxlength="2" value="{{ $finalstus->numeropar }}" placeholder="Ingrese el número de participantes del proyecto" onkeypress="return valideKey(event);" required>
+                                            <input class="form-control input-lg text-dark" id="numeropar" name="numeropar" type="text" minlength="1" maxlength="3" value="{{ $finalstus->numeropar }}" placeholder="Ingrese el número de participantes del proyecto" onkeypress="return valideKey(event);" required>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda9" class="help-block text-dark"></p>
                                             </span> 
@@ -196,7 +196,7 @@
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">
                                             <label for="numest" class="textlabel text-dark"><b>2.3.- Número de Estudiantes</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese el número de estudiantes que participan en el proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <input class="form-control input-lg text-dark" id="numest" name="numest" type="text" minlength="1" maxlength="2" value="{{ $finalstus->numest }}" placeholder="Ingrese el número de estudiantes" onkeypress="return valideKey(event);" required>
+                                            <input class="form-control input-lg text-dark" id="numest" name="numest" type="text" minlength="1" maxlength="3" value="{{ $finalstus->numest }}" placeholder="Ingrese el número de estudiantes" onkeypress="return valideKey(event);" required>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda10" class="help-block text-dark"></p>
                                             </span> 
