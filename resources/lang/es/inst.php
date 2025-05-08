@@ -104,141 +104,123 @@ return [
 
     '51' => 'Campo de texto, con nombre de la categoría a eliminar.\r\n2.- Botón que al ser clickeado eliminará la categoría seleccionada.\r\n3.- Botón que cancela el eliminar la categoría.',
 
-    '0043' => 'Esta funcionalidad le permite eliminar una notificación general, enviada a todos los docentes.',
+    '52' => 'Ver-Publicaciones/Estudiante',
 
-    '0044' => 'Esta funcionalidad le permite editar una notificación general, enviada a todos los docentes.',
+    '53' => 'Ver-Publicaciones',
 
-    '0045' => 'Eliminar Notificación',
+    '54' => '1.- Campo de texto, para filtrar y buscar publicaciones.\r\n2.- Link clickeable, que desplegará la publicación completa.\r\n3.- Categoría a la que pertenece la publicación.\r\n4.- Tags relacionados a la publicación.\r\n5.- Botón clickeable que desplegará la publicación completa.',
 
-    '0046' => 'Editar Notificación',
+    '55' => 'Publicación-Completa/Estudiante',
 
-    '0047' => 'Auditor',
+    '56' => 'Publicación-Completa',
 
-    '0048' => 'Nombre Concurso',
+    '57' => '1.- Botón clickeable, que permite al usuario volver al inicio de la plataforma.\r\n2.- Sección donde se despliega la publicación completa.\r\n3.- Campo de texto, que permite al usuario, agregar comentarios a la publicación.\r\n4.- Botón clickeable que permite ingresar comentarios, al usuario. Sólo si el campo de texto no se encuentra vació.\r\n5.- Sección donde se publicacrán los comentarios, hechos por los usuarios..\r\n6.- Botón clickeable, que permite al usuario volver al inicio de la plataforma.',
 
-    '0049' => 'Categoría',
+    '58' => 'Perfil-Usuario/Estudiante',
 
-    '0050' => 'Creado por',
+    '59' => 'Sin información disponible.',
 
-    '0051' => 'Fecha de creación',
+    '60' => 'Estamos trabajando.........',
 
-    '0052' => 'No se han asignado actas para este proyecto en particular.',
+    '61' => 'No hay información disponible aún. Estamos trabajando para tener esta funcionalidad disponible para Usted.',
 
-    '0053' => 'Solicitar Creación',
+    '62' => 'Librería-Digital/Estudiante',
 
-    '0054' => 'Tenemos un error al procesar su solicitud.',
+    '63' => 'Librería-Digital',
 
-    '0055' => 'Este botón le permite volver a las postulaciones asignadas al concurso seleccionado',
+    '64' => 'En esta sección dispones de los distintos documentos anexos, para cada facultad que disponga de esta opción de descarga.\r\n1 Campo de texto, que permite al usuario, buscar documentos subidos por el administrador.\r\n2.- Botón clickeable que permite descargar de forma directa el documento seleccionado.\r\n3.- Botón clickeable, que permite al usuario ver el documento seleccionado, en una nueva pestaña.\r\n4.- Botón clickeable, que permite al usuario copiar la url del documento seleccionado, para compartir dicho documento.',
 
-    '0056' => 'Aún no se ha generado la primera acta asociada a este proyecto. Presione el botón para comenzar. Se notificará al usuario seleccionado que se está en condiciones de continuar el seguimiento del proyecto.',
+    '65' => 'Documentos-Docentes/Estuduante',
 
-    '0057' => 'Iniciar Acta',
+    '66' => 'Búsqueda-Documentos',
 
-    '0058' => 'Se creó el acta inicial. Se le notifico al usuario(a) vía email, que ya puede generar un cronograma de su proyecto, para ser supervisado.',
+    '67' => 'Descargar-Documentos',
 
-    '0059' => 'Hay más de un acta acvtiva para este proyecto. Reportelo con el administrador de la plataforma.',
+    '68' => 'En esta sección dispones de los documentos anexados por los docentes. De las distintas Facultad/Carrara a la que pertenecen los docentes.\r\n1.- Individualización de las Facultades registradas.\r\n2.- Campo de texto, que permite al usuario, buscar-filtrar Facultades/Carreras registradas.\r\n3.- Individualización de las Carreras registradas\r\n4.- Botón clickeable que despliega una ventana modal, con los distintos docentes que pertenecen a esta Facultad/Carrera, con los documentos ingresados a la plataforma, si corresponde.',
 
-    '0060' => 'Se creó el acta inicial. Pero no se le notifico al usuario(a) vía email, que ya puede generar un cronograma de su proyecto, para ser supervisado. El email proporcionado no es válido al parecer. Envíale un notificación manual al email: ',
+    '69' => 'En esta ventana modal dispones de los documentos anexados por los docentes.\r\n1.- Individualización del docente.\r\n2.- Información si el docente, ha subido documentos a la plataforma\r\n3.- Campo de texto, que permite al usuario, buscar-filtrar Docentes/Documentos.\r\n4.- Botón clickeable que permite descargar de forma directa el documento seleccionado.\r\n5.- Botón clickeable, que permite al usuario ver el documento seleccionado, en una nueva pestaña.\r\n6.- Botón clickeable, que permite al usuario copiar la url del documento seleccionado, para compartir dicho documento.',
 
-    '0061' => 'No se pudo proceder a actualizar e informar su solicitud. Inténtelo más tarde.',
+    '70' => 'En este apartado puede anexar, cualquier tipo de documentación requerida para completar su postulación',
 
-    '0062' => 'Imprimir Proyecto',
+    '71' => 'Acá puede adjuntar documentación anexa al proyecto',
 
-    '0063' => 'Enviar Email al Docente',
+    '72' => 'Adjuntar Documentos',
 
-    '0064' => 'Ver Notificaciones',
+    '73' => '',
 
-    '0065' => 'Al hacer click en este botón, regresará a la página anterior.',
+    '74' => '',
 
-    '0066' => 'Al hacer click en este botón, se desplegará una botonera, que le permitira realizar multiples acciones.',
+    '75' => '',
 
-    '0067' => 'Al hacer click en este botón, usted podrá imprimir el proyecto original evaluado.',
+    '76' => '',
 
-    '0068' => 'Al hacer click en este botón, usted podrá enviar un mensaje directo al docente, que estructuró este proyecto.',
+    '77' => '',
 
-    '0069' => 'Al hacer click en este botón, usted podrá desplegar el historial de mensajes enviados.',
+    '78' => '',
 
-    '0070' => 'Información del Proyecto',
+    '79' => '',
 
-    '0071' => 'Acta Activa',
+    '80' => '',
 
-    '0072' => 'Historial de Actas',
+    '81' => '',
 
-    '0073' => 'Agregar Nueva Acta',
+    '82' => '',
 
-    '0074' => 'General',
+    '83' => '',
 
-    '0075' => 'Temas',
+    '84' => '',
 
-    '0076' => 'Acuerdos',
+    '85' => '',
 
-    '0077' => 'Compromisos',
+    '86' => '',
 
-    '0078' => 'Acta en Tabla',
+    '87' => '',
 
-    '0079' => 'Fecha Actual',
+    '88' => '',
 
-    '0080' => 'Este selector muestra la fecha actual de la asesoría. No es un campo modificable',
+    '89' => '',
 
-    '0081' => 'Progreso Acta',
+    '90' => '',
 
-    '0082' => 'Este selector muestra el porcentaje de avance del acta revisión. Este valor va de 0 al 100% y mide el porcetaje de avance del acta sobre el proyecto general. Solo es modificable por el asesor(es).',
+    '91' => '',
 
-    '0083' => 'Fecha Inicio',
+    '92' => '',
 
-    '0084' => 'Este selector muestra el inicio del acta. Este valor es ingresado por el docente.',
+    '93' => '',
 
-    '0085' => 'Fecha Término',
+    '94' => '',
 
-    '0086' => 'Este selector muestra la fecha de término del acta. Este valor es ingresado por el docente.',
+    '95' => '',
 
-    '0087' => '% de avance del acta sobre el proyecto',
+    '96' => '',
 
-    '0088' => 'Este selector modifica el porcentaje de avance del acta. Este valor solo puede ser modificado por el asesor(as).',
+    '97' => '',
 
-    '0089' => 'Próxima Reunión',
+    '98' => '',
 
-    '0090' => 'Este selector indica la fecha en que se revisarán nuevamente los avances del acta.',
+    '99' => '',
 
-    '0091' => 'Evaluar Avance.',
+    '100' => '',
 
-    '0092' => 'Este selector permite al asesor(es). Especificar el grado de avance del acta. Solo puede ser modificado por el asesor(es).',
+    '101' => '',
 
-    '0093' => 'Docente',
+    '102' => '',
 
-    '0094' => 'Teléfono',
+    '103' => '',
 
-    '0095' => 'Nombre',
+    '104' => '',
 
-    '0096' => 'Asesor(es)',
+    '105' => '',
 
-    '0097' => 'Proyecto',
+    '106' => '',
 
-    '0098' => 'Progreso Globlal',
+    '107' => '',
 
-    '0099' => 'Título',
+    '108' => '',
 
-    '0100' => 'Al hacer click, en este panel, se desplegará la información sobre los asesores asociados a este proyecto y quien fue el docente que lo estructuró',
+    '109' => '',
 
-    '0101' => 'Al hacer click, en este panel, se desplegará la información sobre el historial de actas asociado al proyecto, esta información se desplegará en una nueva pestaña',
-
-    '0102' => 'Fecha Acta',
-
-    '0103' => 'Desplegar en una nueva pestaña',
-
-    '0104' => 'Al hacer click en este botón, usted generará una nueva acta. La generación de actas se debe manejar respecto al porcentaje de avance del acta respecto del proyecto final',
-
-    '0105' => 'Al hacer click en esta pestaña, se desplegará la información general del acta en curso.',
-
-    '0106' => 'Al hacer click en esta pestaña, se desplegará la información sobre los temas a tratar del acta en curso.',
-
-    '0107' => 'Al hacer click en esta pestaña, se desplegará la información de los acuerdos alcanzados del acta en curso.',
-
-    '0108' => 'Al hacer click en esta pestaña, se desplegará la información de los compromisos acordados del acta en curso.',
-
-    '0109' => 'Sin definir',
-
-    '0110' => 'Tenemos un mensaje respecto al acta con fecha de inicio:',
+    '110' => '',
 
     '0111' => 'y fecha de término:',
 

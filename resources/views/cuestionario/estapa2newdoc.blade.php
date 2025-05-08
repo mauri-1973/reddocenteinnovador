@@ -86,13 +86,11 @@
                                         </div>
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">
-                                            
-                                            
                                             <label for="preg2a" class="textlabel text-dark"><b>3.2.- Proyecto (s) anterior(es) Adjuntar tres o más evidencias cuantitativas y/o cualitativas (anexar informes finales del proceso anterior o fase 1) y datos (máximo 400 palabras)</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ __('multi-leng.a97') }}" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                             <hr style="border-top: 2px solid #000;">
                                             <table class="table table-bordered table-sm" style="background-color:#fff;" id="tabla2">
-                                                <caption class="text-white bg-success pl-2" style="font-size:16px;">Acá puede adjuntar documentación anexa al proyecto &nbsp; 
-                                                    <button type="button" class="btn btn-warning btn-sm" style="font-size:12px;" onclick="addcat(1);">Adjuntar Documentos&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Formatos permitidos: .docx, .pdf, .xlsx, .png, .jpeg, .jpg" data-html="true"></i></button>
+                                                <caption class="text-white bg-success pl-2" style="font-size:16px;">{{ __('inst.71') }} &nbsp; 
+                                                    <button type="button" class="btn btn-warning btn-sm" style="font-size:12px;" onclick="addcat(1);">{{ __('inst.72') }}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Formatos permitidos: .docx, .pdf, .xlsx, .png, .jpeg, .jpg" data-html="true"></i></button>&nbsp;<strong>({{ __('inst.70') }}).</strong>
                                                 </caption>
                                                 <thead>
                                                     <tr>
