@@ -327,7 +327,9 @@ class PostulatiosdocController extends Controller
 
                     $ar3 = DB::table('etapa4')->insertGetId(['id_post' => $idpost]);
 
-                    if($ar > 0 && $ar1 > 0 && $ar2 > 0 && $ar3 > 0)
+                    $ar4 = DB::table('correctionsprocesodos')->insertGetId(['id_post' => $idpost]);
+
+                    if($ar > 0 && $ar1 > 0 && $ar2 > 0 && $ar3 > 0 && $ar4 > 0)
                     {
                         return redirect()->route('ver.nuevo.formulario.docente.primera.etapa', [Crypt::encrypt($idpost)])->with('success', 'Su postulación fue ingresada con éxito. Proceda a completar los formularios correspondientes.');
                     }
@@ -337,6 +339,7 @@ class PostulatiosdocController extends Controller
                         DB::table('etapa2')->where(['id' => $ar1])->delete();
                         DB::table('etapa3')->where(['id' => $ar2])->delete();
                         DB::table('etapa4')->where(['id' => $ar3])->delete();
+                        DB::table('correctionsprocesodos')->where(['id' => $ar4])->delete();
                         return redirect()->route('ver-vista-concurso-usuario-registrado-docente', [Crypt::encrypt($id)])->with('danger', 'No pudimos generar la postulación a este concurso correctamente. Inténtelo nuevamente.');
                     }
 

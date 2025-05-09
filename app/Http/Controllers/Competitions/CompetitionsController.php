@@ -1267,7 +1267,7 @@ class CompetitionsController extends Controller
                         return view('admin.postulaciones.userspost', ['array1' => $array1, "idconc" => Crypt::encrypt($id), 'statusconc' => $statusconc->statuspos, 'not' => $not, "useraudit" => $useraudit ]);
                     break;
                     case ($statusconc->formulario == "proceso2"):
-
+                        
                         $comp = Competitions::join('postulations as post', 'post.idconc', '=', 'competitions.idcomp')
 
                         ->join('categoriesCompetitions  as cat', 'competitions.category_id', '=', 'cat.idcatcom')
@@ -1339,13 +1339,13 @@ class CompetitionsController extends Controller
                             foreach($answ as $a)
                             {
                                 
-                                if (DB::table('corrections')->where(['id_answ' => 0])->exists()) 
+                                if (DB::table('correctionsprocesodos')->where(['id_post' => $c->idpost])->exists()) 
                                 {
-                                    $tot = DB::table('corrections')->where(['id_answ' => $a->id])->first();
+                                    $tot = DB::table('correctionsprocesodos')->where(['id_post' => $c->idpost])->first();
                                     
                                     $exist = 'si';
 
-                                    $sum = (int)$tot->resp1 + (int)$tot->resp2 + (int)$tot->resp3 + (int)$tot->resp4 + (int)$tot->resp5 + (int)$tot->resp6 + (int)$tot->resp7 + (int)$tot->ptje1 + (int)$tot->ptje2 + (int)$tot->ptje3 + (int)$tot->ptje4 + (int)$tot->ptje5 + (int)$tot->ptje6 + (int)$tot->ptje7 + (int)$tot->ptje8 + (int)$tot->ptje9 + (int)$tot->ptje10 + (int)$tot->ptje11  + (int)$tot->ptje12;
+                                    $sum = (int)$tot->eval1;
                                     
                                 }
                                 else
@@ -1379,6 +1379,7 @@ class CompetitionsController extends Controller
         }
         
     }
+    
     
     public function verposregrev()
     {

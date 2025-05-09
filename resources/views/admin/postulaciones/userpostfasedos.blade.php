@@ -30,7 +30,7 @@
                 @endif
                 @if(Auth::user()->hasRole('admin'))
                     
-                    <a href="{{ route('buscar-concursos-registrados-administradores') }}" class="btn btn-success btn-sm">{{ trans('lang.volver')}}</a>
+                    <a href="{{ route('buscar.concursos.registrados.administradores.fase.dos') }}" class="btn btn-success btn-sm">{{ trans('lang.volver')}}</a>
                     @if($statusconc == 'activo')
                         <button class="btn btn-primary btn-sm" onclick="finalizarconc('{{ $idconc }}')">{{ trans('multi-new.0012')}}</button>
                     @else
@@ -104,43 +104,21 @@
                                     @foreach($arr['answ'] as $an => $slice)
                                     
                                     @if($an == 0 && $arr['status'] == 'inicial')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'inicial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-primary btn-sm btn-block">{{ trans('multi-new.0019')}}</a>
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'inicial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-primary btn-sm btn-block">{{ trans('multi-new.0019')}}</a>
+                                    @endif
+                                    @if($an == 0 && $arr['status'] == 'enrevision')
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'enrevision', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-primary btn-sm btn-block">{{ trans('multi-new.0019')}}</a>
                                     @endif
                                     @if($an == 0 && $arr['status'] == 'rechazado')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'rechazado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0020')}}</a>
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'rechazado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0020')}}</a>
                                     @endif
                                     @if($an == 0 && $arr['status'] == 'aprobado')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'aprobado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0020')}}</a>
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'aprobado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0020')}}</a>
                                     @endif
                                     @if($an == 0 && $arr['status'] == 'conobservaciones')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'conobservaciones', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0019')}}</a>
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'conobservaciones', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0019')}}</a>
                                     @endif
-                                    @if($an > 0)
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        Link
-                                                    </th>
-                                                    <th>
-                                                        {{ trans('multi-new.0021')}}
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'historial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-warning btn-sm btn-block mt-1">{{ trans('multi-new.0022')}}</a>
-                                                    </td>
-                                                    <td>
-                                                    {{ $arr['answ'][$an]['puntaje'] }}
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </diV>
-                                    @endif
+                                    
 
                                     @endforeach
                                 </td>

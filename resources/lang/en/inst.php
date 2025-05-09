@@ -146,4 +146,126 @@ return [
 
     '72' => 'Attach Documents',
 
+    '73' => "We're having trouble displaying this application. Please report this situation as soon as possible.",
+
+    '74' => 'Observations',
+
+    '75' => '1.- General Background',
+
+    '76' => '1.1.- Project Title',
+
+    '77' => '1.2.- Date',
+
+    '78' => 'No Observations',
+
+    '79' => '1.3.- Lead Faculty',
+
+    '80' => 'Participating Faculties',
+
+    '81' => 'Enter the Faculty to which the project leader and participants belong',
+
+    '82' => 'Enter the Date, dd/mm/yyyy format',
+
+    '83' => '1.4.- Leader Career',
+
+    '84' => 'Enter the Career to which the project leader belongs',
+
+    '85' => 'Participating Careers',
+
+    '86' => 'Enter the Career(s) to which the project participant(s) belong',
+
+    '87' => '1.5.- Lead Site',
+
+    '88' => 'Participating Sites',
+
+    '89' => 'Enter the Site to which the project leader and participants belong',
+
+    '90' => '1.6.- Name of the Project Director',
+
+    '91' => 'Enter the Name of the Project Director',
+
+    '92' => "1.7.- Alternate Director's Name",
+
+    '93' => "Enter the Alternate Director's Name",
+
+    '94' => '1.8.- Teaching Staff',
+
+    '95' => 'Enter the teaching staff, including the project',
+
+    '96' => '2.- Coverage',
+
+    '97' => '2.1.- Number of Participants',
+
+    '98' => 'Enter the number of project participants',
+
+    '99' => '2.2.- Number of Teachers',
+
+    '100' => 'Enter the number of teachers',
+
+    '101' => '2.3.- Number of Students',
+
+    '102' => 'Enter the number of students',
+
+    '103' => 'Background',
+
+    '104' => '3.1.- Project rationale (maximum 400 words). Include three sustainable actions over time, two aspects of the UST educational model, two aspects of the academic unit (school, program, faculty).',
+
+    '105' => 'Maximum 400 words',
+
+    '106' => '3.2.- Previous project(s). Attach three or more quantitative and/or qualitative evidence (attach final reports from the previous process or phase 1) and data (maximum 400 words).',
+
+    '107' => 'Annexed Documents',
+
+    '108' => '3.3.- General and specific objectives: relevant, coherent, logical. Consider scaling.',
+
+    '109' => '4.1.- Substantiate the educational theory that supports the learning methodology, the type of technology, and its pedagogical use (maximum 400 words)',
+
+    '110' => '4.2.- How student participation and interaction is encouraged. Precisely indicate gender equity and support for students with disabilities and neurodivergent students. (maximum 300 words)',
+
+    '111' => '4.- Methodology',
+
+    '112' => '5.- Evaluation',
+
+    '113' => '5.1.- Partial and final indicators and monitoring methods (maximum 400 words)',
+
+    '114' => 'Enter the indicators and monitoring methods',
+
+    '115' => '5.2.- Detailed expected results and outputs (maximum 400 words)',
+
+    '116' => 'Enter the expected results and outputs',
+
+    '117' => '5.3.- Impact indicators in pedagogical practices considering the objectives (maximum 400 words)',
+
+    '118' => 'Enter the impact indicators',
+
+    '119' => '5.4.- Institutional impact indicators considering the objectives, including dissemination, licensing, among others (maximum 400 words)',
+
+    '120' => 'Enter the institutional impact indicators',
+
+    '121' => '6.- GANTT CHART',
+
+    '122' => '6.1.- In the following table, indicate the estimated duration of the different project activities in detail, marking the corresponding months. Relevant milestones should be highlighted. Consider efficiency and sustainability for continuity to achieve the change in pedagogical practice and the products of the continuity project.',
+
+    '123' => 'Activities (Include relevant achievement milestone)',
+
+    '124' => 'Start Date',
+
+    '125' => 'End Date',
+
+    '126' => 'Description',
+
+    '127' => '7.- REQUESTED RESOURCES',
+
+    '128' => '7.1.- GENERAL BREAKDOWN',
+
+    '129' => '7.2.- DETAILS OF REQUESTED RESOURCES',
+
+    '130' => 'Specify in detail the type, quantity, and unit value of the resources you are requesting within each item, justifying their acquisition. The justification is particularly important for project evaluation. Keep in mind that they must be efficient and sustainable.',
+
+    '131' => '(*) Create as many lines as you need; it is not necessary to indicate names; it is enough to include, for example, IT Professional, Instructional Design Professional, Printer, Tablet, etc.',
+
+    '132' => '7.2.- JUSTIFICATION OF KEY RESOURCES (cannot be changed) for the proper functioning of the project',
+
+    '133' => 'Justification',
+
 ];

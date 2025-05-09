@@ -146,155 +146,155 @@ return [
 
     '72' => 'Adjuntar Documentos',
 
-    '73' => '',
+    '73' => 'Tenemos problemas, para mostrar esta postulación. Reporte esta situación, lo antes posible.',
 
-    '74' => '',
+    '74' => 'Observaciones',
 
-    '75' => '',
+    '75' => '1.- Antecedentes Generales',
 
-    '76' => '',
+    '76' => '1.1.- Título del Proyecto',
 
-    '77' => '',
+    '77' => '1.2.- Fecha',
 
-    '78' => '',
+    '78' => 'Sin Observaciones',
 
-    '79' => '',
+    '79' => '1.3.- Facultad Lider',
 
-    '80' => '',
+    '80' => 'Facultades Participantes',
 
-    '81' => '',
+    '81' => 'Ingrese la Facultad a la que pertenece el lider y los participantes del proyecto',
 
-    '82' => '',
+    '82' => 'Ingrese la Fecha, formato dd/mm/yyyy',
 
-    '83' => '',
+    '83' => '1.4.- Carrera Lider',
 
-    '84' => '',
+    '84' => 'Ingrese la Carrera a la que pertenece el lider del proyecto',
 
-    '85' => '',
+    '85' => 'Carreras Participantes',
 
-    '86' => '',
+    '86' => 'Ingrese la(s) Carrera(s) a la que pertenece(n) el(los) paticipante(es) del proyecto',
 
-    '87' => '',
+    '87' => '1.5.- Sede Lider',
 
-    '88' => '',
+    '88' => 'Sedes Participantes',
 
-    '89' => '',
+    '89' => 'Ingrese la Sede a la que pertenece el lider y los participantes del proyecto',
 
-    '90' => '',
+    '90' => '1.6.- Nombre del (la) docente Director (a) del Proyecto',
 
-    '91' => '',
+    '91' => 'Ingrese el Nombre del (la) docente Director (a) del Proyecto',
 
-    '92' => '',
+    '92' => '1.7.- Nombre del Director Alterno',
 
-    '93' => '',
+    '93' => 'Ingrese el Nombre del Director Alterno',
 
-    '94' => '',
+    '94' => '1.8.- Equipo Docente',
 
-    '95' => '',
+    '95' => 'Ingrese el equipo docente, incluido al proyecto',
 
-    '96' => '',
+    '96' => '2.- Cobertura',
 
-    '97' => '',
+    '97' => '2.1.- Número de Participantes',
 
-    '98' => '',
+    '98' => 'Ingrese el número de participantes del proyecto',
 
-    '99' => '',
+    '99' => '2.2.- Número de Docentes',
 
-    '100' => '',
+    '100' => 'Ingrese el número de docentes',
 
-    '101' => '',
+    '101' => '2.3.- Número de Estudiantes',
 
-    '102' => '',
+    '102' => 'Ingrese el número de estudiantes',
 
-    '103' => '',
+    '103' => 'Antecedentes',
 
-    '104' => '',
+    '104' => '3.1.- Fundamentación del proyecto (máximo 400 palabras). Incluya tres acciones de sustentabilidad en el tiempo, dos aspectos del modelo educativo UST, dos aspectos de la unidad académica (escuela, carrera, facultad)',
 
-    '105' => '',
+    '105' => 'Máximo 400 palabras',
 
-    '106' => '',
+    '106' => '3.2.- Proyecto (s) anterior(es) Adjuntar tres o más evidencias cuantitativas y/o cualitativas (anexar informes finales del proceso anterior o fase 1) y datos (máximo 400 palabras)',
 
-    '107' => '',
+    '107' => 'Documentos Anexos',
 
-    '108' => '',
+    '108' => '3.3.- Objetivo general y específicos: pertinentes, coherentes, lógicos. Consideran el escalamiento.',
 
-    '109' => '',
+    '109' => '4.1.- Fundamente la teoría educativa que sustenta la metodología del aprendizaje, el tipo de tecnología y su uso pedagógico (máximo 400 palabras)',
 
-    '110' => '',
+    '110' => '4.2.-Cómo se fomenta la participación e interacción de los estudiantes. Indica de forma precisa la equidad de género y el apoyo para estudiantes con discapacidad y neurodivergentes.(máximo 300 palabras)',
 
-    '0111' => 'y fecha de término:',
+    '111' => '4.- Metodología',
 
-    '0112' => '. El mensaje es el siguiente:',
+    '112' => '5.- Evaluación ',
 
-    '0113' => 'Le adjuntamos los datos del asesor que le acaba de enviar este mensaje, en caso de necesitar contactarlo:',
+    '113' => '5.1.- Indicadores y métodos de monitoreo parciales y finales (máximo 400 palabras)',
 
-    '0114' => 'Nombre del Asesor:',
+    '114' => 'Ingrese los indicadores y métodos de monitoreo',
 
-    '0115' => 'Email del Asesor:',
+    '115' => '5.2.- Resultados y productos esperados en detalle (máximo 400 palabras)',
 
-    '0116' => 'Teléfono del Asesor:',
+    '116' => 'Ingrese los resultados y productos esperados',
 
-    '0117' => 'Asunto',
+    '117' => '5.3.- Indicadores de Impacto en las prácticas pedagógicas considerando los objetivos (máximo 400 palabras)',
 
-    '0118' => '.- Ingrese un asunto',
+    '118' => 'Ingrese los indicadores de impacto',
 
-    '0119' => '.- Ingrese al menos 2 caracteres para indicar el asunto de su notificación',
+    '119' => '5.4.- Indicadores de Impacto institucional considerando los objetivos, se incluye la difusión, licenciamiento, entre otros (máximo 400 palabras)',
 
-    '0120' => '.- El asunto contiene caracteres inapropiados',
+    '120' => 'Ingrese los indicadores de impacto institucional',
 
-    '0121' => '.- Ingrese el mensaje de su notificación',
+    '121' => '6.- CARTA GANTT',
 
-    '0122' => '.-Introduzca al menos 2 caracteres para indicar el mensaje de su notificación',
+    '122' => '6.1.- En la siguiente tabla indique la duración estimada de las diferentes actividades del proyecto en detalle, marcando los meses que corresponda. Hay que destacar los hitos relevantes. Considere eficiencia y sostenibilidad para la continuidad para lograr el cambio en la práctica pedagógica y los productos del proyecto de continuidad.',
 
-    '0123' => '.- El mensaje contiene caracteres inapropiados',
+    '123' => 'Actividades (Incluya hito relevante de logro)',
 
-    '0124' => 'Para continuar debe solucionar los siguientes errores:',
+    '124' => 'Fecha de Inicio',
 
-    '0125' => 'Mensaje enviado correctamente.',
+    '125' => 'Fecha de Término',
 
-    '0126' => 'Responder Mensaje',
+    '126' => 'Descripción',
 
-    '0127' => '.- Ingrese el mensaje de respuesta',
+    '127' => '7.- RECURSOS SOLICITADOS',
 
-    '0128' => '.-Introduzca al menos 2 caracteres para indicar su respuesta',
+    '128' => '7.1.- DESGLOSE GENERAL',
 
-    '0129' => '.- Su respuesta contiene caracteres inapropiados',
+    '129' => '7.2.- DETALLE DE LOS RECURSOS SOLICITADOS',
 
-    '0130' => 'Mensaje recibido',
+    '130' => 'Especifique en detalle el tipo, cantidad y valor unitario de los recursos que solicita dentro de cada ítem, justificando su adquisición. La justificación es particularmente importante para la evaluación del proyecto. Tome en cuenta que deben ser eficientes y sostenibles.',
 
-    '0131' => 'Su notificación fue enviada correctamente al docente.',
+    '131' => '(*) Cree cuantas líneas necesita no es necesario indicar nombres basta con poner por ejemplo Profesional informático, Profesional diseño Instruccional, Impresora, Tablet, etc.',
 
-    '0132' => 'Su respuesta fue enviada correctamente al docente.',
+    '132' => '7.2.- JUSTIFICACIÓN DE RECURSOS CLAVES (no se pueden cambiar) para el correcto funcionamiento del proyecto',
 
-    '0133' => 'Su información ha sido procesada.',
+    '133' => 'Justificación',
 
-    '0134' => 'Error al procesar su solicitud.',
+    '134' => '',
 
-    '0135' => 'No pudimos actualizar la respuesta al mensaje recibido.',
+    '135' => '',
 
-    '0136' => 'Ver Actas',
+    '136' => '',
 
-    '0137' => 'Crear Acta',
+    '137' => '',
 
-    '0138' => 'Aún no se ha asignado Asesor(es), al proyecto. Se le enviará un email al administrador de la plataforma, para solucionar esta eventualidad.',
+    '138' => '',
 
-    '0139' => 'Enviar solicitud al administrador',
+    '139' => '',
 
-    '0140' => 'Se ha enviado su solicitud a los administradores de la plataforma, para que sea asignado un asesor y se cree el acta inicial.',
+    '140' => '',
 
-    '0141' => 'Solicitar Asesor(es)',
+    '141' => '',
 
-    '0142' => 'Para continuar debe completar los datos básicos de esta acta, duración, porcentaje de avance que representa esta acta respecto al proyecto global, etc. Esta información debe estar completa para comenzar oficialmente el acta.',
+    '142' => '',
 
-    '0143' => 'Actualizar Información',
+    '143' => '',
 
-    '0144' => '.- El formato de la fecha de inicio del acta no es correcto.',
+    '144' => '',
 
-    '0145' => '.- El formato de la fecha de término del acta no es correcto.',
+    '145' => '',
 
-    '0146' => '.- La fecha de inicio del acta debe ser mayor a la fecha actual.',
+    '146' => '',
 
-    '0147' => '.- La fecha de término del acta debe ser mayor a la fecha actual.',
+    '147' => '',
 
     '0148' => '.- La fecha de término del acta debe ser mayor a la fecha de inicio.',
 

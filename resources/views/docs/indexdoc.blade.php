@@ -284,6 +284,8 @@
 
             success: function(data) {
 
+                console.log(data);
+
                 let mensaje = "";
 
                 if(data.num == 0)
@@ -324,7 +326,7 @@
 
                                         <td style="white-space:normal;">`;
 
-                                            if(data.numbooks > 0)
+                                            if(data.arrayfinal[key]['arreglolib'].length > 0)
 
                                             {
 

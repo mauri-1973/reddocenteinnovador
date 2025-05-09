@@ -285,6 +285,23 @@ Route::group(['middleware' => ['role:revisor|admin', 'translate']], function () 
     Route::get('ver-vista-concurso-usuarios-registrados/{id}', [Competitions\CompetitionsController::class, 'vervisconusureg'])->name('ver-vista-concurso-usuarios-registrados');
     Route::get('ver-postulaciones-concursos-registrados/{id}', [Competitions\PostulationsrevController::class, 'verposconreg'])->name('ver-postulaciones-concursos-registrados');
     Route::get('ver-informacion-ingresada-docente/{tipo}/{idpost}/{idansw}', [Competitions\PostulationsrevController::class, 'verinfingdoc'])->name('ver-informacion-ingresada-docente');
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Fase 2
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Route::get('ver-informacion-ingresada-docente-fase-dos/{tipo}/{idpost}/{idansw}', [Competitions\PostulationsrevController::class, 'verinfingdocfasdos'])->name('ver.informacion.ingresada.docente.fase.dos');
+    Route::get('ver-nuevo-formulario-docente-segunda-etapa-admin/{id}', [Competitions\PostulationsrevController::class, 'verfordocsegetaadm'])->name('ver.nuevo.formulario.docente.segunda.etapa.admin');
+    Route::get('ver-nuevo-formulario-docente-tercera-etapa-admin/{id}', [Competitions\PostulationsrevController::class, 'verfordocteretaadm'])->name('ver.nuevo.formulario.docente.tercera.etapa.admin');
+    Route::get('ver-nuevo-formulario-docente-cuarta-etapa-admin/{id}', [Competitions\PostulationsrevController::class, 'verfordoccuaetaadm'])->name('ver.nuevo.formulario.docente.cuarta.etapa.admin');
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Fase 2
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     Route::get('imprimr-formulario-revisor/{id}', [Competitions\PostulationsrevController::class, 'impfordoc'])->name('imprimr-formulario-revisor');
     Route::get('imprimr-formulario-revisor-observaciones/{id}', [Competitions\PostulationsrevController::class, 'impfordocobs'])->name('imprimr-formulario-revisor-observaciones');
     
