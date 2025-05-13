@@ -268,13 +268,13 @@ return [
 
     '133' => 'Justificación',
 
-    '134' => '',
+    '134' => 'Proyecto Seleccionado',
 
-    '135' => '',
+    '135' => 'En proceso de Validación',
 
-    '136' => '',
+    '136' => 'Estamos trabajando para finalizar la funcionalidad, en esta etapa de su postulación.',
 
-    '137' => '',
+    '137' => 'Seleccionado',
 
     '138' => '',
 
@@ -582,7 +582,7 @@ return [
 
     '0290' => 'Instructivo',
 
-    '0291' => '' ,
+    '0291' => 'seleccionado',
 
     '0292' => '',
 

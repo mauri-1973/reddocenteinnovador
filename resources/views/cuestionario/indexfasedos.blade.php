@@ -84,6 +84,11 @@
                                         {{ trans('multi-leng.a246') }}
 
                                         @endif
+                                        @if($data[$po]['status'] == "seleccionado")
+
+                                        {{ trans('inst.137') }}
+
+                                        @endif
                                     @else
                                       &nbsp;
                                     @endif

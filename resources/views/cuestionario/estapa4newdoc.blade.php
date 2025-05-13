@@ -345,7 +345,7 @@
                                                         <button id="finalizarpost" class="btn btn-warning btn-sm btn-block">{{ trans('multi-leng.a127')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></button>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                                        <a href="{{ route('buscar.concursos.registrados.docentes.fase.dos' ) }}" class="btn btn-warning btn-sm btn-block">{{ trans('multi-leng.lognav')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                                        <a href="{{ route('ver.postulaciones.activas.docentes.fase.dos' ) }}" class="btn btn-warning btn-sm btn-block">{{ trans('multi-leng.lognav')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
                                                     </div>
                                                 </div>
                                             </div>

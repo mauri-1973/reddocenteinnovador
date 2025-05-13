@@ -48,15 +48,20 @@
                                         <div class="form-group mb-4 text-wrap">
                                             <label style="margin-bottom:10px;" class="textlabel">Título del Proyecto:</label>
                                             <table class="table table-bordered table-sm text-wrap" id="tablainicio" style="background-color:#fff;">
-                                                
                                                 <tbody>
                                                     <tr>
-                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">{{ $et1->titulo }}</th>
-                                                        
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            {{ $et1->titulo }}
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg1 }}
+                                                        </th>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            
                                         </div>
                                         <div class="form-group mb-4 text-wrap">
                                             <label style="margin-bottom:10px;" class="textlabel">Fecha de Ingreso:</label>
@@ -67,7 +72,14 @@
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et1->fecha }}</th>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg2 }}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
+                                                
                                             </table>
                                         </div>
                                         <div class="form-group mb-4 text-wrap">
@@ -78,6 +90,12 @@
                                                     <tr>
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et1->facultades }}</th>
                                                         
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                        <p><strong>Observaciones</strong></p><br>
+                                                        {{ $obs->obspreg3 }}
+                                                        </th>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -91,6 +109,12 @@
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et1->carreras }}</th>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg4 }}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -102,6 +126,12 @@
                                                     <tr>
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et1->sedes }}</th>
                                                         
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg5 }}
+                                                        </th>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -115,6 +145,12 @@
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et1->nombredoc }}</th>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg6 }}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -127,6 +163,12 @@
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et1->directoralt }}</th>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg7 }}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -136,8 +178,16 @@
                                                 
                                                 <tbody>
                                                     <tr>
-                                                        <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et1->equipodoc }}</th>
+                                                        <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et1->equipodoc }}
+
+                                                        </th>
                                                         
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg8 }}
+                                                        </th>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -178,6 +228,12 @@
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et1->numest }}</th>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg9 }}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -194,12 +250,18 @@
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et2->pregunta1 }}</th>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg10 }}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div class="page-break"></div>
                                         <div class="form-group mb-4 text-wrap">
-                                            <label style="margin-bottom:10px;" class="textlabel">Proyecto (s) anterior(es)  :</label>
+                                            <label style="margin-bottom:10px;" class="textlabel">Proyecto(s) anterior(es)  :</label>
                                             <table class="table table-bordered table-sm text-wrap" id="tablainicio" style="background-color:#fff;">
                                                 
                                                 <tbody>
@@ -225,8 +287,17 @@
                                                                 <a class='btn btn-success btn-sm btn-block' href="{{url('/')}}/storage/adjuntos/docentes/{{ $fil->dirfile }}' role='button' download='{{ $fil->dirfile }}">{{__('multi-leng.a39')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
                                                             </td>
                                                         </tr>
-                                                        @endforeach
+                                                        
+                                                    @endforeach
                                                 </tbody>
+                                                <tfoot id="tfoottablaperobs">
+                                                    <tr>
+                                                        <th colspan="2" scope="col" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg11 }}
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                         <div class="page-break"></div>
@@ -238,6 +309,12 @@
                                                     <tr>
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et2->pregunta3 }}</th>
                                                         
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg12 }}
+                                                        </th>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -255,6 +332,12 @@
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et2->pregunta4 }}</th>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg13 }}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -267,6 +350,12 @@
                                                     <tr>
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et2->pregunta5 }}</th>
                                                         
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg14 }}
+                                                        </th>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -284,6 +373,12 @@
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et3->pregunta6 }}</th>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg15 }}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -296,6 +391,12 @@
                                                     <tr>
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et3->pregunta7 }}</th>
                                                         
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                        {{ $obs->obspreg16 }}
+                                                        </th>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -310,6 +411,12 @@
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et3->pregunta8 }}</th>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                        {{ $obs->obspreg17 }}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -322,6 +429,12 @@
                                                     <tr>
                                                         <th scope="row" style="min-height:50px;text-align: justify;" class="p-2">{{ $et3->pregunta9 }}</th>
                                                         
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg18 }}
+                                                        </th>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -350,7 +463,16 @@
                                                         <th style="min-height:50px;text-align: justify;" class="p-2">{{ $row->descripcion }}</th>
                                                     </tr>
                                                     @endforeach
+                                                    
                                                 </tbody>
+                                                <tfoot id="tfoottablaperobs">
+                                                    <tr>
+                                                        <th colspan="4" scope="col" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg19 }}
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                         <div class="page-break"></div>
@@ -425,14 +547,22 @@
                                                             
                                                         </tr>
                                                         @endforeach
-                                                        
-                                                        <tfoot id="tfoottablaper">
+                                                    </tbody>
+                                                    
+                                                    <tfoot id="tfoottablaper">
                                                         <tr>
                                                             <th colspan="3" scope="col">ITEM {{ trans('multi-leng.a121')}} </th>
                                                             <th scope="col" class="text-center">$ {{ $sumper }}</th>
                                                         </tr>
-                                                        </tfoot>
-                                                    </tbody>
+                                                    </tfoot>
+                                                    <tfoot id="tfoottablaperobs">
+                                                        <tr>
+                                                            <th colspan="4" scope="col" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                                <p><strong>Observaciones</strong></p><br>
+                                                                {{ $obs->obspreg20 }}
+                                                            </th>
+                                                        </tr>
+                                                    </tfoot>
                                             </table>
                                         </div>
                                         <div class="form-group mb-4">
@@ -460,13 +590,22 @@
                                                         </tr>
                                                         @endforeach
                                                         
-                                                        <tfoot id="tfoottablacom">
-                                                            <tr>
-                                                                <th colspan="3" scope="col">ITEM {{ trans('multi-leng.a121')}} </th>
-                                                                <th scope="col" class="text-center">$ {{ $sumcom }}</th>
-                                                            </tr>
-                                                        </tfoot>
+                                                        
                                                     </tbody>
+                                                    <tfoot id="tfoottablacom">
+                                                        <tr>
+                                                            <th colspan="3" scope="col">ITEM {{ trans('multi-leng.a121')}} </th>
+                                                            <th scope="col" class="text-center">$ {{ $sumcom }}</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    <tfoot id="tfoottablaperobs">
+                                                        <tr>
+                                                            <th colspan="4" scope="col" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                                <p><strong>Observaciones</strong></p><br>
+                                                                {{ $obs->obspreg21 }}
+                                                            </th>
+                                                        </tr>
+                                                    </tfoot>
                                             </table>
                                         </div>
                                         <div class="form-group mb-4">
@@ -493,13 +632,21 @@
                                                         
                                                     </tr>
                                                     @endforeach
-                                                    
-                                                    <tfoot id="tfoottablafun">
-                                                        <tr>
-                                                            <th colspan="3" scope="col">ITEM {{ trans('multi-leng.a121')}} </th>
-                                                            <th scope="col" class="text-center">$ {{ $sumfun }}</th>
-                                                        </tr>
-                                                    </tfoot>
+                                                </tbody>   
+                                                <tfoot id="tfoottablafun">
+                                                    <tr>
+                                                        <th colspan="3" scope="col">ITEM {{ trans('multi-leng.a121')}} </th>
+                                                        <th scope="col" class="text-center">$ {{ $sumfun }}</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tfoot id="tfoottablaperobs">
+                                                    <tr>
+                                                        <th colspan="4" scope="col" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg22 }}
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                         <div class="form-group mb-4">
@@ -527,13 +674,22 @@
                                                     </tr>
                                                     @endforeach
                                                     
-                                                    <tfoot id="tfoottablaotr">
-                                                        <tr>
-                                                            <th colspan="3" scope="col">ITEM {{ trans('multi-leng.a121')}} </th>
-                                                            <th scope="col" class="text-center">$ {{ $sumotr }}</th>
-                                                        </tr>
-                                                    </tfoot>
+                                                    
                                                 </tbody>
+                                                <tfoot id="tfoottablaotr">
+                                                    <tr>
+                                                        <th colspan="3" scope="col">ITEM {{ trans('multi-leng.a121')}} </th>
+                                                        <th scope="col" class="text-center">$ {{ $sumotr }}</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tfoot id="tfoottablaperobs">
+                                                    <tr>
+                                                        <th colspan="4" scope="col" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg23 }}
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                         <div class="page-break"></div>
@@ -558,6 +714,14 @@
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
+                                                <tfoot id="tfoottablaperobs">
+                                                    <tr>
+                                                        <th colspan="2" scope="col" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>Observaciones</strong></p><br>
+                                                            {{ $obs->obspreg24 }}
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>

@@ -432,7 +432,12 @@ class PostulatiosNewformController extends Controller
         if($post->status == "conobservaciones")
         {
             #$text = trans('multi-leng.a253');
-            $text = "En proceso de Validación";
+            $text = trans('inst.135');
+        }
+        if($post->status == "seleccionado")
+        {
+            #$text = trans('multi-leng.a253');
+            $text = trans('inst.134');
         }
 
         switch (true) 
@@ -459,12 +464,39 @@ class PostulatiosNewformController extends Controller
                         $view = 'estapa1newdocrev';
 
                     break;
+                    case ($post->status == "seleccionado"):
+
+                        #$view = 'etapa1obs';
+
+                        $view = 'estapa1newdocrev';
+
+                    break;
                     
                     default:
                         abort(404);
                     break;
                 }
                 return view('cuestionario.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status ]);
+
+            break;
+            case ($post->status == "seleccionado"):
+
+                switch (true) 
+                {
+                    
+                    case ($post->status == "seleccionado"):
+
+                        #$view = 'etapa1obs';
+
+                        $view = 'fasedosdoc';
+
+                    break;
+                    
+                    default:
+                        abort(404);
+                    break;
+                }
+                return view('cuestionario.seleccionado.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status ]);
 
             break;
             case ($post->status == "enrevision" || $post->status == "conobservaciones"):

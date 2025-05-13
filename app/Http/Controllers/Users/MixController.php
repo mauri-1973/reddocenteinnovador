@@ -286,8 +286,9 @@ class MixController extends Controller
 
         $tablajust = DB::table('detailnewresources')->select('iddetres', 'descri', 'name')->where(['id_et4' =>  $et4->id, 'type' => 5])->orderBy('iddetres', 'asc')->get();
 
-        
-        $pdf = \PDF::loadView('pdfs/fasedos', ["et1" => $et1, 'et2' => $et2, 'et3' => $et3, 'et4' => $et4, 'file' => $file, "sumper" => (int)$sumper, "sumcom" => (int)$sumcom, "sumfun" => (int)$sumfun, "sumotr" => (int)$sumotr, 'tablaper' => $tablaper, 'tablacom' => $tablacom, 'tablafun' => $tablafun , 'tablaotr' => $tablaotr,  'tablajust' => $tablajust, 'gantt' => $gantt]);
+        $obs = DB::table('correctionsprocesodos')->select('*')->where('id_post', $id)->first();
+
+        $pdf = \PDF::loadView('pdfs/fasedos', ["et1" => $et1, 'et2' => $et2, 'et3' => $et3, 'et4' => $et4, 'file' => $file, "sumper" => (int)$sumper, "sumcom" => (int)$sumcom, "sumfun" => (int)$sumfun, "sumotr" => (int)$sumotr, 'tablaper' => $tablaper, 'tablacom' => $tablacom, 'tablafun' => $tablafun , 'tablaotr' => $tablaotr,  'tablajust' => $tablajust, 'gantt' => $gantt, 'obs' => $obs]);
         
     
         return $pdf->download('Formulario.pdf');

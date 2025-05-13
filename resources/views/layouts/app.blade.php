@@ -128,7 +128,7 @@
           success: function (datos) {
             var html = '';
             var url = '';
-            if(datos.array && Array.isArray(datos.array))
+            if(datos.array && Array.isArray(datos.array) && datos.array.length > 0)
             {
                 // Iteración sobre los elementos del array 'datos'
                 datos.array.forEach(function(item){
@@ -143,9 +143,19 @@
                     <hr>`;
                     url = item.url;
                 });
+                console.log("Con datos.........");
             } 
             else 
             {
+              html += `<div class="card col-12">
+                      <img class="card-img-top img-fluid" src="{{asset('storage/instructivo')}}/trash.jpeg" alt="{{ __('inst.60') }}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ __('inst.59') }}</h5>
+                        <p class="card-text">{{ __('inst.61') }}</p>
+                      </div>
+                    </div>
+                    <hr>`;
+                url = "{{ __('inst.60') }}";
                 console.log("No hay datos disponibles.");
             }
             $("#instructivoLabel").html(url);

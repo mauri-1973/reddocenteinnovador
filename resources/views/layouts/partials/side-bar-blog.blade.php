@@ -121,7 +121,7 @@
                 </a>
 
             </li>
-            <li class=active>
+            <li class='active'>
 
                 <a href="#" onclick="instruc('{{ Route::currentRouteName() }}','{{ Auth::user()->cargo_us }}')">
 

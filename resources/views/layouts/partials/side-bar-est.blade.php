@@ -210,6 +210,17 @@
                 </a>
 
             </li>
+            <li class='active'>
+
+                <a href="#" onclick="instruc('{{ Route::currentRouteName() }}','{{ Auth::user()->cargo_us }}')">
+
+                    <i class="nc-icon nc-album-2"></i>
+
+                    <p>{{ __('multi-new.0290') }}</p>
+
+                </a>
+
+            </li>
 
         </ul>
 

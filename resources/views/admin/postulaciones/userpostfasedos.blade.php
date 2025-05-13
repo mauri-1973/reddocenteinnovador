@@ -136,36 +136,6 @@
                     @if($statusconc == 'seleccionados')
                         <button class="btn btn-primary btn-sm" onclick="notificaciones('{{ $idconc }}', '{{ Crypt::encrypt(0) }}', 'general')">{{ trans('multi-new.0033')}}</button>
                     @endif
-                    
-                    <table id="dt-mant-table-sel-not" class="table table-bordered display responsive nowrap" style="width:100%">
-                        <thead>
-                        <tr>
-                            <th scope="col">{{ trans('multi-new.0035')}}</th>
-                            <th scope="col">{{ trans('multi-new.0037')}}</th>
-                            <th>{{ trans('multi-new.0036')}}</th>
-                        </tr>
-                        </thead>
-                        <tbody id="bodynot">
-                        @if($not->count() > 0)
-                            @foreach($not as $n)
-                            <tr>
-                                <th scope="row" class="text-left">
-                                    {{ $n->mensaje }}
-                                </th>
-                                <th scope="row" class="text-center">
-                                    {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $n->created_at)->format('d-m-Y H:i:s') }}
-                                </th>
-                                <th scope="row">
-                                <button class="btn btn-success btn-sm btn-block mb-1" onclick="notificaciones('{{ Crypt::encrypt($n->id_con.'-'.$n->id) }}', '{{ $n->mensaje }}', 'editar')">Editar</button>
-                                <button class="btn btn-danger btn-sm btn-block" onclick="notificaciones('{{ Crypt::encrypt($n->id_con.'-'.$n->id) }}', '{{ $n->mensaje }}', 'eliminar')">Eliminar</button>
-                                </th>
-                            </tr>
-                            @endforeach
-                        @endif
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-body">     
                     <table id="dt-mant-table-sel" class="table table-bordered display responsive nowrap" style="width:100%">
                         <thead>
                         <tr>
@@ -180,6 +150,7 @@
                             <th>{{ trans('multi-leng.a210')}}</th>
                             <th>{{ trans('multi-leng.a211')}}</th>
                             <th>{{ trans('multi-new.0001')}}</th>
+                            
                         </tr>
                         </thead>
                         <tbody>
@@ -218,16 +189,19 @@
                                     @foreach($arr['answ'] as $an => $slice)
                                     
                                     @if($an == 0 && $arr['status'] == 'inicial')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'inicial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-primary btn-sm btn-block">{{ trans('multi-new.0019')}}</a>
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'inicial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-primary btn-sm btn-block">{{ trans('multi-new.0019')}}</a>
                                     @endif
                                     @if($an == 0 && $arr['status'] == 'rechazado')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'rechazado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0020')}}</a>
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'rechazado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0020')}}</a>
                                     @endif
                                     @if($an == 0 && $arr['status'] == 'aprobado')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'aprobado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0020')}}</a>
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'aprobado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0020')}}</a>
                                     @endif
                                     @if($an == 0 && $arr['status'] == 'conobservaciones')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'conobservaciones', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0019')}} </a>
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'conobservaciones', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0019')}} </a>
+                                    @endif
+                                    @if($an == 0 && $arr['status'] == 'seleccionado')
+                                    <a href="{{ route('ver.informacion.ingresada.docente.fase.dos', ['tipo' => 'seleccionado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">{{ trans('multi-new.0019')}} </a>
                                     @endif
                                     @if($an > 0)
                                     <div class="table-responsive">
@@ -354,6 +328,36 @@
                         
                         </tbody>
                     </table>
+                    
+                </div>
+                <div class="card-body">     
+                    <table id="dt-mant-table-sel-not" class="table table-bordered display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th scope="col">{{ trans('multi-new.0035')}}</th>
+                            <th scope="col">{{ trans('multi-new.0037')}}</th>
+                            <th>{{ trans('multi-new.0036')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody id="bodynot">
+                        @if($not->count() > 0)
+                            @foreach($not as $n)
+                            <tr>
+                                <th scope="row" class="text-left">
+                                    {{ $n->mensaje }}
+                                </th>
+                                <th scope="row" class="text-center">
+                                    {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $n->created_at)->format('d-m-Y H:i:s') }}
+                                </th>
+                                <th scope="row">
+                                <button class="btn btn-success btn-sm btn-block mb-1" onclick="notificaciones('{{ Crypt::encrypt($n->id_con.'-'.$n->id) }}', '{{ $n->mensaje }}', 'editar')">Editar</button>
+                                <button class="btn btn-danger btn-sm btn-block" onclick="notificaciones('{{ Crypt::encrypt($n->id_con.'-'.$n->id) }}', '{{ $n->mensaje }}', 'eliminar')">Eliminar</button>
+                                </th>
+                            </tr>
+                            @endforeach
+                        @endif
+                        </tbody>
+                    </table> 
                 </div>
                 @endif
             </div>

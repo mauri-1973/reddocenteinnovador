@@ -1955,7 +1955,7 @@ class PostulationNewController extends Controller
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function actforpossel(Request $request)
     {
-        dd($request);
+        
         $id = $request->id;
         $status = $request->status;
         switch (true) 
