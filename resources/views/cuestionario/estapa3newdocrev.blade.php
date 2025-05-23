@@ -74,6 +74,27 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             
             <div class="row justify-content-center mt-4">
+                @if($rubrica == 1)
+                <div class="col-md-12">
+                    <div class="card mb-4 bg-white shadow-sm">
+                        <div class="card-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <a href="{{ route('imprimr.formulario.docente.fase.dos', $idpostulacion) }}" role="button" id="imprimir" class="btn btn-primary btn-sm btn-block">{{ trans('multi-leng.a204')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <a href="{{ route('ver.postulaciones.activas.docentes.fase.dos' ) }}" class="btn btn-warning btn-sm btn-block">{{ trans('multi-leng.lognav')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <a href="#" class="btn btn-primary btn-sm btn-block" disabled>{{ trans('inst.139')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
                 <div class="col-md-12">
                     <div class="card mb-4 bg-white shadow-sm">
                         <div class="card-body">

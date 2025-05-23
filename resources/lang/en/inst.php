@@ -276,4 +276,42 @@ return [
 
     '137' => 'Selected' ,
 
+    '138' => 'Rejected',
+
+    '139' => 'Print Rubric',
+
+    '140' => 'Final Remarks',
+
+    '141' => 'Finish Review',
+
+    '142' => 'Are you sure you want to end this feature? This action is not reversible.',
+
+    '143' => 'Review performed',
+
+    '144' => 'Generate the signature for this application before finalizing.',
+
+    '145' => 'The application correction has been successfully completed.',
+
+    '146' => 'The application correction could not be completed correctly. Please contact the platform administrator.',
+
+    '147' => 'Generate Rubric',
+
+    '148' => '3.- Background',
+
+    '149' => '3.1.- Project rationale (maximum 400 words). Include three sustainable actions over time, two aspects of the UST educational model, two aspects of the academic unit (school, program, faculty).',
+
+    '150' => '3.2.- Previous project(s). Attach three or more quantitative and/or qualitative evidence (attach final reports from the previous process or phase 1) and data (maximum 400 words).',
+
+    '151' => '3.3.- General and specific objectives: relevant, coherent, logical. Consider scaling.',
+
+    '152' => '4.- Methodology',
+
+    '153' => '4.1.- Substantiate the educational theory that supports the learning methodology, the type of technology, and its pedagogical use (maximum 400 words)',
+
+    '154' => '4.2.- How student participation and interaction is encouraged. Precisely indicate gender equity and support for students with disabilities and neurodivergent students. (maximum 300 words)',
+
+    '155' => 'Revised',
+
+    '156' => 'We have a problem with the validation process. Please contact the platform administrator.',
+
 ];

@@ -73,7 +73,6 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="row justify-content-center mt-4">
-                @if($rubrica == 1)
                 <div class="col-md-12">
                     <div class="card mb-4 bg-white shadow-sm">
                         <div class="card-body">
@@ -83,17 +82,23 @@
                                         <a href="{{ route('imprimr.formulario.docente.fase.dos', $idpostulacion) }}" role="button" id="imprimir" class="btn btn-primary btn-sm btn-block">{{ trans('multi-leng.a204')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                        <a href="{{ route('ver.postulaciones.activas.docentes.fase.dos' ) }}" class="btn btn-warning btn-sm btn-block">{{ trans('multi-leng.lognav')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                    @role('revisor')
+                                        <a href="{{ route('ver-postulaciones-concursos-registrados', $idconcurso ) }}" class="btn btn-warning btn-sm btn-block">{{ trans('multi-leng.lognav')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                    @endrole
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                        <a href="#" class="btn btn-primary btn-sm btn-block" disabled>{{ trans('inst.139')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                        @if($finalstus->statusrub > 0)
+                                            <a href="#" class="btn btn-primary btn-sm btn-block">Imprimir Rúbrica&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                        @else
+                                            <a href="#" class="btn btn-primary btn-sm btn-block" disabled>Imprimir Rúbrica&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                @endif
+                
                 <div class="col-md-12">
                     <div class="card mb-4 bg-white shadow-sm">
                         <div class="card-body">
@@ -115,14 +120,17 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                                         <div class="author text-dark mb-3">
-                                            <h5>1.- Antecedentes Generales</h5>
+                                            <h5>{{ __('inst.75') }}</h5>
                                         </div>
 
                                         <hr style="border-top: 2px solid #000;">
 
                                         <div class="form-group mb-4">
-                                            <label for="titulo" class="textlabel text-dark"><b>1.1.- Título del Proyecto</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ __('multi-leng.caracteresname') }}" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
+                                            <label for="titulo" class="textlabel text-dark"><b>{{ __('inst.76') }}</b></label>
                                             <input class="form-control input-lg text-dark" id="titulo" name="titulo" type="text" minlength="2" maxlength="70" value="{{ $finalstus->titulo }}" placeholder="{{ trans('multi-leng.a150')}}" disabled>
+                                            
+                                            <label for="obspreg1" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg1" name="obspreg1" rows="15" maxlength="250" disabled>{{ $finalstus->obspreg1 }}</textarea>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda1" class="help-block"></p>
                                             </span> 
@@ -131,8 +139,11 @@
                                         <hr style="border-top: 2px solid #000;">
 
                                         <div class="form-group mb-4">
-                                            <label for="fechaingreso" class="textlabel text-dark"><b>1.2.- Fecha</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese la fecha de presentación del proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <input class="form-control input-lg text-dark" id="fechaingreso" name="fechaingreso" type="date" minlength="8" maxlength="10" value="{{ $finalstus->fecha }}" placeholder="Ingrese la Fecha, formato dd/mm/yyyy" disabled>
+                                            <label for="fechaingreso" class="textlabel text-dark"><b>{{ __('inst.77') }}</b></label>
+                                            <input class="form-control input-lg text-dark" id="fechaingreso" name="fechaingreso" type="date" minlength="8" maxlength="10" value="{{ $finalstus->fecha }}" placeholder="{{ __('inst.84') }}" disabled>
+                                            
+                                            <label for="obspreg2" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg2" name="obspreg2" rows="15" maxlength="250" disabled>{{ $finalstus->obspreg2 }}</textarea>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda2" class="help-block text-dark"></p>
                                             </span> 
@@ -141,10 +152,13 @@
                                         <hr style="border-top: 2px solid #000;">
 
                                         <div class="form-group mb-4">
-                                            <label for="facultades" class="textlabel text-dark"><b>1.3.- Facultad Lider</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese la Facultad a la que pertenece el lider del proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
+                                            <label for="facultades" class="textlabel text-dark"><b>{{ __('inst.79') }}</b></label>
                                             <br>
-                                            <label for="facultades" class="textlabel text-dark"><b>Facultades Participantes</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese la(s) Facultad(es) a la que pertenece(n) el(los) paticipante(es) del proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="Ingrese la Facultad a la que pertenece el lider y los participantes del proyecto" id="facultades" name="facultades" rows="15" maxlength="250" disabled>{{ $finalstus->facultades }}</textarea>
+                                            <label for="facultades" class="textlabel text-dark"><b>{{ __('inst.80') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.81') }}" id="facultades" name="facultades" rows="15" maxlength="250" disabled>{{ $finalstus->facultades }}</textarea>
+                                             
+                                            <label for="obspreg3" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg3" name="obspreg3" rows="15" maxlength="250" disabled>{{ $finalstus->obspreg3 }}</textarea>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda3" class="help-block text-dark"></p>
                                             </span> 
@@ -153,91 +167,104 @@
                                         <hr style="border-top: 2px solid #000;">
 
                                         <div class="form-group mb-4">
-                                            <label for="carreras" class="textlabel text-dark"><b>1.4.- Carrera Lider</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese la Carrera a la que pertenece el lider del proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
+                                            <label for="carreras" class="textlabel text-dark"><b>{{ __('inst.83') }}</b></label>
                                             <br>
-                                            <label for="carreras" class="textlabel text-dark"><b>Carreras Participantes</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese la(s) Carrera(s) a la que pertenece(n) el(los) paticipante(es) del proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="Ingrese la Carrera a la que pertenece el lider y los participantes del proyecto" id="carreras" name="carreras" rows="15" maxlength="250" disabled>{{ $finalstus->carreras }}</textarea>
+                                            <label for="carreras" class="textlabel text-dark"><b>{{ __('inst.85') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="carreras" name="carreras" rows="15" maxlength="250" disabled>{{ $finalstus->carreras }}</textarea>
+                                             
+                                            <label for="obspreg4" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg4" name="obspreg4" rows="15" maxlength="250" disabled>{{ $finalstus->obspreg4}}</textarea>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda4" class="help-block text-dark"></p>
-                                            </span> 
+                                            </span>
                                         </div>
 
                                         <hr style="border-top: 2px solid #000;">
 
                                         <div class="form-group mb-4">
-                                            <label for="sedes" class="textlabel text-dark"><b>1.5.- Sede Lider</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese la Sede a la que pertenece el lider del proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
+                                            <label for="sedes" class="textlabel text-dark"><b>{{ __('inst.87') }}</b></label>
                                             <br>
-                                            <label for="sedes" class="textlabel text-dark"><b>Sedes Participantes</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese la(s) Sede(s) a la que pertenece(n) el(los) paticipante(es) del proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="Ingrese la Sede a la que pertenece el lider y los participantes del proyecto" id="sedes" name="sedes" rows="15" maxlength="500" disabled>{{ $finalstus->sedes }}</textarea>
+                                            <label for="sedes" class="textlabel text-dark"><b>{{ __('inst.88') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.89') }}" id="sedes" name="sedes" rows="15" maxlength="500" disabled>{{ $finalstus->sedes }}</textarea>
+                                             
+                                            <label for="obspreg5" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg5" name="obspreg5" rows="15" maxlength="250" disabled>{{ $finalstus->obspreg5 }}</textarea>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda5" class="help-block text-dark"></p>
-                                            </span> 
+                                            </span>
                                         </div>
 
                                         <hr style="border-top: 2px solid #000;">
 
                                         <div class="form-group mb-4">
-                                            <label for="nombredoc" class="textlabel text-dark"><b>1.6.- Nombre del (la) docente Director (a) del Proyecto</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese el Nombre del (la) docente Director (a) del Proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <input class="form-control input-lg text-dark" id="nombredoc" name="nombredoc" type="text" minlength="2" maxlength="70" value="{{ $finalstus->nombredoc }}" placeholder="Ingrese el Nombre del (la) docente Director (a) del Proyecto" disabled>
+                                            <label for="nombredoc" class="textlabel text-dark"><b>{{ __('inst.90') }}</b></label>
+                                            <input class="form-control input-lg text-dark" id="nombredoc" name="nombredoc" type="text" minlength="2" maxlength="70" value="{{ $finalstus->nombredoc }}" placeholder="{{ __('inst.91') }}" disabled>
+                                             
+                                            <label for="obspreg6" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg6" name="obspreg6" rows="15" maxlength="250" disabled>{{ $finalstus->obspreg6 }}</textarea>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda6" class="help-block text-dark"></p>
-                                            </span> 
+                                            </span>
                                         </div>
 
                                         <hr style="border-top: 2px solid #000;">
 
                                         <div class="form-group mb-4">
-                                            <label for="directoralt" class="textlabel text-dark"><b>1.7.- Nombre del Director Alterno</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese el Nombre del Director Alterno" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <input class="form-control input-lg text-dark" id="directoralt" name="directoralt" type="text" minlength="2" maxlength="70" value="{{ $finalstus->directoralt }}" placeholder="Ingrese el Nombre del Director Alterno" disabled>
+                                            <label for="directoralt" class="textlabel text-dark"><b>{{ __('inst.92') }}</b></label>
+                                            <input class="form-control input-lg text-dark" id="directoralt" name="directoralt" type="text" minlength="2" maxlength="70" value="{{ $finalstus->directoralt }}" placeholder="{{ __('inst.93') }}" disabled>
+                                             
+                                            <label for="obspreg7" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg7" name="obspreg7" rows="15" maxlength="250" disabled>{{ $finalstus->obspreg7 }}</textarea>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda7" class="help-block text-dark"></p>
-                                            </span> 
+                                            </span>
                                         </div>
 
                                         <hr style="border-top: 2px solid #000;">
 
                                         <div class="form-group mb-4">
-                                            <label for="equipodoc" class="textlabel text-dark"><b>1.8.- Equipo Docente</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese el equipo docente inserto al proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="Ingrese el equipo docente, incluido al proyecto" id="equipodoc" name="equipodoc" rows="15" maxlength="250" disabled>{{ $finalstus->equipodoc }}</textarea>
+                                            <label for="equipodoc" class="textlabel text-dark"><b>{{ __('inst.94') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.95') }}" id="equipodoc" name="equipodoc" rows="15" maxlength="250" disabled>{{ $finalstus->equipodoc }}</textarea>
+                                            
+                                            <label for="obspreg8" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg8" name="obspreg8" rows="15" maxlength="250" disabled>{{ $finalstus->obspreg8 }}</textarea> 
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda8" class="help-block text-dark"></p>
-                                            </span> 
+                                            </span>
                                         </div>
 
                                         <hr style="border-top: 2px solid #000;">
                                         
                                         <div class="author text-dark mb-3">
-                                            <h5>2.- Cobertura</h5>
+                                            <h5>{{ __('inst.96') }}</h5>
                                         </div>
 
                                         <hr style="border-top: 2px solid #000;">
 
                                         <div class="form-group mb-4">
-                                            <label for="numeropar" class="textlabel text-dark"><b>2.1.- Número de Participantes</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese el número de participantes del proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <input class="form-control input-lg text-dark" id="numeropar" name="numeropar" type="text" minlength="1" maxlength="2" value="{{ $finalstus->numeropar }}" placeholder="Ingrese el número de participantes del proyecto" onkeypress="return valideKey(event);" disabled>
+                                            <label for="numeropar" class="textlabel text-dark"><b>{{ __('inst.97') }}</b></label>
+                                            <input class="form-control input-lg text-dark" id="numeropar" name="numeropar" type="text" minlength="1" maxlength="2" value="{{ $finalstus->numeropar }}" placeholder="{{ __('inst.98') }}" onkeypress="return valideKey(event);" disabled>
+                                             
+                                        </div>
+
+                                        <hr style="border-top: 2px solid #000;">
+
+                                        <div class="form-group mb-4">
+                                            <label for="numdoc" class="textlabel text-dark"><b>{{ __('inst.99') }}</b></label>
+                                            <input class="form-control input-lg text-dark" id="numdoc" name="numdoc" type="text" minlength="1" maxlength="2" value="{{ $finalstus->numdoc }}" placeholder="{{ __('inst.100') }}" onkeypress="return valideKey(event);" disabled>
+                                        </div>
+
+                                        <hr style="border-top: 2px solid #000;">
+
+                                        <div class="form-group mb-4">
+                                            <label for="numest" class="textlabel text-dark"><b>{{ __('inst.101') }}</b></label>
+                                            <input class="form-control input-lg text-dark" id="numest" name="numest" type="text" minlength="1" maxlength="2" value="{{ $finalstus->numest }}" placeholder="{{ __('inst.102') }}" onkeypress="return valideKey(event);" disabled>
+                                             
+                                            <label for="obspreg9" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg9" name="obspreg9" rows="15" maxlength="250" disabled>{{ $finalstus->obspreg9 }}</textarea>
                                             <span class="help-block">
                                                 <p id="mensaje_ayuda9" class="help-block text-dark"></p>
-                                            </span> 
-                                        </div>
-
-                                        <hr style="border-top: 2px solid #000;">
-
-                                        <div class="form-group mb-4">
-                                            <label for="numdoc" class="textlabel text-dark"><b>2.2.- Número de Docentes</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese el número de docentes que participan en el proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <input class="form-control input-lg text-dark" id="numdoc" name="numdoc" type="text" minlength="1" maxlength="2" value="{{ $finalstus->numdoc }}" placeholder="Ingrese el número de docentes" onkeypress="return valideKey(event);" disabled>
-                                            <span class="help-block">
-                                                <p id="mensaje_ayuda9" class="help-block text-dark"></p>
-                                            </span> 
-                                        </div>
-
-                                        <hr style="border-top: 2px solid #000;">
-
-                                        <div class="form-group mb-4">
-                                            <label for="numest" class="textlabel text-dark"><b>2.3.- Número de Estudiantes</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese el número de estudiantes que participan en el proyecto" data-html="true"></i>&nbsp; <small style="color:black;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
-                                            <input class="form-control input-lg text-dark" id="numest" name="numest" type="text" minlength="1" maxlength="2" value="{{ $finalstus->numest }}" placeholder="Ingrese el número de estudiantes" onkeypress="return valideKey(event);" disabled>
-                                            <span class="help-block">
-                                                <p id="mensaje_ayuda10" class="help-block text-dark"></p>
-                                            </span> 
+                                            </span>
                                         </div>
 
                                         <hr style="border-top: 2px solid #000;">
@@ -249,10 +276,12 @@
                                                         <a href="{{ route('imprimr.formulario.docente.fase.dos', $idpostulacion) }}" role="button" id="imprimir" class="btn btn-primary btn-sm btn-block">{{ trans('multi-leng.a204')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                        <a href="{{ route('ver.postulaciones.activas.docentes.fase.dos' ) }}" class="btn btn-warning btn-sm btn-block">{{ trans('multi-leng.lognav')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                                    @role('revisor')
+                                                        <a href="{{ route('ver-postulaciones-concursos-registrados', $idconcurso ) }}" class="btn btn-warning btn-sm btn-block">{{ trans('multi-leng.lognav')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                                    @endrole
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                        <a href="{{ route('ver.nuevo.formulario.docente.segunda.etapa', $idpostulacion ) }}" class="btn btn-primary btn-sm btn-block">{{ trans('multi-leng.a88')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                                        <a href="{{ route('ver.nuevo.formulario.revisor.segunda.etapa', $idpostulacion ) }}" class="btn btn-primary btn-sm btn-block">{{ trans('multi-leng.a88')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -317,6 +346,7 @@
             $('[data-toggle="tooltip"]').tooltip()
         });
     });
+    
     
 </script>
 @endsection

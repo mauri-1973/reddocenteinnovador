@@ -89,6 +89,11 @@
                                         {{ trans('inst.137') }}
 
                                         @endif
+                                        @if($data[$po]['status'] == "revisada")
+
+                                        {{ trans('inst.155') }}
+
+                                        @endif
                                     @else
                                       &nbsp;
                                     @endif

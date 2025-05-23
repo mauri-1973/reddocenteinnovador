@@ -724,6 +724,22 @@
                                                 </tfoot>
                                             </table>
                                         </div>
+                                        <div class="page-break"></div>
+                                        <div class="form-group mb-4">
+                                            <label for="preg0" class="textlabel"><strong>{{ trans('inst.141')}}</strong></label>
+                                            <br>
+                                            <table class="table table-bordered table-sm" style="background-color:#fff;" id="tablajust">
+                                                
+                                                <tbody id="bodytablajust">
+                                                    <tr>
+                                                        <th colspan="2" scope="col" style="min-height: 50px;px;text-align: justify;" class="p-2">
+                                                            <p><strong>{{ $obs->obspreg25 }}</strong></p><br>
+                                                            
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -65,27 +65,55 @@
                                     @if($arr['status'] == 'conobservaciones')
                                         Con Observaciones
                                     @endif
+                                    @if($arr['status'] == 'seleccionado')
+                                        Seleccionado
+                                    @endif
+                                    @if($arr['status'] == 'revisada')
+                                        Revisada
+                                    @endif
                                 </td>
                                 <td>
                                     @foreach($arr['answ'] as $an => $slice)
-                                    @if($an == 0 && $arr['status'] == 'inicial')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'inicial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-primary btn-sm btn-block">Ver Avances</a>
-                                    @endif
-                                    @if($an == 0 && $arr['status'] == 'enrevision')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'revision', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Iniciar Revisión</a>
-                                    @endif
-                                    @if($an == 0 && $arr['status'] == 'rechazado')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'rechazado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Volver a Revisar</a>
-                                    @endif
-                                    @if($an == 0 && $arr['status'] == 'aprobado')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'aprobado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Volver a Revisar</a>
-                                    @endif
-                                    @if($an == 0 && $arr['status'] == 'conobservaciones')
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'conobservaciones', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Ver Avances</a>
-                                    @endif
-                                    @if($an > 0)
-                                    <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'historial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-warning btn-sm btn-block mt-1">Historial</a>
-                                    @endif
+                                        @switch(true)
+                                            @case ($an == 0 && $arr['status'] == 'inicial' && $arr['formulario'] == 'proceso1')
+                                            <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'inicial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-primary btn-sm btn-block">Ver Avances</a>
+                                            @break
+                                            @case($an == 0 && $arr['status'] == 'enrevision' && $arr['formulario'] == 'proceso1')
+                                            <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'revision', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Iniciar Revisión</a>
+                                            @break
+                                            @case($an == 0 && $arr['status'] == 'rechazado' && $arr['formulario'] == 'proceso1')
+                                            <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'rechazado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Volver a Revisar</a>
+                                            @break
+                                            @case($an == 0 && $arr['status'] == 'aprobado' && $arr['formulario'] == 'proceso1')
+                                            <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'aprobado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Volver a Revisar</a>
+                                            @break
+                                            @case($an == 0 && $arr['status'] == 'conobservaciones' && $arr['formulario'] == 'proceso1')
+                                            <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'conobservaciones', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Ver Avances</a>
+                                            @break
+                                            @case ($an == 0 && $arr['status'] == 'inicial' && $arr['formulario'] == 'proceso2')
+                                            <a href="{{ route('ver.informacion.ingresada.docente.revisor.fase.dos', ['tipo' => 'inicial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-primary btn-sm btn-block">Ver Avances</a>
+                                            @break
+                                            @case($an == 0 && $arr['status'] == 'enrevision' && $arr['formulario'] == 'proceso2')
+                                            <a href="{{ route('ver.informacion.ingresada.docente.revisor.fase.dos', ['tipo' => 'revision', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Iniciar Revisión</a>
+                                            @break
+                                            @case($an == 0 && $arr['status'] == 'rechazado' && $arr['formulario'] == 'proceso2')
+                                            <a href="{{ route('ver.informacion.ingresada.docente.revisor.fase.dos', ['tipo' => 'rechazado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Volver a Revisar</a>
+                                            @break
+                                            @case($an == 0 && $arr['status'] == 'aprobado' && $arr['formulario'] == 'proceso2')
+                                            <a href="{{ route('ver.informacion.ingresada.docente.revisor.fase.dos', ['tipo' => 'aprobado', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Volver a Revisar</a>
+                                            @break
+                                            @case($an == 0 && $arr['status'] == 'conobservaciones' && $arr['formulario'] == 'proceso2')
+                                            <a href="{{ route('ver.informacion.ingresada.docente.revisor.fase.dos', ['tipo' => 'conobservaciones', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Ver Avances</a>
+                                            @break
+                                            @case($an == 0 && $arr['status'] == 'revisada' && $arr['formulario'] == 'proceso2')
+                                            <a href="{{ route('ver.informacion.ingresada.docente.revisor.fase.dos', ['tipo' => 'revisada', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-success btn-sm btn-block">Ver Avances</a>
+                                            @break
+                                            @default
+                                            <span>Sin vista previa</span>
+                                        @endswitch
+                                            @if($an > 0 && $arr['formulario'] == 'proceso1')
+                                            <a href="{{ route('ver-informacion-ingresada-docente', ['tipo' => 'historial', 'idpost' => $arr['idpost'], 'idansw' => Crypt::encrypt($arr['answ'][$an]['idansw'])]) }}" class="btn btn-warning btn-sm btn-block mt-1">Historial</a>
+                                            @endif
                                     @endforeach
                                 </td>
                             </tr>

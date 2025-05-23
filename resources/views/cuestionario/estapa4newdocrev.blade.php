@@ -50,6 +50,27 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             
             <div class="row justify-content-center mt-4">
+                @if($rubrica == 1)
+                <div class="col-md-12">
+                    <div class="card mb-4 bg-white shadow-sm">
+                        <div class="card-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <a href="{{ route('imprimr.formulario.docente.fase.dos', $idpostulacion) }}" role="button" id="imprimir" class="btn btn-primary btn-sm btn-block">{{ trans('multi-leng.a204')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <a href="{{ route('ver.postulaciones.activas.docentes.fase.dos' ) }}" class="btn btn-warning btn-sm btn-block">{{ trans('multi-leng.lognav')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                        <a href="#" class="btn btn-primary btn-sm btn-block" disabled>{{ trans('inst.139')}}&nbsp;<i class="nc-icon nc-tap-01" style="font-size:15px;"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
                 <div class="col-md-12">
                     <div class="card mb-4 bg-white shadow-sm">
                         <div class="card-body">
@@ -166,6 +187,12 @@
                                                     </tr>
                                                 </tfoot>
                                             </table>
+                                            <br>
+                                            <label for="obspreg20" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg20" name="obspreg20" rows="15" maxlength="500" disabled>{{ $obs->obspreg20 }}</textarea>
+                                            <span class="help-block">
+                                                <p id="mensaje_ayuda20" class="help-block"></p>
+                                            </span>
                                             <hr class="pt-3 mt-5" style="border-top: 2px solid #000;">
                                             <table class="table table-bordered table-sm" style="background-color:#fff;" id="tablacom">
                                                 <caption class="text-dark">{{ trans('multi-leng.a118')}} &nbsp;</caption>
@@ -200,6 +227,12 @@
                                                     </tr>
                                                 </tfoot>
                                             </table>
+                                            <br>
+                                            <label for="obspreg21" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg21" name="obspreg21" rows="15" maxlength="500" disabled>{{ $obs->obspreg21 }}</textarea>
+                                            <span class="help-block">
+                                                <p id="mensaje_ayuda21" class="help-block"></p>
+                                            </span>
                                             <hr class="pt-3 mt-5" style="border-top: 2px solid #000;">
                                             <table class="table table-bordered table-sm" style="background-color:#fff;" id="tablafun">
                                                 <caption class="text-dark">{{ trans('multi-leng.a119')}} &nbsp;</caption>
@@ -232,6 +265,12 @@
                                                     </tr>
                                                 </tfoot>
                                             </table>
+                                            <br>
+                                            <label for="obspreg22" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg22" name="obspreg22" rows="15" maxlength="500" disabled>{{ $obs->obspreg22 }}</textarea>
+                                            <span class="help-block">
+                                                <p id="mensaje_ayuda22" class="help-block"></p>
+                                            </span>
                                             <hr class="pt-3 mt-5" style="border-top: 2px solid #000;">
                                             <table class="table table-bordered table-sm" style="background-color:#fff;" id="tablaotr">
                                                 <caption class="text-dark">{{ trans('multi-leng.a120')}} &nbsp;</caption>
@@ -264,8 +303,15 @@
                                                     </tr>
                                                 </tfoot>
                                             </table>
+                                            <br>
+                                            <label for="obspreg23" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg23" name="obspreg23" rows="15" maxlength="500" disabled>{{ $obs->obspreg23 }}</textarea>
+                                            <span class="help-block">
+                                                <p id="mensaje_ayuda23" class="help-block"></p>
+                                            </span>
                                             <hr class="pt-3 mt-5" style="border-top: 2px solid #000;">
                                         </div>
+                                        
                                         <div class="form-group mb-4">
                                             <label class="textlabel text-dark"><b>7.2.- JUSTIFICACIÓN DE RECURSOS CLAVES (no se pueden cambiar) para el correcto funcionamiento del proyecto</b>&nbsp;&nbsp;<i style="color:#000;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ __('multi-leng.a126') }}" data-html="true"></i>&nbsp; <small style="color:#000;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                             <table class="table table-bordered table-sm" style="background-color:#fff;" id="tablajust">
@@ -287,6 +333,12 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <br>
+                                            <label for="obspreg24" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg24" name="obspreg24" rows="15" maxlength="500" disabled>{{ $obs->obspreg24 }}</textarea>
+                                            <span class="help-block">
+                                                <p id="mensaje_ayuda24" class="help-block"></p>
+                                            </span>
                                         </div>
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">

@@ -417,6 +417,8 @@ class PostulatiosNewformController extends Controller
 
         $finalstus = DB::table('etapa1')->select('*')->where('id_post', $id)->first();
 
+        $rubrica = DB::table('correctionsprocesodos')->select('statusrub')->where('id_post', $id)->first();
+
         $post = Postulations::where(['idpost' =>  $id])->first();
         
         $correc = 0;
@@ -439,10 +441,15 @@ class PostulatiosNewformController extends Controller
             #$text = trans('multi-leng.a253');
             $text = trans('inst.134');
         }
-
+        if($post->status == "revisada")
+        {
+            #$text = trans('multi-leng.a253');
+            $text = trans('inst.143');
+        }
+        
         switch (true) 
         {
-            case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones"):
+            case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones" || $post->status == "revisada"):
 
                 switch (true) 
                 {
@@ -464,6 +471,13 @@ class PostulatiosNewformController extends Controller
                         $view = 'estapa1newdocrev';
 
                     break;
+                    case ($post->status == "revisada"):
+
+                        #$view = 'etapa1obs';
+
+                        $view = 'estapa1newdocrev';
+
+                    break;
                     case ($post->status == "seleccionado"):
 
                         #$view = 'etapa1obs';
@@ -476,7 +490,7 @@ class PostulatiosNewformController extends Controller
                         abort(404);
                     break;
                 }
-                return view('cuestionario.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status ]);
+                return view('cuestionario.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status, "rubrica" => $rubrica->statusrub ]);
 
             break;
             case ($post->status == "seleccionado"):
@@ -499,55 +513,10 @@ class PostulatiosNewformController extends Controller
                 return view('cuestionario.seleccionado.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status ]);
 
             break;
-            case ($post->status == "enrevision" || $post->status == "conobservaciones"):
-
-                $dir = AnswersDirector::where(['id_answ' => $answ[0]->idansw, 'typedir' => 'dir'])->first();
-
-                $subdir = AnswersDirector::where(['id_answ' => $answ[0]->idansw, 'typedir' => 'sub'])->first();
-
-                $est = AnswersDirector::where(['id_answ' => $answ[0]->idansw, 'typedir' => 'est'])->get();
-
-                $acad = AnswersDirector::where(['id_answ' => $answ[0]->idansw, 'typedir' => 'acad'])->get();
-
-                $finalstus = DB::table('answersstatus')->select('etapa1')->where('id_anwsstat', $id)->first();
-                
-                switch (true) 
-                {
-                    case ($post->status == "inicial"):
-
-                        $view = 'etapa1';
-
-                    break;
-                    case ($post->status == "enrevision"):
-
-                        $view = 'etaparev1';
-
-                    break;
-
-                    case ($post->status == "conobservaciones"):
-
-                        #$view = 'etapa1obs';
-
-                        $view = 'etaparev1';
-                        
-                        $correc = Answers::where('id_post', $answ[0]->id_post )->skip(1)->take(1)->orderBy('idansw', 'desc')->get();
-                        
-                        $correc = $correc[0]->idansw;
-
-                    break;
-                    
-                    default:
-                        # code...
-                    break;
-                }
-                
-                return view('cuestionario.'.$view, compact('answ', 'dir', 'subdir', 'est', 'acad'), [ "idconcurso" => Crypt::encrypt($answ[0]->id_post), 'idpostulacion' => Crypt::encrypt($answ[0]->id_post), "status" => $finalstus, 'text' => $text , 'correc' => $correc, "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status ]);
-
-            break;
             
             default:
  
-                return redirect()->route('ver-vista-concurso-usuario-registrado-docente', [Crypt::encrypt($post->idconc)])->with('danger', trans('multi-leng.a172'));
+                return redirect()->route('ver.postulaciones.activas.docentes.fase.dos')->with('danger', trans('inst.156'));
 
             break;
         }
@@ -561,6 +530,8 @@ class PostulatiosNewformController extends Controller
         $answ = array(); 
 
         $id = Crypt::decrypt($id);
+        
+        $rubrica = DB::table('correctionsprocesodos')->select('statusrub')->where('id_post', $id)->first();
 
         $finalstus = DB::table('etapa2')->select('*')->where('id_post', $id)->count();
 
@@ -585,9 +556,14 @@ class PostulatiosNewformController extends Controller
                     #$text = trans('multi-leng.a253');
                     $text = "En proceso de Validación";
                 }
+                if($post->status == "revisada")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.143');
+                }
                 switch (true) 
                 {
-                    case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones"):
+                    case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones" || $post->status == "revisada"):
 
                         $finalstus = DB::table('etapa2')->select('*')->where('id_post', $id)->first();
 
@@ -599,6 +575,9 @@ class PostulatiosNewformController extends Controller
                                 $view = 'estapa2newdoc';
                             break;
                             case ($post->status == "enrevision"):
+                                $view = 'estapa2newdocrev';
+                            break;
+                            case ($post->status == "revisada"):
                                 $view = 'estapa2newdocrev';
                             break;
                             case ($post->status == "conobservaciones"):
@@ -614,13 +593,13 @@ class PostulatiosNewformController extends Controller
                             break;
                         }
                 
-                        return view('cuestionario.'.$view, compact('finalstus', 'answ'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $finalstus->statuset2, 'text' => $text, 'files' => $files ]);
+                        return view('cuestionario.'.$view, compact('finalstus', 'answ'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $finalstus->statuset2, 'text' => $text, 'files' => $files, "rubrica" => $rubrica->statusrub ]);
 
                     break;
                     
                     default:
 
-                        return redirect()->route('ver-vista-concurso-usuario-registrado-docente', [Crypt::encrypt($post->idconc)])->with('danger', trans('multi-leng.a172'));
+                        return redirect()->route('ver.postulaciones.activas.docentes.fase.dos', [Crypt::encrypt($post->idconc)])->with('danger', trans('inst.156'));
 
                     break;
                 }
@@ -642,6 +621,8 @@ class PostulatiosNewformController extends Controller
     public function verfordoctereta($id = null)
     {
         $id = Crypt::decrypt($id);
+
+        $rubrica = DB::table('correctionsprocesodos')->select('statusrub')->where('id_post', $id)->first();
 
         $finalstus = DB::table('etapa3')->select('*')->where('id_post', $id)->count();
         
@@ -666,10 +647,15 @@ class PostulatiosNewformController extends Controller
                     #$text = trans('multi-leng.a253');
                     $text = "En proceso de Validación";
                 }
+                if($post->status == "revisada")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.143');
+                }
                 
                 switch (true) 
                 {
-                    case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones"):
+                    case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones" || $post->status == "revisada"):
 
                         $array = DB::table("gantt")->where([ "id_post" => $id, 'statusgantt' => 1 ] )->orderBy('id', 'asc')->get();
 
@@ -687,6 +673,11 @@ class PostulatiosNewformController extends Controller
                             case ($post->status == "enrevision"):
                                 $view = 'estapa3newdocrev';
                             break;
+                            case ($post->status == "revisada"):
+
+                                $view = 'estapa3newdocrev';
+
+                            break;
                             case ($post->status == "conobservaciones"):
                                 
                                 #$view = 'etapa3obs';
@@ -703,13 +694,13 @@ class PostulatiosNewformController extends Controller
                             break;
                         }
 
-                        return view('cuestionario.'.$view, compact('finalstus'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), 'idansw' => Crypt::encrypt($finalstus->id), "status" => $finalstus->statuset3, 'text' => $text, 'array' => $array]);
+                        return view('cuestionario.'.$view, compact('finalstus'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), 'idansw' => Crypt::encrypt($finalstus->id), "status" => $finalstus->statuset3, 'text' => $text, 'array' => $array, "rubrica" => $rubrica->statusrub]);
 
                     break;
                     
                     default:
 
-                        return redirect()->route('ver-vista-concurso-usuario-registrado-docente', [Crypt::encrypt($post->idconc)])->with('danger', trans('multi-leng.a172'));
+                        return redirect()->route('ver.postulaciones.activas.docentes.fase.dos')->with('danger', trans('inst.156'));
 
                     break;
                 }
@@ -732,17 +723,9 @@ class PostulatiosNewformController extends Controller
         $data = [
             'titulo' => 'Styde.net'
         ];
-    
-        /*$pdf = \PDF::loadView('emails/prueba', $data);
-    
-        return $pdf->download('archivo.pdf');
 
-        $data = [
-            'titulo' => 'Styde.net'
-        ];
-    
-        $data = PDF::loadView('emails/prueba', $data)
-            ->save(storage_path('app/public/pdfs') . 'archivo.pdf');*/
+        $rubrica = DB::table('correctionsprocesodos')->select('*')->where('id_post', $id)->first();
+       
 
         $sumper = 0; $sumcom = 0; $sumfun = 0; $sumotr = 0;
 
@@ -763,12 +746,17 @@ class PostulatiosNewformController extends Controller
             #$text = trans('multi-leng.a253');
             $text = "En proceso de Validación";
         }
+        if($post->status == "revisada")
+        {
+            #$text = trans('multi-leng.a253');
+            $text = trans('inst.143');
+        }
 
         $correc = "";
         
         switch (true) 
         {
-            case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones"):
+            case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones" || $post->status == "revisada"):
 
                 $tablaper = DB::table('detailnewresources')->select('iddetres', 'descri', 'valor1', 'valor2')->where(['id_et4' =>  $et4->id, 'type' => 1])->orderBy('iddetres', 'asc')->get();
 
@@ -819,6 +807,9 @@ class PostulatiosNewformController extends Controller
                     case ($post->status == "enrevision"):
                         $view = 'estapa4newdocrev';
                     break;
+                    case ($post->status == "revisada"):
+                        $view = 'estapa4newdocrev';
+                    break;
                     case ($post->status == "conobservaciones"):
 
                         #$view = 'etapa4obs';
@@ -834,13 +825,13 @@ class PostulatiosNewformController extends Controller
                         # code...
                     break;
                 }
-                return view('cuestionario.'.$view, compact('et4'), ["idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($post->idpost), 'idansw' => Crypt::encrypt($et4->id), "sumper" => (int)$sumper, "sumcom" => (int)$sumcom, "sumfun" => (int)$sumfun, "sumotr" => (int)$sumotr, 'tablaper' => $tablaper, 'tablacom' => $tablacom, 'tablafun' => $tablafun , 'tablaotr' => $tablaotr,  'files' => $files,  'contda' => $countfilesDA,  'contdn' => $countfilesDN, "status" => $et4->statuset4, 'text' => $text, 'correc' => $correc, 'tablajust' => $tablajust ]);
+                return view('cuestionario.'.$view, compact('et4'), ["idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($post->idpost), 'idansw' => Crypt::encrypt($et4->id), "sumper" => (int)$sumper, "sumcom" => (int)$sumcom, "sumfun" => (int)$sumfun, "sumotr" => (int)$sumotr, 'tablaper' => $tablaper, 'tablacom' => $tablacom, 'tablafun' => $tablafun , 'tablaotr' => $tablaotr,  'files' => $files,  'contda' => $countfilesDA,  'contdn' => $countfilesDN, "status" => $et4->statuset4, 'text' => $text, 'correc' => $correc, 'tablajust' => $tablajust, "rubrica" => $rubrica->statusrub, "obs" => $rubrica  ]);
 
             break;
             
             default:
 
-                return redirect()->route('ver-vista-concurso-usuario-registrado-docente', [Crypt::encrypt($post->idconc)])->with('danger', trans('multi-leng.a172'));
+                return redirect()->route('ver.postulaciones.activas.docentes.fase.dos')->with('danger', trans('inst.156'));
 
             break;
         }

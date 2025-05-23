@@ -276,57 +276,57 @@ return [
 
     '137' => 'Seleccionado',
 
-    '138' => '',
+    '138' => 'Rechazado',
 
-    '139' => '',
+    '139' => 'Imprimir Rúbrica',
 
-    '140' => '',
+    '140' => 'Observaciones Finales',
 
-    '141' => '',
+    '141' => 'Finalizar Revisión',
 
-    '142' => '',
+    '142' => 'Está seguro de finalizar esta funcionalidad?. Esta acción no es reversible.',
 
-    '143' => '',
+    '143' => 'Revisión realizada',
 
-    '144' => '',
+    '144' => 'Genere la rúbrica de esta postulación, antes de finalizar.',
 
-    '145' => '',
+    '145' => 'La corrección a la postulación, ha sido realizada con éxito.',
 
-    '146' => '',
+    '146' => 'La corrección a la postulación, no pudo ser realizada correctamente. Pongase en contacto con el administrador de la plataforma.',
 
-    '147' => '',
+    '147' => 'Generar Rúbrica',
 
-    '0148' => '.- La fecha de término del acta debe ser mayor a la fecha de inicio.',
+    '148' => '3.- Antecedentes',
 
-    '0149' => '.- El porcentaje de avance del acta no debe ser superior al 100 %',
+    '149' => '3.1.- Fundamentación del proyecto (máximo 400 palabras). Incluya tres acciones de sustentabilidad en el tiempo, dos aspectos del modelo educativo UST, dos aspectos de la unidad académica (escuela, carrera, facultad)',
 
-    '0150' => '.- El porcentaje de avance del acta debe ser superior al 1 %',
+    '150' => '3.2.- Proyecto (s) anterior(es) Adjuntar tres o más evidencias cuantitativas y/o cualitativas (anexar informes finales del proceso anterior o fase 1) y datos (máximo 400 palabras)',
 
-    '0151' => '.- La fecha para la revisión del acta con el(los) asesor(es), debe estar entre el rango de la Fecha de Inicio y la Fecha de término del acta.',
+    '151' => '3.3.- Objetivo general y específicos: pertinentes, coherentes, lógicos. Consideran el escalamiento.',
 
-    '0152' => 'Para finalizar la configuración del acta debe solucionar los siguientes errores.',
+    '152' => '4.- Metodología',
 
-    '0153' => 'Se han registrado correctamente los parámetros de configuración del acta.',
+    '153' => '4.1.- Fundamente la teoría educativa que sustenta la metodología del aprendizaje, el tipo de tecnología y su uso pedagógico (máximo 400 palabras)',
 
-    '0154' => 'Finalizar Acta', 
+    '154' => '4.2.-Cómo se fomenta la participación e interacción de los estudiantes. Indica de forma precisa la equidad de género y el apoyo para estudiantes con discapacidad y neurodivergentes.(máximo 300 palabras)', 
 
-    '0155' => 'Agendar Reunión',
+    '155' => 'Revisada',
 
-    '0156' => 'Asesor',
+    '156' => 'Tenemos un problema en el proceso de validaciones. Comuníquese con el administrador de la plataforma.',
 
-    '0157' => 'Imprimir Acta',
+    '157' => '',
 
-    '0158' => 'Recuerde, para finalizar el Acta, es obligatorio que el porcentaje de avance, otorgado por el(los) asesor(es), debe ser del 100%',
+    '158' => '',
 
-    '0159' => 'CENTRO INTERDISCIPLINARIO DE INNOVACIÓN EDUCATIVA (CIED) ACTA CONCURSO DE INNOVACIÓN EDUCATIVA PROYECTO DE INNOVACIÓN EDUCATIVA',
+    '159' => '',
 
-    '0160' => 'Fecha inicio acta',
+    '160' => '',
 
-    '0161' => 'Fecha término acta',
+    '161' => '',
 
-    '0162' => 'Porcentaje global de avance del proyecto',
+    '162' => '',
 
-    '0163' => 'Porcentaje avance acta (Estimación docente)',
+    '163' => '',
 
     '0164' => 'Nombre proyecto',
 

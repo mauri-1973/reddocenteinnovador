@@ -136,26 +136,48 @@ class PostulationsrevController extends Controller
 
         ->where('competitions.idcomp', $id)
 
-        ->get(['post.status', 'post.idpost', 'competitions.title', 'cat.namecat as namecat', 'u.name as nameuser', 'u.surname as surnameuser']);
-
+        ->get(['post.status', 'post.idpost', 'competitions.title', 'competitions.formulario', 'cat.namecat as namecat', 'u.name as nameuser', 'u.surname as surnameuser']);
+        
         foreach($comp as $c)
         {
             $array2 = array();
 
-            $answ = Answers::select('idansw')->where('id_post', $c->idpost)->orderBy('idansw', 'desc')->get();
-
             $cont = 1;
 
-            foreach($answ as $a)
+            switch (true) 
             {
-                array_push($array2, array('idansw' => $a->idansw, 'cont' => $cont));
-                $cont++;
+                case ($c->formulario == "proceso1"):
+                    
+                    $answ = Answers::select('idansw')->where('id_post', $c->idpost)->orderBy('idansw', 'desc')->get();
+
+                    foreach($answ as $a)
+                    {
+                        array_push($array2, array('idansw' => $a->idansw, 'cont' => $cont));
+                        $cont++;
+                    }
+
+                break;
+
+                case ($c->formulario == "proceso2"):
+                    $answ = DB::table('etapa1')->select('id')->where('id_post', $c->idpost)->orderBy('id', 'desc')->get();
+
+                    foreach($answ as $a)
+                    {
+                        array_push($array2, array('idansw' => $a->id, 'cont' => $cont));
+                        $cont++;
+                    }
+                break;
+
+                default:
+                    abort(404);
+                break;
             }
 
-            array_push($array1, array('idpost' => $c->idpost, 'status' => $c->status, 'titlecat' => $c->title, 'namecat' => $c->namecat, 'user' => $c->nameuser.' '.$c->surnameuser, 'answ' => $array2));
+            
+
+            array_push($array1, array('idpost' => $c->idpost, 'status' => $c->status, 'titlecat' => $c->title, 'namecat' => $c->namecat, 'user' => $c->nameuser.' '.$c->surnameuser, 'formulario' => $c->formulario, 'answ' => $array2));
 
         }
-
         return view('revisor.userspost', ['array1' => $array1]);
     }
 
@@ -962,6 +984,133 @@ class PostulationsrevController extends Controller
         }
     }
 
+    public function verinfingdocrevfasdos($tipo = null, $idpost = null, $idansw = null)
+    {
+        
+        $idet1 = Crypt::decrypt($idansw);
+
+        $val = DB::table('postulations as p')->select('p.idpost', 'e.*', 'c.obspreg1')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa1 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $idpost)->count();
+
+        switch (true) 
+        {
+            case ($val > 0):
+                $finalstus = DB::table('postulations as p')->select('p.idpost', 'e.*', 'c.obspreg1', 'c.obspreg2', 'c.obspreg3', 'c.obspreg4', 'c.obspreg5', 'c.obspreg6', 'c.obspreg7', 'c.obspreg8', 'c.obspreg9', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa1 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $idpost)->first();
+                
+                $post = Postulations::where(['idpost' =>  $idpost])->first();
+        
+                $correc = 0;
+
+                if($post->status == "inicial")
+                {
+                    $text = trans('multi-leng.a206');
+                }
+                if($post->status == "enrevision")
+                {
+                    $text = trans('multi-leng.a207');
+                }
+                if($post->status == "conobservaciones")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.135');
+                }
+                if($post->status == "rechazado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.138');
+                }
+                if($post->status == "seleccionado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.134');
+                }
+                if($post->status == "revisada")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.143');
+                }
+                switch (true) 
+                {
+                    case ($post->status == "inicial" || $post->status == "seleccionado" || $post->status == "conobservaciones" || $post->status == "rechazado" || $post->status == "revisada"):
+                        
+                        $view = 'estapa1newrev';
+                        
+                        return view('revisor.fasedos.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($idpost), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status ]);
+
+                    break;
+                    case ($post->status == "enrevision"):
+                       
+                        $view = 'etapa1rev';
+                        return view('revisor.fasedos.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($idpost), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status ]);
+                    break;
+                    ///////////////////////////////////////////////////////////////////ELIMINAR
+                    default:
+        
+                        return redirect()->route('ver-postulaciones-concursos-registrados', [Crypt::encrypt($post->idconc)])->with('danger', trans('inst.73'));
+
+                    break;
+                }
+
+            break;
+            
+            default:
+                abort(404);
+            break;
+        }
+    }
+
+    public function actobsposrevfasdos(Request $request)
+    {
+        
+        switch (true) 
+        {
+            case ($request->tipo == "actualizar"):
+                
+                $idobs = (int)Crypt::decrypt(trim($request->idet));
+
+                DB::table('correctionsprocesodos')->where('id_post', $idobs)->update([ $request->col =>  $request->value ]);
+
+                return response()->json([ 'status' => "ok", 'tipo' => $request->tipo ]);
+
+            break;
+            case ($request->tipo == "finalizar"):
+
+                $idobs = (int)Crypt::decrypt(trim(str_replace('"', "", $request->idpost)));
+
+                $val = DB::table('correctionsprocesodos')->where('id_post', $idobs)->first();
+
+                switch (true) 
+                {
+                    case ($val->statusrub == 0):
+                       
+                        return redirect()->route('ver.nuevo.formulario.revisor.cuarta.etapa', $request->idpost)->with('danger', trans('inst.144'));
+
+                    break;
+                    case ($val->statusrub == 1):
+
+                        $val = DB::table('postulations')->where('idpost', $idobs)->update([ "status" =>  "revisada" ]);
+                
+                        if($val)
+                        {
+                            return redirect()->route('ver-postulaciones-concursos-registrados', $request->idconc)->with('success', trans('inst.145'));
+                        }
+                        else
+                        {
+                            return redirect()->route('ver-postulaciones-concursos-registrados', [$request->idconc])->with('danger', trans('inst.146'));
+                        }
+                    break;
+                    
+                    default:
+                        # code...
+                    break;
+                }
+            break;
+            
+            default:
+                return response()->json([ 'status' => "error", 'tipo' => $request->tipo ]);
+            break;
+        }
+    }
+
     public function verfordocsegetaadm($id = null)
     {
         $answ = array(); 
@@ -998,7 +1147,7 @@ class PostulationsrevController extends Controller
                 }
                 switch (true) 
                 {
-                    case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones"):
+                    case ($post->status == "inicial" || $post->status == "enrevision" || $post->status == "conobservaciones" || $post->status == "rechazado"):
                         
                         $finalstus = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg10', 'c.obspreg11', 'c.obspreg12', 'c.obspreg13', 'c.obspreg14')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa2 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
 
@@ -1045,6 +1194,89 @@ class PostulationsrevController extends Controller
             break;
         }
     }
+    public function vernueforrevsegeta($id = null)
+    {
+        $answ = array(); 
+
+        $id = Crypt::decrypt($id);
+
+        $finalstus = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg10', 'c.obspreg11', 'c.obspreg12', 'c.obspreg13', 'c.obspreg14')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa2 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->count();
+
+        switch (true) 
+        {
+            case ($finalstus > 0):
+
+                $post = Postulations::where(['idpost' =>  $id])->first();
+
+                $correc = 0;
+
+                if($post->status == "inicial")
+                {
+                    $text = trans('multi-leng.a206');
+                }
+                if($post->status == "enrevision")
+                {
+                    $text = trans('multi-leng.a207');
+                }
+                if($post->status == "conobservaciones")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.135');
+                }
+                if($post->status == "rechazado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.138');
+                }
+                if($post->status == "seleccionado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.134');
+                }
+                if($post->status == "revisada")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.143');
+                }
+                switch (true) 
+                {
+                    case ($post->status == "inicial" || $post->status == "seleccionado" || $post->status == "conobservaciones" || $post->status == "rechazado" || $post->status == "revisada"):
+                        
+                        $finalstus = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg10', 'c.obspreg11', 'c.obspreg12', 'c.obspreg13', 'c.obspreg14', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa2 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
+
+                        $files = DB::table('answersfilesnew')->where(['id_post' => $id, 'tipofile' => 'Normal'])->get();
+
+                        $view = 'estapa2newrev';
+                
+                        return view('revisor.fasedos.'.$view, compact('finalstus', 'answ'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $finalstus->statuset2, 'text' => $text, 'files' => $files, 'poststatus' => $post->status, 'idpost' => $post->idpost ]);
+
+                    break;
+                    case ($post->status == "enrevision"):
+                        
+                        $finalstus = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg10', 'c.obspreg11', 'c.obspreg12', 'c.obspreg13', 'c.obspreg14', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa2 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
+
+                        $files = DB::table('answersfilesnew')->where(['id_post' => $id, 'tipofile' => 'Normal'])->get();
+
+                        $view = 'estapa2rev';
+                        
+                        return view('revisor.fasedos.'.$view, compact('finalstus', 'answ'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $finalstus->statuset2, 'text' => $text, 'files' => $files, 'poststatus' => $post->status, 'idpost' => $post->idpost ]);
+
+                    break;
+                    
+                    default:
+
+                        return redirect()->route('ver-postulaciones-concursos-registrados', [Crypt::encrypt($post->idconc)])->with('danger', trans('inst.73'));
+
+                    break;
+                }
+            break;
+            
+            default:
+                abort(404);
+            break;
+        }
+    }
+    
     public function verfordocteretaadm($id = null)
     {
         $id = Crypt::decrypt($id);
@@ -1071,6 +1303,11 @@ class PostulationsrevController extends Controller
                 {
                     #$text = trans('multi-leng.a253');
                     $text = trans('inst.135');
+                }
+                if($post->status == "rechazado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.138');
                 }
                 if($post->status == "seleccionado")
                 {
@@ -1121,6 +1358,92 @@ class PostulationsrevController extends Controller
             break;
         }
     }
+    public function vernueforrevtereta($id = null)
+    {
+        $id = Crypt::decrypt($id);
+
+        $finalstus = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg1')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->count();
+        
+        switch (true) 
+        {
+            case ($finalstus > 0):
+
+                $post = Postulations::where(['idpost' =>  $id])->first();
+
+                $array = array();
+
+                if($post->status == "inicial")
+                {
+                    $text = trans('multi-leng.a206');
+                }
+                if($post->status == "enrevision")
+                {
+                    $text = trans('multi-leng.a207');
+                }
+                if($post->status == "rechazado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.138');
+                }
+                if($post->status == "conobservaciones")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.135');
+                }
+                if($post->status == "seleccionado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.134');
+                }
+                if($post->status == "revisada")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.143');
+                }
+                
+                switch (true) 
+                {
+                    case ($post->status == "inicial" || $post->status == "seleccionado" || $post->status == "conobservaciones" || $post->status == "rechazado" || $post->status == "revisada"):
+
+                        $array = DB::table("gantt")->where([ "id_post" => $id, 'statusgantt' => 1 ] )->orderBy('id', 'asc')->get();
+
+                        $finalstus = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg15', 'c.obspreg16', 'c.obspreg17', 'c.obspreg18', 'c.obspreg19', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
+                        
+                        $correc = "";
+
+                        $view = 'etapa3newrev';
+
+                        return view('revisor.fasedos.'.$view, compact('finalstus'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), 'idansw' => Crypt::encrypt($finalstus->id), "status" => $finalstus->statuset3, 'text' => $text, 'array' => $array]);
+
+                    break;
+                    case ($post->status == "enrevision"):
+
+                        $array = DB::table("gantt")->where([ "id_post" => $id, 'statusgantt' => 1 ] )->orderBy('id', 'asc')->get();
+
+                        $finalstus = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg15', 'c.obspreg16', 'c.obspreg17', 'c.obspreg18', 'c.obspreg19', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
+                        
+                        $correc = "";
+
+                        $view = 'etapa3rev';
+
+                        return view('revisor.fasedos.'.$view, compact('finalstus'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), 'idansw' => Crypt::encrypt($finalstus->id), "status" => $finalstus->statuset3, 'text' => $text, 'array' => $array]);
+
+                    break;
+                    
+                    default:
+
+                        return redirect()->route('ver-postulaciones-concursos-registrados', [Crypt::encrypt($post->idconc)])->with('danger', trans('inst.73'));
+
+                    break;
+                }
+
+            break;
+
+            default:
+                abort(404);
+            break;
+        }
+    }
     public function verfordoccuaetaadm($id = null)
     {
         $id = Crypt::decrypt($id);
@@ -1152,6 +1475,11 @@ class PostulationsrevController extends Controller
                 {
                     #$text = trans('multi-leng.a253');
                     $text = trans('inst.135');
+                }
+                if($post->status == "rechazado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.138');
                 }
                 if($post->status == "seleccionado")
                 {
@@ -1274,6 +1602,172 @@ class PostulationsrevController extends Controller
             break;
             default:
                 return redirect()->route('ver-postulaciones-concursos-registrados-administrador', [Crypt::encrypt($post->idconc)])->with('danger', trans('inst.73'));
+            break;
+        }
+    }
+    public function vernueforrevcuaeta($id = null)
+    {
+        $id = Crypt::decrypt($id);
+        
+        $finalstus1 = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg1')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa4 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->count();
+        
+        switch (true) 
+        {
+            case ($finalstus1 > 0):
+
+                $finalstus1 = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg20' , 'c.obspreg21', 'c.obspreg22', 'c.obspreg23', 'c.obspreg24', 'c.obspreg25', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa4 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
+
+                
+                $sumper = 0; $sumcom = 0; $sumfun = 0; $sumotr = 0;
+
+                $et4 = DB::table('etapa4')->select('*')->where('id_post', $id)->first();
+
+                $post = Postulations::where(['idpost' =>  $id])->first();
+                
+                if($post->status == "inicial")
+                {
+                    $text = trans('multi-leng.a206');
+                }
+                if($post->status == "enrevision")
+                {
+                    $text = trans('multi-leng.a207');
+                }
+                if($post->status == "conobservaciones")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.135');
+                }
+                if($post->status == "rechazado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.138');
+                }
+                if($post->status == "seleccionado")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.134');
+                }
+                if($post->status == "revisada")
+                {
+                    #$text = trans('multi-leng.a253');
+                    $text = trans('inst.143');
+                }
+                $correc = "";
+                
+                switch (true) 
+                {
+                    case ($post->status == "inicial" || $post->status == "seleccionado" || $post->status == "conobservaciones" || $post->status == "rechazado" || $post->status == "revisada"):
+                        
+
+                        $tablaper = DB::table('detailnewresources')->select('iddetres', 'descri', 'valor1', 'valor2')->where(['id_et4' =>  $et4->id, 'type' => 1])->orderBy('iddetres', 'asc')->get();
+
+                        foreach($tablaper as $tabla)
+                        {
+                            $sumper = ($tabla->valor1 * $tabla->valor2) + $sumper;
+                        }
+
+                        $tablacom = DB::table('detailnewresources')->select('iddetres', 'descri', 'valor1', 'valor2', 'descriplarga')->where(['id_et4' =>  $et4->id, 'type' => 2])->orderBy('iddetres', 'asc')->get();
+                        
+                        foreach($tablacom as $tabla)
+                        {
+                            $sumcom = ($tabla->valor1 * $tabla->valor2) + $sumcom;
+                        }
+
+                        $tablafun = DB::table('detailnewresources')->select('iddetres', 'descri', 'valor1', 'valor2')->where(['id_et4' =>  $et4->id, 'type' => 3])->orderBy('iddetres', 'asc')->get();
+                        
+                        foreach($tablafun as $tabla)
+                        {
+                            $sumfun = ($tabla->valor1 * $tabla->valor2) + $sumfun;
+                        }
+
+                        $tablaotr = DB::table('detailnewresources')->select('iddetres', 'descri', 'valor1', 'valor2')->where(['id_et4' =>  $et4->id, 'type' => 4])->orderBy('iddetres', 'asc')->get();
+                        
+                        foreach($tablaotr as $tabla)
+                        {
+                            $sumotr = ($tabla->valor1 * $tabla->valor2) + $sumotr;
+                        }
+                        $tablajust = DB::table('detailnewresources')->select('iddetres', 'descri', 'name')->where(['id_et4' =>  $et4->id, 'type' => 5])->orderBy('iddetres', 'asc')->get();
+                        
+                        
+
+                        $countfilesDA = AnswersFiles::where(['id_answ' => $id, 'tipofile' => 'Director (a) Académico'])->count();
+
+                        $countfilesDN = AnswersFiles::where(['id_answ' => $id, 'tipofile' => 'Director(a) Nacional'])->count();
+
+                        //$sumper = DetailsResources::where(['id_answ' =>  $id, 'type' => 1])->selectRaw('(SUM(valor1) * SUM(valor2)) as sumaTotal')->get();
+
+                        $files = AnswersFiles::where(['id_answ' => $id])->where('tipofile', '!=', 'Normal')->orderBy('idanswfile', 'asc')->get();
+
+                        $finalstus = DB::table('answersstatus')->select('etapa4')->where('id_anwsstat', $id)->first();
+
+                        
+                        $view = 'etapa4newrev';
+
+
+                        return view('revisor.fasedos.'.$view, compact('et4'), ["idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($post->idpost), 'idansw' => Crypt::encrypt($et4->id), "sumper" => (int)$sumper, "sumcom" => (int)$sumcom, "sumfun" => (int)$sumfun, "sumotr" => (int)$sumotr, 'tablaper' => $tablaper, 'tablacom' => $tablacom, 'tablafun' => $tablafun , 'tablaotr' => $tablaotr,  'files' => $files,  'contda' => $countfilesDA,  'contdn' => $countfilesDN, "status" => $et4->statuset4, 'text' => $text, 'correc' => $correc, 'tablajust' => $tablajust, 'finalstus' => $finalstus1 ]);
+
+                    break;
+                    case ($post->status == "enrevision"):
+                        
+
+                        $tablaper = DB::table('detailnewresources')->select('iddetres', 'descri', 'valor1', 'valor2')->where(['id_et4' =>  $et4->id, 'type' => 1])->orderBy('iddetres', 'asc')->get();
+
+                        foreach($tablaper as $tabla)
+                        {
+                            $sumper = ($tabla->valor1 * $tabla->valor2) + $sumper;
+                        }
+
+                        $tablacom = DB::table('detailnewresources')->select('iddetres', 'descri', 'valor1', 'valor2', 'descriplarga')->where(['id_et4' =>  $et4->id, 'type' => 2])->orderBy('iddetres', 'asc')->get();
+                        
+                        foreach($tablacom as $tabla)
+                        {
+                            $sumcom = ($tabla->valor1 * $tabla->valor2) + $sumcom;
+                        }
+
+                        $tablafun = DB::table('detailnewresources')->select('iddetres', 'descri', 'valor1', 'valor2')->where(['id_et4' =>  $et4->id, 'type' => 3])->orderBy('iddetres', 'asc')->get();
+                        
+                        foreach($tablafun as $tabla)
+                        {
+                            $sumfun = ($tabla->valor1 * $tabla->valor2) + $sumfun;
+                        }
+
+                        $tablaotr = DB::table('detailnewresources')->select('iddetres', 'descri', 'valor1', 'valor2')->where(['id_et4' =>  $et4->id, 'type' => 4])->orderBy('iddetres', 'asc')->get();
+                        
+                        foreach($tablaotr as $tabla)
+                        {
+                            $sumotr = ($tabla->valor1 * $tabla->valor2) + $sumotr;
+                        }
+                        $tablajust = DB::table('detailnewresources')->select('iddetres', 'descri', 'name')->where(['id_et4' =>  $et4->id, 'type' => 5])->orderBy('iddetres', 'asc')->get();
+                        
+                        
+
+                        $countfilesDA = AnswersFiles::where(['id_answ' => $id, 'tipofile' => 'Director (a) Académico'])->count();
+
+                        $countfilesDN = AnswersFiles::where(['id_answ' => $id, 'tipofile' => 'Director(a) Nacional'])->count();
+
+                        //$sumper = DetailsResources::where(['id_answ' =>  $id, 'type' => 1])->selectRaw('(SUM(valor1) * SUM(valor2)) as sumaTotal')->get();
+
+                        $files = AnswersFiles::where(['id_answ' => $id])->where('tipofile', '!=', 'Normal')->orderBy('idanswfile', 'asc')->get();
+
+                        $finalstus = DB::table('answersstatus')->select('etapa4')->where('id_anwsstat', $id)->first();
+
+                        
+                        $view = 'etapa4rev';
+
+
+                        return view('revisor.fasedos.'.$view, compact('et4'), ["idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($post->idpost), 'idansw' => Crypt::encrypt($et4->id), "sumper" => (int)$sumper, "sumcom" => (int)$sumcom, "sumfun" => (int)$sumfun, "sumotr" => (int)$sumotr, 'tablaper' => $tablaper, 'tablacom' => $tablacom, 'tablafun' => $tablafun , 'tablaotr' => $tablaotr,  'files' => $files,  'contda' => $countfilesDA,  'contdn' => $countfilesDN, "status" => $et4->statuset4, 'text' => $text, 'correc' => $correc, 'tablajust' => $tablajust, 'finalstus' => $finalstus1 ]);
+
+                    break;
+                    
+                    default:
+
+                        return redirect()->route('ver-postulaciones-concursos-registrados', [Crypt::encrypt($post->idconc)])->with('danger', trans('inst.73'));
+
+                    break;
+                }
+            break;
+            default:
+                return redirect()->route('ver-postulaciones-concursos-registrados', [Crypt::encrypt($post->idconc)])->with('danger', trans('inst.73'));
             break;
         }
     }
