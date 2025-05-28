@@ -417,6 +417,15 @@ class PostulatiosNewformController extends Controller
 
         $finalstus = DB::table('etapa1')->select('*')->where('id_post', $id)->first();
 
+        $obs = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg1', 'c.obspreg2', 'c.obspreg3', 'c.obspreg4', 'c.obspreg5', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->count();
+
+        if($obs == 0)
+        {
+            abort(404);
+        }
+
+        $obs = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg1', 'c.obspreg2', 'c.obspreg3', 'c.obspreg4', 'c.obspreg5', 'c.obspreg6', 'c.obspreg7', 'c.obspreg8', 'c.obspreg9', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
+
         $rubrica = DB::table('correctionsprocesodos')->select('statusrub')->where('id_post', $id)->first();
 
         $post = Postulations::where(['idpost' =>  $id])->first();
@@ -490,7 +499,7 @@ class PostulatiosNewformController extends Controller
                         abort(404);
                     break;
                 }
-                return view('cuestionario.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status, "rubrica" => $rubrica->statusrub ]);
+                return view('cuestionario.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status, "rubrica" => $rubrica->statusrub, 'obs' => $obs ]);
 
             break;
             case ($post->status == "seleccionado"):
@@ -510,7 +519,7 @@ class PostulatiosNewformController extends Controller
                         abort(404);
                     break;
                 }
-                return view('cuestionario.seleccionado.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status ]);
+                return view('cuestionario.seleccionado.'.$view, compact('finalstus', 'post'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $post->status, 'text' => $text , "tipousuario" => Auth::user()->cargo_us, "statusform" => $post->status, "rubrica" => $rubrica->statusrub, 'obs' => $obs ]);
 
             break;
             
@@ -534,6 +543,15 @@ class PostulatiosNewformController extends Controller
         $rubrica = DB::table('correctionsprocesodos')->select('statusrub')->where('id_post', $id)->first();
 
         $finalstus = DB::table('etapa2')->select('*')->where('id_post', $id)->count();
+
+        $obs = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg10', 'c.obspreg11', 'c.obspreg12', 'c.obspreg13', 'c.obspreg14', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->count();
+
+        if($obs == 0)
+        {
+            abort(404);
+        }
+
+        $obs = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg10', 'c.obspreg11', 'c.obspreg12', 'c.obspreg13', 'c.obspreg14', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
 
         switch (true) 
         {
@@ -593,7 +611,7 @@ class PostulatiosNewformController extends Controller
                             break;
                         }
                 
-                        return view('cuestionario.'.$view, compact('finalstus', 'answ'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $finalstus->statuset2, 'text' => $text, 'files' => $files, "rubrica" => $rubrica->statusrub ]);
+                        return view('cuestionario.'.$view, compact('finalstus', 'answ'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), "status" => $finalstus->statuset2, 'text' => $text, 'files' => $files, "rubrica" => $rubrica->statusrub, 'obs' => $obs ]);
 
                     break;
                     
@@ -625,6 +643,15 @@ class PostulatiosNewformController extends Controller
         $rubrica = DB::table('correctionsprocesodos')->select('statusrub')->where('id_post', $id)->first();
 
         $finalstus = DB::table('etapa3')->select('*')->where('id_post', $id)->count();
+
+        $obs = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg15', 'c.obspreg16', 'c.obspreg17', 'c.obspreg18', 'c.obspreg19', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->count();
+
+        if($obs == 0)
+        {
+            abort(404);
+        }
+
+        $obs = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg15', 'c.obspreg16', 'c.obspreg17', 'c.obspreg18', 'c.obspreg19', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
         
         switch (true) 
         {
@@ -694,7 +721,7 @@ class PostulatiosNewformController extends Controller
                             break;
                         }
 
-                        return view('cuestionario.'.$view, compact('finalstus'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), 'idansw' => Crypt::encrypt($finalstus->id), "status" => $finalstus->statuset3, 'text' => $text, 'array' => $array, "rubrica" => $rubrica->statusrub]);
+                        return view('cuestionario.'.$view, compact('finalstus'), [ "idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($id), 'idansw' => Crypt::encrypt($finalstus->id), "status" => $finalstus->statuset3, 'text' => $text, 'array' => $array, "rubrica" => $rubrica->statusrub, 'obs' => $obs]);
 
                     break;
                     
@@ -725,6 +752,15 @@ class PostulatiosNewformController extends Controller
         ];
 
         $rubrica = DB::table('correctionsprocesodos')->select('*')->where('id_post', $id)->first();
+
+        $obs = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg20', 'c.obspreg21', 'c.obspreg22', 'c.obspreg23', 'c.obspreg24', 'c.obspreg25', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->count();
+
+        if($obs == 0)
+        {
+            abort(404);
+        }
+
+        $obs = DB::table('postulations as p')->select('p.idpost', 'p.idconc', 'e.*', 'c.obspreg20', 'c.obspreg21', 'c.obspreg22', 'c.obspreg23', 'c.obspreg24', 'c.obspreg25', 'c.statusrub')->join('correctionsprocesodos as  c', 'p.idpost', '=', 'c.id_post')->join('etapa3 as  e', 'p.idpost', '=', 'e.id_post')->where('p.idpost', $id)->first();
        
 
         $sumper = 0; $sumcom = 0; $sumfun = 0; $sumotr = 0;
@@ -825,7 +861,7 @@ class PostulatiosNewformController extends Controller
                         # code...
                     break;
                 }
-                return view('cuestionario.'.$view, compact('et4'), ["idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($post->idpost), 'idansw' => Crypt::encrypt($et4->id), "sumper" => (int)$sumper, "sumcom" => (int)$sumcom, "sumfun" => (int)$sumfun, "sumotr" => (int)$sumotr, 'tablaper' => $tablaper, 'tablacom' => $tablacom, 'tablafun' => $tablafun , 'tablaotr' => $tablaotr,  'files' => $files,  'contda' => $countfilesDA,  'contdn' => $countfilesDN, "status" => $et4->statuset4, 'text' => $text, 'correc' => $correc, 'tablajust' => $tablajust, "rubrica" => $rubrica->statusrub, "obs" => $rubrica  ]);
+                return view('cuestionario.'.$view, compact('et4'), ["idconcurso" => Crypt::encrypt($post->idconc), 'idpostulacion' => Crypt::encrypt($post->idpost), 'idansw' => Crypt::encrypt($et4->id), "sumper" => (int)$sumper, "sumcom" => (int)$sumcom, "sumfun" => (int)$sumfun, "sumotr" => (int)$sumotr, 'tablaper' => $tablaper, 'tablacom' => $tablacom, 'tablafun' => $tablafun , 'tablaotr' => $tablaotr,  'files' => $files,  'contda' => $countfilesDA,  'contdn' => $countfilesDN, "status" => $et4->statuset4, 'text' => $text, 'correc' => $correc, 'tablajust' => $tablajust, "rubrica" => $rubrica->statusrub, "obs" => $rubrica, 'obs' => $obs  ]);
 
             break;
             

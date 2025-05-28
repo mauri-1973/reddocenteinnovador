@@ -124,32 +124,44 @@
                                         <div class="form-group mb-4">
                                             <label for="indicadores" class="textlabel text-dark"><b>5.1.- Indicadores y métodos de monitoreo parciales y finales (máximo 400 palabras)</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese los indicadores y métodos de monitoreo" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                             <textarea class="form-control input-lg textarea1 text-dark" placeholder="Ingrese los indicadores y métodos de monitoreo" id="indicadores" name="indicadores" rows="30" disabled>{{ $finalstus->pregunta6 }}</textarea>
+                                            <br>
+                                            <label for="obspreg15" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg15" name="obspreg15" rows="15" maxlength="250" disabled>{{ $obs->obspreg15 }}</textarea>
                                             <span class="help-block">
-                                                <p id="mensaje_ayuda1b" class="help-block" style="color:#000;"></p>
+                                                <p id="mensaje_ayuda15" class="help-block"></p>
                                             </span>
                                         </div>
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">
                                             <label for="resultados" class="textlabel text-dark"><b>5.2.- Resultados y productos esperados en detalle (máximo 400 palabras)</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese los resultados y productos esperados" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                             <textarea class="form-control input-lg textarea1 text-dark" placeholder="Ingrese los resultados y productos esperados" id="resultados" name="resultados" rows="30" disabled>{{ $finalstus->pregunta7 }}</textarea>
+                                            <br>
+                                            <label for="obspreg16" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg16" name="obspreg16" rows="15" maxlength="250" disabled>{{ $obs->obspreg16 }}</textarea>
                                             <span class="help-block">
-                                                <p id="mensaje_ayuda2b" class="help-block" style="color:#000;"></p>
+                                                <p id="mensaje_ayuda16" class="help-block"></p>
                                             </span>
                                         </div>
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">
                                             <label for="impacto" class="textlabel text-dark"><b>5.3.- Indicadores de Impacto en las prácticas pedagógicas considerando los objetivos (máximo 400 palabras)</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese los indicadores de impacto" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                             <textarea class="form-control input-lg textarea1 text-dark" placeholder="Ingrese los indicadores de impacto" id="impacto" name="impacto" rows="30" disabled>{{ $finalstus->pregunta8 }}</textarea>
+                                            <br>
+                                            <label for="obspreg17" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg17" name="obspreg17" rows="15" maxlength="250" disabled>{{ $obs->obspreg17 }}</textarea>
                                             <span class="help-block">
-                                                <p id="mensaje_ayuda3b" class="help-block" style="color:#000;"></p>
+                                                <p id="mensaje_ayuda17" class="help-block"></p>
                                             </span>
                                         </div>
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">
                                             <label for="institucional" class="textlabel text-dark"><b>5.4.- Indicadores de Impacto institucional considerando los objetivos, se incluye la difusión, licenciamiento, entre otros (máximo 400 palabras)</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Ingrese los indicadores de impacto institucional" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                             <textarea class="form-control input-lg textarea1 text-dark" placeholder="Ingrese los indicadores de impacto institucional" id="institucional" name="institucional" rows="30" disabled>{{ $finalstus->pregunta9 }}</textarea>
+                                            <br>
+                                            <label for="obspreg18" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg18" name="obspreg18" rows="15" maxlength="250" disabled>{{ $obs->obspreg18 }}</textarea>
                                             <span class="help-block">
-                                                <p id="mensaje_ayuda4b" class="help-block" style="color:#000;"></p>
+                                                <p id="mensaje_ayuda18" class="help-block"></p>
                                             </span>
                                         </div>
                                         <hr style="border-top: 2px solid #000;">
@@ -182,6 +194,12 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <br>
+                                            <label for="obspreg19" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg19" name="obspreg19" rows="15" maxlength="250" disabled>{{ $obs->obspreg19 }}</textarea>
+                                            <span class="help-block">
+                                                <p id="mensaje_ayuda19" class="help-block"></p>
+                                            </span>
                                             
                                         </div>
                                         <hr style="border-top: 2px solid #000;">

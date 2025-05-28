@@ -95,8 +95,11 @@
                                             <div class="form-group mb-4">
                                                 <label for="preg1a" class="textlabel text-dark"><b>3.1.- Fundamentación del proyecto (máximo 400 palabras). Incluya tres acciones de sustentabilidad en el tiempo, dos aspectos del modelo educativo UST, dos aspectos de la unidad académica (escuela, carrera, facultad)</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ __('multi-leng.a95') }}" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                                 <textarea class="form-control input-lg textarea1 text-dark" placeholder="Máximo 400 palabras" id="preg1a" name="preg1a" rows="30" disabled>{{ $finalstus->pregunta1 }}</textarea>
+                                                <br>
+                                                <label for="obspreg10" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                                <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg10" name="obspreg10" rows="15" maxlength="250" disabled>{{ $obs->obspreg10 }}</textarea>
                                                 <span class="help-block">
-                                                    <p id="mensaje_ayuda1" class="help-block" style="color:#000;"></p>
+                                                    <p id="mensaje_ayuda10" class="help-block"></p>
                                                 </span>
                                             </div>
                                             <hr style="border-top: 3px solid #fff;">
@@ -132,13 +135,22 @@
                                                         
                                                     </tbody>
                                                 </table>
+                                                <br>
+                                                <label for="obspreg11" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                                <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg11" name="obspreg11" rows="15" maxlength="250" disabled>{{ $obs->obspreg11 }}</textarea>
+                                                <span class="help-block">
+                                                    <p id="mensaje_ayuda11" class="help-block"></p>
+                                                </span>
                                             </div>
                                             <hr style="border-top: 3px solid #fff;">
                                             <div class="form-group mb-4">
                                                 <label for="preg3a" class="textlabel text-dark"><b>3.3.- Objetivo general y específicos: pertinentes, coherentes, lógicos. Consideran el escalamiento.</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ __('multi-leng.a99') }}" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                                 <textarea class="form-control input-lg textarea1 text-dark" placeholder="Máximo 400 palabras" id="preg3a" id="preg3a" rows="30" disabled>{{ $finalstus->pregunta3 }}</textarea>
+                                                <br>
+                                                <label for="obspreg12" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                                <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg12" name="obspreg12" rows="15" maxlength="250" disabled>{{ $obs->obspreg12 }}</textarea>
                                                 <span class="help-block">
-                                                    <p id="mensaje_ayuda3" class="help-block" style="color:#000;"></p>
+                                                    <p id="mensaje_ayuda12" class="help-block"></p>
                                                 </span>
                                             </div>
                                             <hr style="border-top: 3px solid #fff;">
@@ -151,16 +163,22 @@
                                             <div class="form-group mb-4">
                                                 <label for="preg4a" class="textlabel text-dark"><b>4.1.- Fundamente la teoría educativa que sustenta la metodología del aprendizaje, el tipo de tecnología y su uso pedagógico (máximo 400 palabras)</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ __('multi-leng.a101') }}" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                                 <textarea class="form-control input-lg textarea1 text-dark" placeholder="Máximo 400 palabras" id="preg4a" name="preg4a" rows="30" disabled>{{ $finalstus->pregunta4 }}</textarea>
+                                                <br>
+                                                <label for="obspreg13" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                                <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg13" name="obspreg13" rows="15" maxlength="250" disabled>{{ $obs->obspreg13 }}</textarea>
                                                 <span class="help-block">
-                                                    <p id="mensaje_ayuda4" class="help-block" style="color:#000;"></p>
+                                                    <p id="mensaje_ayuda13" class="help-block"></p>
                                                 </span>
                                             </div>
                                             <hr style="border-top: 3px solid #fff;">
                                             <div class="form-group mb-4">
                                                 <label for="preg5a" class="textlabel text-dark"><b>4.2.-Cómo se fomenta la participación e interacción de los estudiantes. Indica de forma precisa la equidad de género y el apoyo para estudiantes con discapacidad y neurodivergentes.(máximo 300 palabras)</b>&nbsp;&nbsp;<i style="color:#fff;font-size:18px;" class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ __('multi-leng.a103') }}" data-html="true"></i>&nbsp; <small style="color:white;font-size:10px;">(* {{ __('lang.infoobli') }})</small></label>
                                                 <textarea class="form-control input-lg textarea1 text-dark" placeholder="Máximo 300 palabras" id="preg5a" id="preg5a" rows="30" disabled>{{ $finalstus->pregunta5 }}</textarea>
+                                                <br>
+                                                <label for="obspreg14" class="textlabel text-dark"><b>{{ __('inst.74') }}</b></label>
+                                                <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg14" name="obspreg14" rows="15" maxlength="250" disabled>{{ $obs->obspreg14 }}</textarea>
                                                 <span class="help-block">
-                                                    <p id="mensaje_ayuda5" class="help-block" style="color:#000;"></p>
+                                                    <p id="mensaje_ayuda14" class="help-block"></p>
                                                 </span>
                                             </div>
                                             <hr style="border-top: 3px solid #fff;">

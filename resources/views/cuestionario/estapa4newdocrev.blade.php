@@ -342,6 +342,15 @@
                                         </div>
                                         <hr style="border-top: 2px solid #000;">
                                         <div class="form-group mb-4">
+                                            <br>
+                                            <label for="obspreg25" class="textlabel text-dark"><b>{{ __('inst.140') }}</b></label>
+                                            <textarea class="form-control input-lg textarea1 text-dark" placeholder="{{ __('inst.78') }}" id="obspreg25" name="obspreg25" rows="15" maxlength="500" disabled>{{ $obs->obspreg25 }}</textarea>
+                                            <span class="help-block">
+                                                <p id="mensaje_ayuda25" class="help-block"></p>
+                                            </span>
+                                        </div>
+                                        <hr style="border-top: 2px solid #000;">
+                                        <div class="form-group mb-4">
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
