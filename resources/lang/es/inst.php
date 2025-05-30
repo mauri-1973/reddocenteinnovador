@@ -136,7 +136,7 @@ return [
 
     '67' => 'Descargar-Documentos',
 
-    '68' => 'En esta sección dispones de los documentos anexados por los docentes. De las distintas Facultad/Carrara a la que pertenecen los docentes.\r\n1.- Individualización de las Facultades registradas.\r\n2.- Campo de texto, que permite al usuario, buscar-filtrar Facultades/Carreras registradas.\r\n3.- Individualización de las Carreras registradas\r\n4.- Botón clickeable que despliega una ventana modal, con los distintos docentes que pertenecen a esta Facultad/Carrera, con los documentos ingresados a la plataforma, si corresponde.',
+    '68' => 'En esta sección dispones de los documentos anexados por los docentes. De las distintas Facultad/Carrera a la que pertenecen los docentes.\r\n1.- Individualización de las Facultades registradas.\r\n2.- Campo de texto, que permite al usuario, buscar-filtrar Facultades/Carreras registradas.\r\n3.- Individualización de las Carreras registradas\r\n4.- Botón clickeable que despliega una ventana modal, con los distintos docentes que pertenecen a esta Facultad/Carrera, con los documentos ingresados a la plataforma, si corresponde.',
 
     '69' => 'En esta ventana modal dispones de los documentos anexados por los docentes.\r\n1.- Individualización del docente.\r\n2.- Información si el docente, ha subido documentos a la plataforma\r\n3.- Campo de texto, que permite al usuario, buscar-filtrar Docentes/Documentos.\r\n4.- Botón clickeable que permite descargar de forma directa el documento seleccionado.\r\n5.- Botón clickeable, que permite al usuario ver el documento seleccionado, en una nueva pestaña.\r\n6.- Botón clickeable, que permite al usuario copiar la url del documento seleccionado, para compartir dicho documento.',
 
@@ -314,93 +314,93 @@ return [
 
     '156' => 'Tenemos un problema en el proceso de validaciones. Comuníquese con el administrador de la plataforma.',
 
-    '157' => '',
+    '157' => 'Foros',
 
-    '158' => '',
+    '158' => 'Foros Disponibles',
 
-    '159' => '',
+    '159' => 'En esta sección dispones de los foros creados por los docentes, de las distintas Facultad/Carrera a la que pertenecen.\r\n1.- Botón para regresar al inicio de la plataforma.\r\n2.- Campo de texto para buscar los foros disponibles.\r\n3.- Botón clickeable para acceder al foro.\r\n4.- Botonera de busqueda rápida de los foros registrados.',
 
-    '160' => '',
+    '160' => 'Solicitar Acceso al Foro',
 
-    '161' => '',
+    '161' => 'Para acceder al foro requieres enviar una solicitud de Ingreso, al docente que creó el foro.\r\n1.- Para solicitar acceso, solo debe clickear el botón y esperar que el docente apruebe su solicitud\r\n',
 
-    '162' => '',
+    '162' => 'Solicitud en Espera',
 
-    '163' => '',
+    '163' => '1.- Su solicitud aún no ha sido aprobada, para acceder al foro. El docente ya fue notificado de su solicitud',
 
-    '0164' => 'Nombre proyecto',
+    '164' => 'Acceso Denegado',
 
-    '0165' => 'Porcentaje avance acta (Estimación auditor(es))',
+    '165' => '1.- El acceso al foro a sido bloqueado por el docente, al inflingir alguna norma establecida, al normal funcionamiento de este.',
 
-    '0166' => 'Respuestas',
+    '166' => 'Acá accederá a los temas creados, en el foro creado por el docente. Usted podrá agregar nuevos temas si lo estima conveniente (Los temas ingresados serán supervisados por el docente. Si el tema vulnera las normas del foro, usted será sancionado, con la cancelación de su acceso a esta sección)\r\n1.- Bontón que le permite agregar, nuevos temas al foro (Esta acción la podrá realizar mediante una ventana modal que se desplegará automáticamente)\r\n2.- Selector que le permitirá filtrar los temas agregados al foro\r\n3.- Campo de texto que le permite filtrar según el texto ingresado\r\n4.- Fecha de ingreso del tema\r\n5.- Facultad\r\n6.- Carrera\r\n7.- Título del tema\r\n8.- Nombre Docente\r\n9.- Botón clickleable, que le permitira ver el tema en su totalidad.\r\n10.- Botonera de búsqueda rápida de temas.\r\n11.- Temas activos ingresados por el Docente.\r\n',
 
-    '0167' => 'Su respuesta fue enviada correctamente al asesor',
+    '167' => 'Agregar Temas',
 
-    '0168' => 'Enviar Email Asesor(es)',
+    '168' => 'Acá usted podrá agregar un tema al foro\r\n1.- Título del tema (Campo Obligatorio)\r\n2.- Tags asociados al tema (esto permite optimizar la búsqueda, de otro participantes del foro)\r\n3.- Contenido del tema a ingresar (Campo Obligatorio)\r\n4.- Botón que le permite agregar su tema, solo si los campos obligatorios, estan completos.\r\n5.- Botón que cierra la ventana modal, cancelando anexar su tema.\r\n',
 
-    '0169' => 'Su notificación fue enviada correctamente al(los) asesor(es).',
+    '169' => 'Ver Tema Seleccionado',
 
-    '0170' => 'Guardar tema a tratar',
+    '170' => 'Contenido tema seleccionado',
 
-    '0171' => 'Agregar Tema',
+    '171' => 'Acá usted podrá ver el contenido completo del tema seleccionado, agregar respuestas y votar sobre el contenido del tema\r\n1.- Botón clickeable, que le permite volver a la página anterior.\r\n2.- Título del tema.\r\n3.- Contenido del tema.\r\n4.- Información del ingreso del tema.\r\n5.- Estadísticas del tema.\r\n6.- Para agregar una respuesta, esta debe tener contenido.\r\n7.- Control seleccionable que le permitirá, asignar una puntuación al tema.\r\n8.- Botón clickeable que le permitirá anexar una respuesta al tema seleccionado, solo si esta tiene contenido.\r\n',
 
-    '0172' => 'Ingrese contenido al tema del acta',
+    '172' => '',
 
-    '0173' => 'Ingrese al menos 2 caracteres al tema del acta',
+    '173' => '',
 
-    '0174' => 'El tema contiene caracteres inapropiados',
+    '174' => '',
 
-    '0175' => 'No pudimos actualizar el tema del acta',
+    '175' => '',
 
-    '0176' => 'Tema del acta actualizado correctamente',
+    '176' => '',
 
-    '0177' => 'Contenido',
+    '177' => '',
 
-    '0178' => 'Última Actualización',
+    '178' => '',
 
-    '0179' => 'Ingrese contenido al acuerdo del acta',
+    '179' => '',
 
-    '0180' => 'Ingrese al menos 2 caracteres al acuerdo del acta',
+    '180' => '',
 
-    '0181' => 'Ingrese contenido al compromiso del acta',
+    '181' => '',
 
-    '0182' => 'Ingrese al menos 2 caracteres al compromiso del acta',
+    '182' => '',
 
-    '0183' => 'El acuerdo contiene caracteres inapropiados',
+    '183' => '',
 
-    '0184' => 'El compromiso contiene caracteres inapropiados',
+    '184' => '',
 
-    '0185' => 'Imprimir Actas',
+    '185' => '',
 
-    '0186' => 'Su Acta fue impresa correctamente.',
+    '186' => '',
 
-    '0187' => 'Acuerdo del acta actualizado correctamente',
+    '187' => '',
 
-    '0188' => 'No pudimos actualizar el acuerdo del acta',
+    '188' => '',
 
-    '0189' => 'Compromiso del acta actualizado correctamente',
+    '189' => '',
 
-    '0190' => 'No pudimos actualizar el compromiso del acta',
+    '190' => '',
 
-    '0191' => 'En esta sección, usted verá los temas a tratar en el acta en curso',
+    '191' => '',
 
-    '0192' => 'Esta funcionalidad le permite a usted, ingresar los temas a tratar en el acta en curso',
+    '192' => '',
 
-    '0193' => 'En esta sección, usted verá los acuerdos a alcanzados en el acta en curso',
+    '193' => '',
 
-    '0194' => 'Esta funcionalidad le permite a usted, ingresar los acuerdos para el acta en curso',
+    '194' => '',
 
-    '0195' => 'En esta sección, usted verá los compromisos contemplados al acta en curso',
+    '195' => '',
 
-    '0196' => 'Esta funcionalidad le permite a usted, ingresar los compromisos para el acta en curso',
+    '196' => '',
 
-    '0197' => 'Fecha Envío',
+    '197' => '',
 
-    '0198' => 'Fecha Respuesta',
+    '198' => '',
 
-    '0199' => 'Enviar Respuesta',
+    '199' => '',
 
-    '0200' => 'Para finalizar el acta la sumatoria del porcentaje de avance, asignado por el(los) asesor(es), debe ser de un 100%. En estos momentos ese porcentaje es del ',
+    '200' => '',
 
     '0201' => 'Hay un error para finalizar el acta. Comuníquese con el administrador',
 
