@@ -121,7 +121,6 @@ class ForumsController extends Controller
     {
         $idcat = Crypt::decrypt($idcat);
         $part = ForumParticipants::select('*')->where(["iduser" => Auth::user()->id, "idcatfor" => $idcat ])->count();
-        
         if($part == 0)
         {
             $part = new ForumParticipants;
@@ -138,7 +137,7 @@ class ForumsController extends Controller
                 return redirect()->route('Forums\ForumsController@indexforunms')->with('warning', trans('multi-leng.formerror81'));
             }
         }
-        if($part == 1)
+        if($part->count() == 1)
         {
             $part = ForumParticipants::select('*')->where(["iduser" => Auth::user()->id, "idcatfor" => $idcat ])->first();
 
@@ -155,7 +154,7 @@ class ForumsController extends Controller
                 return redirect()->action('Forums\ForumsController@indexforunms')->with('success', trans('multi-leng.formerror184'));
             }
         }
-        if($part > 1)
+        if($part->count() > 1)
         {
             return redirect()->route('Forums\ForumsController@indexforunms')->with('warning', trans('multi-leng.formerror81'));
         }

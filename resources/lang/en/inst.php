@@ -314,34 +314,4 @@ return [
 
     '156' => 'We have a problem with the validation process. Please contact the platform administrator.',
 
-    '157' => 'Forums',
-
-    '158' => 'Available Forums',
-
-    '159' => 'In this section, you can find forums created by instructors from the various Faculties/University-Degree programs to which they belong.\r\n1. Button to return to the home page of the platform.\r\n2. Text field to search for available forums.\r\n3. Clickable button to access the forum.\r\n4. Button for quick search of registered forums.',
-
-    '160' => 'Request Access to the Forum',
-
-    '161' => 'To access the forum, you must send a membership request to the instructor who created the forum.\r\n1. 1.- To request access, simply click the button and wait for the instructor to approve your request.\r\n',
-
-    '162' => 'Request Pending',
-
-    '163' => '1.- Your request has not yet been approved to access the forum. The teacher has already been notified of your request.',
-
-    '164' => 'Access Denied',
-
-    '165' => '1.- Access to the forum has been blocked by the teacher, for violating an established rule or the normal operation of the forum.',
-
-    '166' => "Here you will access the topics created, in the forum created by the teacher. You may add new topics if you deem it appropriate (Topics entered will be supervised by the teacher. If the topic violates the forum rules, you will be sanctioned by the cancellation of your access to this section)\r\n1.- Button that allows you to add new topics to the forum (This action can be performed through a modal window that will be displayed automatically)\r\n2.- Selector that allows you to filter the topics added to the forum\r\n3.- Text field that allows you to filter according to the text entered\r\n4.- Date the topic was entered\r\n5.- Faculty\r\n6.- Career\r\n7.- Topic title\r\n8.- Teacher's name\r\n9.- Clickable button, which will allow you to see the topic in its entirety.\r\n10.- Button for quick search of topics.\r\n11.- Active topics entered by the Teacher.\r\n",
-
-    '167' => 'Add Topics',
-
-    '168' => 'Here you can add a topic to the forum.\r\n1.- Topic title (Required field)\r\n2.- Tags associated with the topic (this allows you to optimize the search for other forum participants) \r\n3.- Content of the topic to be entered (Required field) \r\n4.- Button that allows you to add your topic, only if the required fields are complete. \r\n5.- Button that closes the modal window, canceling the attachment of your topic.',
-
-    '169' => 'View Selected Topic',
-
-    '170' => 'Selected Topic Content',
-
-    '171' => "Here you can see the full content of the selected topic, add replies, and vote on the topic's content.\r\n1.- Clickable button that allows you to return to the previous page.\r\n2.- Topic title.\r\n3.- Topic content.\r\n4.- Topic entry information.\r\n5.- Topic statistics.\r\n6.- To add a reply, it must have content.\r\n7.- Clickable control that will allow you to assign a score to the topic.\r\n8.- Clickable button that will allow you to attach a reply to the selected topic, only if it has content.\r\n",
-
 ];
