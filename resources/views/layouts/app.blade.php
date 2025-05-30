@@ -136,8 +136,8 @@
                   html += `<div class="card col-12">
                       <img class="card-img-top img-fluid" src="{{asset('storage/instructivo')}}/${item.imagen}" alt="${item.imagen}">
                       <div class="card-body">
-                        <h5 class="card-title">${item.titulo}</h5>
-                        <p class="card-text">${htmlInst}</p>
+                        <h5 style="text-decoration: underline;" class="card-title"><strong>${item.titulo}</strong></h5>
+                        <p class="card-text"><strong>${htmlInst}</strong></p>
                       </div>
                     </div>
                     <hr>`;
