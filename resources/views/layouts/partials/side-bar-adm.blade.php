@@ -40,7 +40,7 @@
 
             @role('admin')
 
-            <li {{Route::is('permissions.index') || Route::is('permissions.create') || Route::is('permissions.edit') || Route::is('roles.index') || Route::is('roles.create') || Route::is('roles.edit') || Route::is('users.index') || Route::is('users.create') ||Route::is('users.edit') || Route::is('agregar-usuarios-administradores') || Route::is('agregar-usuarios-academicos') || Route::is('agregar-usuarios-estudiantes') || Route::is('agregar-usuarios-noticias')  || Route::is('agregar-usuarios-revisores') || Route::is('agregar-usuarios-auditores') ? 'class=active':''}}>
+            <li {{Route::is('permissions.index') || Route::is('permissions.create') || Route::is('permissions.edit') || Route::is('roles.index') || Route::is('roles.create') || Route::is('roles.edit') || Route::is('users.index') || Route::is('users.create') ||Route::is('users.edit') || Route::is('agregar-usuarios-administradores') || Route::is('agregar-usuarios-academicos') || Route::is('agregar-usuarios-estudiantes') || Route::is('agregar-usuarios-noticias')  || Route::is('agregar-usuarios-revisores') || Route::is('agregar-usuarios-auditores') || Route::is('agregar.usuarios.coordinadores') ? 'class=active':''}}> 
 
                 <a data-toggle="collapse" href="#users" aria-expanded="false" class="collapsed">
 
@@ -114,6 +114,18 @@
                             </a>
 
                         </li>
+                        
+                        <li {{Route::is('agregar.usuarios.coordinadores') ? 'class=active':''}}>
+
+                            <a href="{{route('agregar.usuarios.coordinadores')}}">
+
+                                <i class="nc-icon nc-badge"></i>
+
+                                <p>{{ __('inst.172') }}</p>
+
+                            </a>
+
+                        </li>
 
                         <li {{Route::is('agregar-usuarios-estudiantes') ? 'class=active':''}}>
 
@@ -150,7 +162,7 @@
                             </a>
 
                         </li>
-
+                        
                     </ul>
 
                 </div>

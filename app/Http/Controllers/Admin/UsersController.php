@@ -106,6 +106,13 @@ class UsersController extends Controller
 
         return view('admin.users.indexrev', compact('users'));
     }
+    public function indexcoo()
+    {
+        $users = User::where("cargo_us", "Coordinador")->get();
+
+        return view('admin.users.indexcoo', compact('users'));
+    }
+    
     /**
      * Display a listing of User.
      *
@@ -204,6 +211,11 @@ class UsersController extends Controller
                 case ($tipo == "auditor"):
                     return view('admin.users.createaud', compact('roles'));
                 break;
+                case ($tipo == "coordinador"):
+                    
+                    $comp = DB::table('competitions')->select('idcomp', 'title')->get();
+                    return view('admin.users.createcoo', compact('roles', 'comp'));
+                break;
                 default:
                     return redirect()->route('home')->with('danger', trans('multi-leng.error1')."Users-Cont: adduser");
                 break;
@@ -242,6 +254,19 @@ class UsersController extends Controller
                 'mobile' => ['required', 'numeric', 'digits:9', 'unique:users'],
                 'password' => ['required','min:5'],
                 'roles.*' => ['required'],
+                'subcat.*' => ['required']
+            ]);
+        }
+        if($tipo == 7)
+        {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'surname' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'mobile' => ['required', 'numeric', 'digits:9', 'unique:users'],
+                'password' => ['required','min:5'],
+                'roles.*' => ['required'],
+                'comp' => ['required'],
                 'subcat.*' => ['required']
             ]);
         }
@@ -288,6 +313,10 @@ class UsersController extends Controller
         if($tipo == 6)
         {
             $user->cargo_us    = "Auditor";
+        }
+        if($tipo == 7)
+        {
+            $user->cargo_us    = "Coordinador";
         }
         $user->save();
         $roles = $request->input('roles') ? $request->input('roles') : [];
@@ -373,6 +402,23 @@ class UsersController extends Controller
         {
             return redirect()->route('agregar-usuarios-auditores')->with('success', trans('multi-leng.formerror15').$nameSanitize." ".$surnameSanitize.trans('multi-leng.formerror16').$mensaje1);
         }
+        if($tipo == 7)
+        {
+            if((int)$request->comp == 0)
+            {
+                $comp = DB::table('competitions')->select('idcomp')->get();
+                foreach($comp as $c)
+                {
+                    $insert = DB::table("competitionscoordinador")->insert(["idcoor" => $user->id, "idcomp" => $c->idcomp]);
+                }
+            }
+            else
+            {
+                $insert = DB::table("competitionscoordinador")->insert(["idcoor" => $user->id, "idcomp" => (int)$request->comp]);
+            }
+            
+            return redirect()->route('agregar.usuarios.coordinadores')->with('success', trans('multi-leng.formerror15').$nameSanitize." ".$surnameSanitize.trans('multi-leng.formerror16').$mensaje1);
+        }
         else
         {
             return view('errors.403');
@@ -420,8 +466,32 @@ class UsersController extends Controller
             };
 
         }
+        if($selectedRoles == "coordinador")
+        {
+            $array = array();
+            $compcoor = DB::table("competitionscoordinador")->where('idcoor', $id)->get();
+            $comp = DB::table("competitions")->select('idcomp', 'title')->get();
+            $sol = [];
+            foreach($compcoor as $c)
+            {
+                array_push($array, array("idcomp" => $c->idcomp) );
+                $sol[] = $c->idcomp;
+            }
 
-        return view('admin.users.edit', compact('user', 'roles','selectedRoles'), ["arraycat" => $arraycat, "select" => $select]);
+        }
+        $valor1 = array();
+        $comp1 = DB::table("competitions")->select('idcomp', 'title')->whereIn('idcomp', $sol)->get();
+        foreach($comp1 as $v)
+        {
+            array_push($valor1, array("idcomp" => $v->idcomp, "title" => $v->title, "selected" => "selected"));
+        }
+        $comp1 = DB::table("competitions")->select('idcomp', 'title')->whereNotIn('idcomp', $sol)->get();
+        foreach($comp1 as $v)
+        {
+            array_push($valor1, array("idcomp" => $v->idcomp, "title" => $v->title, "selected" => ""));
+        }
+        
+        return view('admin.users.editcoor', compact('user', 'roles','selectedRoles'), ["arraycat" => $arraycat, "select" => $select, "arraycomp" => $array, 'comp' => $valor1]);
     }
 
     /**
@@ -444,7 +514,8 @@ class UsersController extends Controller
                 'avatar' => 'image|mimes:jpg,png,jpeg|max:9000|dimensions:min_width=400,min_height=400,max_width=400,max_height=400'
             ]);
         }
-        if($request->tipo == 0)
+        
+        if($request->tipo === 0)
         {
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
@@ -454,6 +525,20 @@ class UsersController extends Controller
                 'profesion' => ['required', 'string', 'max:50'],
                 'subcat' => ['required'],
             ]);
+        }
+        
+        if($request->tipo === "coordinador")
+        {
+            
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'surname' => ['required', 'string', 'max:255'],
+                'email' => ['required','string', 'email', 'max:255', Rule::unique('users')->ignore($id)],
+                'mobile' => ['required', 'numeric', 'digits:9', Rule::unique('users')->ignore($id)],
+                'profesion' => ['required', 'string', 'max:50'],
+                'comp' => ['required'],
+            ]);
+            
         }
         else
         {
@@ -465,7 +550,7 @@ class UsersController extends Controller
                 'profesion' => ['required', 'string', 'max:50'],
             ]);
         }
-
+        
         $user = User::findOrFail($id);
 
         if($request->password != "")
@@ -485,7 +570,7 @@ class UsersController extends Controller
         $user->update(['name' => $request->name, 'surname' => $request->surname, 'email' => $request->email, 'mobile' => $request->mobile, 'profesion' => $request->profesion]);
 
 
-        if($request->tipo == 0)
+        if($request->tipo === 0)
         {
             $arraysubcat = [];
             $arrayresour = [];
@@ -622,6 +707,15 @@ class UsersController extends Controller
                 }
             }
         }
+        if($request->tipo === "coordinador")
+        {
+            $del = DB::table('competitionscoordinador')->where("idcoor", $id)->delete();
+            foreach($request->comp as $opcion){
+                $val = (int)$opcion;
+                $del = DB::table('competitionscoordinador')->insert(["idcoor" => $id, "idcomp" => $val]);
+            }
+            
+        }
         $user = User::select('cargo_us')->where("id", $id)->first();
         switch (true) 
         {
@@ -643,6 +737,9 @@ class UsersController extends Controller
             case ($user->cargo_us == "Auditor"):
                 $ruta = "agregar-usuarios-auditores";
             break;
+            case ($user->cargo_us == "Coordinador"):
+                $ruta = "agregar.usuarios.coordinadores";
+            break;
             default:
                 abort(403);
             break;
@@ -658,8 +755,11 @@ class UsersController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        $id = Crypt::decrypt($id);
+        
         $user = User::findOrFail($id);
         $user->delete();
+        
         switch (true) {
             case ($request->tipo = "aca"):
                 return redirect()->route('agregar-usuarios-academicos')->with('danger', "$user->name". trans("multi-leng.a269") );
@@ -678,6 +778,9 @@ class UsersController extends Controller
             break;
             case ($request->tipo = "aud"):
                 return redirect()->route('agregar-usuarios-auditores')->with('danger', "$user->name". trans("multi-leng.a269") );
+            break;
+            case ($request->tipo = "coo"):
+                return redirect()->route('agregar.usuarios.coordinadores')->with('danger', "$user->name". trans("multi-leng.a269") );
             break;
             default:
                 return redirect()->route('users.index')->with('danger', "$user->name". trans("multi-leng.a269") );

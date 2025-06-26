@@ -20,6 +20,9 @@
     @role('auditor')
         @include('layouts.partials.side-bar-auditor')
     @endrole
+    @role('coordinador')
+        @include('layouts.partials.side-bar-coordinador')
+    @endrole
     
     <div class="main-panel">
         <!-- nav bar include -->

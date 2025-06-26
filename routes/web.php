@@ -25,6 +25,7 @@ use App\Http\Controllers\Brainstorm;
 use App\Http\Controllers\Competitions;
 use App\Http\Controllers\Docentes;
 use App\Http\Controllers\Auditor;
+use App\Http\Controllers\Coordinador;
 
 Route::get('/', [Docs\DocumentsExtController::class, 'exit'])->name('welcome');
 
@@ -43,6 +44,7 @@ Route::group(['middleware' => ['role:admin','translate']], function () {
     Route::get('agregar-usuarios-estudiantes', [Admin\UsersController::class, 'indexest'])->name('agregar-usuarios-estudiantes');  
     Route::get('agregar-usuarios-noticias', [Admin\UsersController::class, 'indexnot'])->name('agregar-usuarios-noticias');  
     Route::get('agregar-usuarios-revisores', [Admin\UsersController::class, 'indexrev'])->name('agregar-usuarios-revisores');  
+    Route::get('agregar-usuarios-coordinadores', [Admin\UsersController::class, 'indexcoo'])->name('agregar.usuarios.coordinadores'); 
     Route::get('agregar-usuarios-administradores', [Admin\UsersController::class, 'index'])->name('agregar-usuarios-administradores'); 
     Route::get('mostrar-formulario-tipo-usuario/{tipo}', [Admin\UsersController::class, 'adduser'])->name('mostrar-formulario-tipo-usuario');
     Route::get('solicitudes-ingreso-docentes-formulario', [Admin\UsersController::class, 'solingdocfor'])->name('solicitudes-ingreso-docentes-formulario');
@@ -378,6 +380,44 @@ Route::group(['middleware' => ['role:auditor|admin', 'translate']], function () 
 //Auditor
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Coordinador
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::group(['middleware' => ['role:coordinador|admin', 'translate']], function () {
+    
+    Route::get('ver-asignaciones-activas-coordinador', [Coordinador\ViewController::class, 'busconregdoc'])->name('ver.asignaciones.activas.coordinador');
+    Route::get('buscar-concursos-registrados-coordinador', [Coordinador\ViewController::class, 'busconregcoo'])->name('buscar.concursos.registrados.coordinador');
+    Route::get('ver-vista-concurso-usuarios-coordinadores/{id}', [Coordinador\ViewController::class, 'vervisconusucoo'])->name('ver.vista.concurso.usuarios.coordinadores');
+    Route::get('ver-postulaciones-concurso-coordinador/{id}', [Coordinador\ViewController::class, 'verposconcoo'])->name('ver.postulaciones.concurso.coordinador');
+    Route::get('detalle-postulacion-docente-coordinador/{idpost}/{idconc}', [Coordinador\ViewController::class, 'detposdoccoo'])->name('detalle.postulacion.docente.coordinador');
+    Route::get('imprimr-formulario-coordinador-observaciones/{id}', [Coordinador\ViewController::class, 'impforcoorobs'])->name('imprimr.formulario.coordinador.observaciones');
+    Route::get('ver-observaciones-coordinador-nueva-ventana/{id}', [Coordinador\ViewController::class, 'verobscoornueven'])->name('ver.observaciones.coordinador.nueva.ventana');
+    Route::get('imprimr-formulario-coordinador/{id}', [Coordinador\ViewController::class, 'impforcoor'])->name('imprimr.formulario.coordinador');
+    Route::get('ver-formulario-coordinador-segunda-etapa/{id}', [Coordinador\ViewController::class, 'verforcoorsegeta'])->name('ver.formulario.coordinador.segunda.etapa');
+    Route::get('ver-formulario-coordinador-tercera-etapa/{id}', [Coordinador\ViewController::class, 'verforcoortereta'])->name('ver.formulario.coordinador.tercera.etapa');
+    Route::get('ver-formulario-coordinador-cuarta-etapa/{id}', [Coordinador\ViewController::class, 'verforcoorcuaeta'])->name('ver.formulario.coordinador.cuarta.etapa');
+    Route::get('imprimr-formulario-coordinador-fase-dos/{id}', [Coordinador\ViewController::class, 'verforcoorcuaeta'])->name('imprimr.formulario.coordinador.fase.dos');
+    Route::get('ver-nuevo-formulario-docente-segunda-etapa-coor/{id}', [Coordinador\ViewController::class, 'vernuefordocsegetacoo'])->name('ver.nuevo.formulario.docente.segunda.etapa.coor');
+    Route::get('ver-nuevo-formulario-docente-tercera-etapa-coor/{id}', [Coordinador\ViewController::class, 'vernuefordocteretacoo'])->name('ver.nuevo.formulario.docente.tercera.etapa.coor');
+    Route::get('ver-nuevo-formulario-docente-cuarta-etapa-coor/{id}', [Coordinador\ViewController::class, 'vernuefordoccuaetacoo'])->name('ver.nuevo.formulario.docente.cuarta.etapa.coor');
+    
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Coordinador
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Blog
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::group(['middleware' => ['role:blog', 'translate']], function () {
     
     Route::post('agregar-categorias-blog', [Blog\CategoryBlogController::class, 'agrcatblog'])->name('agregar-categorias-blog');
@@ -404,6 +444,12 @@ Route::group(['middleware' => ['role:blog', 'translate']], function () {
     
     
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Blog
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::group(['middleware' => ['auth', 'translate']], function () {
 
@@ -458,6 +504,8 @@ Route::group(['middleware' => ['auth', 'translate']], function () {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Route::post('estadisticas-generales-segun-tipo-de-usuario', [Statistics\StatisticsController::class, 'estgensegusu'])->name('estadisticas-generales-segun-tipo-de-usuario');
+
+    Route::post('estadisticas-concursos-asignados-coordinador', [Statistics\StatisticsController::class, 'estconasicoo'])->name('estadisticas.concursos.asignados.coordinador');
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////// Foros  ///////////////////////////////////////////////////////

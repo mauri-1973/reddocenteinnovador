@@ -344,4 +344,48 @@ return [
 
     '171' => "Here you can see the full content of the selected topic, add replies, and vote on the topic's content.\r\n1.- Clickable button that allows you to return to the previous page.\r\n2.- Topic title.\r\n3.- Topic content.\r\n4.- Topic entry information.\r\n5.- Topic statistics.\r\n6.- To add a reply, it must have content.\r\n7.- Clickable control that will allow you to assign a score to the topic.\r\n8.- Clickable button that will allow you to attach a reply to the selected topic, only if it has content.\r\n",
 
+    '172' => 'coordinator',
+
+    '173' => 'All Competitions',
+
+    '174' => 'Competition(s)',
+
+    '175' => "select the contests, to which the coordinator' will have access",
+
+    '176' => 'Assigned Contests',
+
+    '177' => 'View Assignments',
+
+    '178' => 'Applications',
+
+    '179' => 'Total applications made to the contest',
+
+    '180' => 'Applications Open',
+
+    '181' => 'Applications Closed',
+
+    '182' => 'View Applications',
+
+    '183' => 'No Applications',
+
+    '184' => 'Teacher Name',
+
+    '185' => 'Application Status',
+
+    '186' => 'Application Date',
+
+    '187' => 'View Form',
+
+    '188' => 'With Observations',
+
+    '189' => 'Not Sent',
+
+    '190' => 'Selected',
+
+    '191' => 'Under Review',
+
+    '192' => 'Rejected',
+
+    '193' => 'Reviewed',
+
 ];

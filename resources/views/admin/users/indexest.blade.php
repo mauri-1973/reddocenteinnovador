@@ -124,7 +124,7 @@
 
                                         &nbsp;
 
-                                    <form id="delete_form{{$row->id}}" method="POST" action="{{ route('users.destroy',$row->id) }}" onclick="return confirm('{{ trans("multi-leng.areyousur")}}')">
+                                    <form id="delete_form{{$row->id}}" method="POST" action="{{ route('users.destroy', Crypt::encrypt($row->id)) }}" onclick="return confirm('{{ trans("multi-leng.areyousur")}}')">
 
                                         @csrf
 

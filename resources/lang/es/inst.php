@@ -344,52 +344,52 @@ return [
 
     '171' => 'Acá usted podrá ver el contenido completo del tema seleccionado, agregar respuestas y votar sobre el contenido del tema\r\n1.- Botón clickeable, que le permite volver a la página anterior.\r\n2.- Título del tema.\r\n3.- Contenido del tema.\r\n4.- Información del ingreso del tema.\r\n5.- Estadísticas del tema.\r\n6.- Para agregar una respuesta, esta debe tener contenido.\r\n7.- Control seleccionable que le permitirá, asignar una puntuación al tema.\r\n8.- Botón clickeable que le permitirá anexar una respuesta al tema seleccionado, solo si esta tiene contenido.\r\n',
 
-    '172' => '',
+    '172' => 'Coordinador',
 
-    '173' => '',
+    '173' => 'Todos los Concursos',
 
-    '174' => '',
+    '174' => 'Concurso(s)',
 
-    '175' => '',
+    '175' => 'Seleccione el o los concursos, a los que tendrá acceso el coordinador',
 
-    '176' => '',
+    '176' => 'Concursos Asignados',
 
-    '177' => '',
+    '177' => 'Ver Asignaciones',
 
-    '178' => '',
+    '178' => 'Postulaciones',
 
-    '179' => '',
+    '179' => 'Postulaciones totales realizadas al concurso',
 
-    '180' => '',
+    '180' => 'Postulaciones Abiertas',
 
-    '181' => '',
+    '181' => 'Postulaciones Cerradas',
 
-    '182' => '',
+    '182' => 'Ver Postulaciones',
 
-    '183' => '',
+    '183' => 'Sin Postulaciones',
 
-    '184' => '',
+    '184' => 'Nombre Docente',
 
-    '185' => '',
+    '185' => 'Estado de la Postulación',
 
-    '186' => '',
+    '186' => 'Fecha de Postulación',
 
-    '187' => '',
+    '187' => 'Ver Formulario',
 
-    '188' => '',
+    '188' => 'Con Observaciones',
 
-    '189' => '',
+    '189' => 'Sin Enviar',
 
-    '190' => '',
+    '190' => 'Seleccionada',
 
-    '191' => '',
+    '191' => 'En Revisión',
 
-    '192' => '',
+    '192' => 'Rechazada',
 
-    '193' => '',
+    '193' => 'Revisada',
 
     '194' => '',
-
+    
     '195' => '',
 
     '196' => '',

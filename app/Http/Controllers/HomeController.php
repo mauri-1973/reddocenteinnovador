@@ -12,6 +12,7 @@ use App\Link;
 use App\Corrections;
 use App\Commentblog;
 use Crypt;
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
@@ -123,6 +124,26 @@ class HomeController extends Controller
             $tags = Tagblog::all()->count();
             $visit = Post::all()->sum('read_count');
             return view('blog.dashboard', ["post" => $post, "cat" => $cat, "tags" => $tags, "visit" => $visit]);
+        }
+        if(Auth::user()->hasRole('coordinador'))
+        {
+            $cont = 0;
+            $cont1 = 0;
+            $array = array();
+            $post = DB::table('competitions as c')->select('*')->join('competitionscoordinador as cc', 'cc.idcomp', '=', 'c.idcomp')->where('cc.idcoor', Auth::user()->id)->get();
+            
+            foreach($post as $p)
+            {
+                $val = DB::table('postulations')->select('*')->where('idconc', $p->idcomp)->count();
+                $cont = $cont + $val;
+                array_push($array, ["idcomp" => $p->idcomp, "title" => $p->title, "formulario" => $p->formulario, "total" => $val]);
+                $cont1++;
+            }
+            
+            $cat = Categoryblog::all()->count();
+            $tags = Tagblog::all()->count();
+            $visit = Post::all()->sum('read_count');
+            return view('coor.dashboard', ["post" => $array, "cat" => $cat, "tags" => $tags, "asig" => $cont1, "postu" => $cont ]);
         }
         else
         {

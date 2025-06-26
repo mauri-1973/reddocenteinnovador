@@ -53,4 +53,25 @@ class StatisticsController extends Controller
         }
         
     }
+    public function estconasicoo(Request $request)
+    {
+        if($request->tipo == "panelcoorinicio")
+        {
+            $arraycant = [];
+            $arrayname = [];
+            $arraycolor = [];
+            
+            $post = DB::table('competitions as c')->select('*')->join('competitionscoordinador as cc', 'cc.idcomp', '=', 'c.idcomp')->where('cc.idcoor', Auth::user()->id)->get();
+            
+            foreach($post as $p)
+            {
+                $val = DB::table('postulations')->select('*')->where('idconc', $p->idcomp)->count();
+                $arraycant[] = $val;
+                $arrayname[] = $p->title. ' # '; 
+                $arraycolor[] = sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+            }
+            return response()->json(['status' => 1, 'cant'=> $arraycant, 'name' => $arrayname, 'cant'=> $arraycant, 'color' => $arraycolor]);
+        }
+        
+    }
 }

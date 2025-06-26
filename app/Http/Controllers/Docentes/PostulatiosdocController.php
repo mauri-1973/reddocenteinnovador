@@ -139,6 +139,8 @@ class PostulatiosdocController extends Controller
         return view('concursos.index', compact('posts','categories'));
     }
 
+    
+
     public function verposactdoc()
     {
         $array1 = array();
@@ -582,7 +584,7 @@ class PostulatiosdocController extends Controller
                     break;
                     
                     default:
-                        # code...
+                        abort(404);
                     break;
                 }
                 
