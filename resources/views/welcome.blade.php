@@ -37,9 +37,9 @@
   </style>
 
 </head>
-<body style="background-color:#122c4f;">
+<body style="background-color:#fff;">
 
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #53acd1;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #122c4f;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -95,7 +95,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 col-lg-12">
-      <div class="jumbotron" style="background-color:#122c4f;">
+      <div class="jumbotron" style="background-color:#fff;">
         <div class="lc-block d-grid gap-2 d-sm-flex justify-content-sm-center">
             <div class="overflow-hidden" style="max-height: 70vh;">
                 <div class="container px-5">

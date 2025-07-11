@@ -119,7 +119,7 @@
 
             </li>
 
-            <li {{Route::is('categorias-forums-docentes-registrados') || Route::is('listado-usuarios-estado-ingreso-docentes') || Route::is('acceder-forum-usuarios-activos') || Route::is('ver-contenido-tema-forum') ? 'class=active':'' }} >
+            <li {{Route::is('categorias-forums-docentes-registrados') || Route::is('listado-usuarios-estado-ingreso-docentes') || Route::is('acceder-forum-usuarios-activos') || Route::is('ver-contenido-tema-forum') ? 'class=active':'' }} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
             
                 <a data-toggle="collapse" href="#forums" aria-expanded="false" class="collapsed">
 
@@ -152,7 +152,7 @@
                 </div>
 
             </li>
-            <li {{Route::is('buscar-chats-usuario-registrado') ? 'class=active':''}}>
+            <li {{Route::is('buscar-chats-usuario-registrado') ? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
 
                 <a data-toggle="collapse" href="#chats" aria-expanded="false" class="collapsed">
 
@@ -186,7 +186,7 @@
 
             </li>
             
-            <li {{Route::is('ir-link-administrador-externo-formacion') || Route::is('ir-link-administrador-externo-extension')  || Route::is('ir-link-administrador-externo-proyectos') || Route::is('ir-link-administrador-externo-recursos') ? 'class=active':''}}>
+            <li {{Route::is('ir-link-administrador-externo-formacion') || Route::is('ir-link-administrador-externo-extension')  || Route::is('ir-link-administrador-externo-proyectos') || Route::is('ir-link-administrador-externo-recursos') ? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
 
                 <a data-toggle="collapse" href="#link" aria-expanded="false" class="collapsed">
 
@@ -225,7 +225,7 @@
                             </a>
 
                         </li>
-                        <li {{ Route::is('ir-link-administrador-externo-extension')? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
+                        <li {{ Route::is('ir-link-administrador-externo-extension')? 'class=active':''}}>
 
                             <a href="{{url('ir-link-administrador-externo-extension')}}"> 
 
@@ -236,7 +236,7 @@
                             </a>
 
                         </li>
-                        <li {{ Route::is('ir-link-administrador-externo-proyectos')? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
+                        <li {{ Route::is('ir-link-administrador-externo-proyectos')? 'class=active':''}}>
 
                             <a href="{{url('ir-link-administrador-externo-proyectos')}}"> 
 
@@ -247,7 +247,7 @@
                             </a>
 
                         </li>
-                        <li {{ Route::is('ir-link-administrador-externo-recursos')? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
+                        <li {{ Route::is('ir-link-administrador-externo-recursos')? 'class=active':''}}>
 
                             <a href="{{url('ir-link-administrador-externo-recursos')}}"> 
 
@@ -366,7 +366,7 @@
                 </div>
 
             </li>
-            <li {{Route::is('lluvia-de-ideas-usuarios-registrados')? 'class=active':''}} >
+            <li {{Route::is('lluvia-de-ideas-usuarios-registrados')? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
 
                 <a href="{{ route('lluvia-de-ideas-usuarios-registrados') }}">
 
@@ -377,7 +377,7 @@
                 </a>
 
             </li>
-            <li {{Route::is('conectar-usuarios-registrado')? 'class=active':''}} >
+            <li {{Route::is('conectar-usuarios-registrado')? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
 
                 <a href="{{ route('conectar-usuarios-registrado') }}">
 
