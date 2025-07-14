@@ -357,8 +357,8 @@
                 
 
             }
-
-            if(!$.trim($("#urlcatsub").val()).startsWith('https://www.')) 
+            
+            if(!esUrlHttpsValida($.trim($("#urlcatsub").val()))) 
 
             {
 
@@ -391,6 +391,14 @@
         
         
     });
+    function esUrlHttpsValida(url) {
+        try {
+            const u = new URL(url);
+            return u.protocol === "https:";
+        } catch (e) {
+            return false;
+        }
+    }
 
     function escapeHtml(str) {
 
