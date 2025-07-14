@@ -214,7 +214,7 @@
 
                         </li>
                         @endif
-                        <li {{ Route::is('ir-link-administrador-externo-formacion')? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
+                        <li {{ Route::is('ir-link-administrador-externo-formacion')? 'class=active':''}} >
 
                             <a href="{{url('ir-link-administrador-externo-formacion')}}"> 
 

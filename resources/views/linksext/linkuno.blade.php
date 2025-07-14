@@ -56,8 +56,10 @@
                         <a class="btn btn-link btn-sm"  href="{{ $li->urlext }}"  target="_blank" role="button">{{ trans('multi-leng.formerror292')}} {{ substr($li->urlext, 0, 13) }}...</a>
 
                         @else
-                            @if($li->urlext != '#' && $li->urlext != '')
+                            @if($li->urlext != '#' && $li->urlext != '' && Auth::user()->cargo_us == "Administrador")
                                 <a class="btn btn-link btn-sm" href="{{url('ver-link-embed-administrador-web', ['id' => Crypt::encrypt($li->idlinkext) ])}}" role="button">{{ trans('multi-leng.formerror292')}} {{ substr($li->urlext, 0, 13) }}...</a>
+                            @elseif($li->urlext != '#' && $li->urlext != '' && (Auth::user()->cargo_us == "Docente" || Auth::user()->cargo_us == "Estudiante"))
+                                <a class="btn btn-link btn-sm" href="{{ $li->urlext}}" role="button" target="_blank">{{ trans('multi-leng.formerror292')}} {{ substr($li->urlext, 0, 13) }}...</a>
                             @else
                                 <a class="btn btn-link btn-sm" href="#" role="button">{{ $li->urlext }}</a>
                             @endif

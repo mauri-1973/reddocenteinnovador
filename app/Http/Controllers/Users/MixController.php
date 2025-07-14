@@ -144,6 +144,7 @@ class MixController extends Controller
     public function irlinadmextuno()
     {
         $link = LinkExt::where('nombreini', 'Formación')->get();
+        
         return view('linksext.linkuno', ["tipo" => "Formación", 'link' => $link ]);
     }
 
