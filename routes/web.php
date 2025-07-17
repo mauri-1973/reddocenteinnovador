@@ -51,7 +51,14 @@ Route::group(['middleware' => ['role:admin','translate']], function () {
     Route::post('ingresar-categoria-solicitud-docente', [Admin\UsersController::class, 'ingcatsoldoc'])->name('ingresar-categoria-solicitud-docente');
     
     
+    
+    
     Route::post('actualizar-estado-auditor-proyecto-seleccionado', [Auditor\ActasController::class, 'actestaudprosel'])->name('actualizar-estado-auditor-proyecto-seleccionado');
+    
+    Route::get('agregar-usuarios-excel', [Admin\UsersController::class, 'agrusuexc'])->name('agregar.usuarios.excel');
+    
+    
+    
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////// Categorías  ///////////////////////////////////////////////////////////

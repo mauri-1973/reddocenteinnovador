@@ -444,6 +444,7 @@ class UsersController extends Controller
         $selectedRoles = $data[0];
         $select = [];
         $arraycat = array();
+        
         if($selectedRoles == "docente")
         {
             
@@ -464,8 +465,10 @@ class UsersController extends Controller
                 }
                 array_push($arraycat, array('nombrecat' => $cat->name, 'arraysub' => $arraysub));
             };
+            return view('admin.users.edit', compact('user', 'roles','selectedRoles'), ["arraycat" => $arraycat, "select" => $select]);
 
         }
+        
         if($selectedRoles == "coordinador")
         {
             $array = array();
@@ -477,21 +480,22 @@ class UsersController extends Controller
                 array_push($array, array("idcomp" => $c->idcomp) );
                 $sol[] = $c->idcomp;
             }
+            $valor1 = array();
+            $comp1 = DB::table("competitions")->select('idcomp', 'title')->whereIn('idcomp', $sol)->get();
+            foreach($comp1 as $v)
+            {
+                array_push($valor1, array("idcomp" => $v->idcomp, "title" => $v->title, "selected" => "selected"));
+            }
+            $comp1 = DB::table("competitions")->select('idcomp', 'title')->whereNotIn('idcomp', $sol)->get();
+            foreach($comp1 as $v)
+            {
+                array_push($valor1, array("idcomp" => $v->idcomp, "title" => $v->title, "selected" => ""));
+            }
+            
+            return view('admin.users.editcoor', compact('user', 'roles','selectedRoles'), ["arraycat" => $arraycat, "select" => $select, "arraycomp" => $array, 'comp' => $valor1]);
 
         }
-        $valor1 = array();
-        $comp1 = DB::table("competitions")->select('idcomp', 'title')->whereIn('idcomp', $sol)->get();
-        foreach($comp1 as $v)
-        {
-            array_push($valor1, array("idcomp" => $v->idcomp, "title" => $v->title, "selected" => "selected"));
-        }
-        $comp1 = DB::table("competitions")->select('idcomp', 'title')->whereNotIn('idcomp', $sol)->get();
-        foreach($comp1 as $v)
-        {
-            array_push($valor1, array("idcomp" => $v->idcomp, "title" => $v->title, "selected" => ""));
-        }
         
-        return view('admin.users.editcoor', compact('user', 'roles','selectedRoles'), ["arraycat" => $arraycat, "select" => $select, "arraycomp" => $array, 'comp' => $valor1]);
     }
 
     /**
@@ -1823,6 +1827,68 @@ class UsersController extends Controller
         
         
         //return json_encode([ "status" => $status, "email" => $e, "cel" => $t, "rut" => $r ]);
+    }
+    public function agrusuexc()
+    {
+        $val = DB::table('temporalusers')->where(['existeregistro' => 'no', 'sendemail' => 'si', 'existecarrera' => 'si'])->get();
+        $num = 0;
+        foreach($val as $v)
+        {
+            
+                $nameSanitize = filter_var(ucwords($v->nombre), FILTER_SANITIZE_STRING);
+                $surnameSanitize = filter_var(ucwords($v->apellido), FILTER_SANITIZE_STRING);
+                $emailSanitize = filter_var(strtolower($v->email), FILTER_SANITIZE_STRING);
+                $mobileSanitize = $this->generacelu();
+                $passSanitize = filter_var($v->email, FILTER_SANITIZE_STRING);
+
+                $user = new User;
+                $user->name    = $nameSanitize;
+                $user->surname    = $surnameSanitize;
+                $user->email    = $emailSanitize;
+                $user->mobile    = $mobileSanitize;
+                $user->password    = bcrypt(filter_var($passSanitize, FILTER_SANITIZE_STRING));
+                $user->status_us    = 1;
+                $user->cargo_us    = "Docente";
+                $user->avatar = 'sinregistro.png';
+
+                $user->save();
+                $user->assignRole('docente');
+
+                $res = Subcategory::select('carpeta', 'id_sub')->where('name', (string)$v->carrera)->first();
+                if(!$res)
+                {
+                    if($v->carrera == 'INGENIERIA-EN-INFORMATICA' )
+                    {
+                        
+                        $res = Subcategory::select('carpeta', 'id_sub')->where('id_sub', 11)->first();
+                        dd($res);
+                    }
+                    else
+                    {
+                        dd($v->carrera, $v->id);
+                    }
+                }
+                $destino = $res->carpeta;
+                $carpeta = date("YmdHis");
+                $anexo =  preg_replace("/\s+/", "", trim($nameSanitize)).$carpeta;
+
+                $dataClient = new Resource;
+                $dataClient->title    = "actualizar";
+                $dataClient->author    = "actualizar";
+                $dataClient->user_id    = $user->id;
+                $dataClient->subcategory_id     = (int)$res->id_sub;
+                $dataClient->folder = $destino.'/'.$anexo;
+                $dataClient->save();
+                $path = storage_path('app/public/'.$destino.'/'.$anexo);
+                if (!is_dir($path))
+                {
+                    mkdir($path, 0777, true);
+                }
+
+                DB::table('temporalusers')->where('id', $v->id)->update(['existeregistro' => 'nuevo', 'sendemail' => 'enviar', 'existecarrera' => 'si']);
+            
+        }
+        dd($path);
     }
     private function deleteDirectory($dir) {
         if(!$dh = @opendir($dir)) return false;
