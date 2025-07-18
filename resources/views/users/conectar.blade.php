@@ -36,40 +36,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($array as $row => $slice)
-                            <tr>
-                                <td>{{ $array[$row]['nombre'] }}</td>
-                                <td>{{ $array[$row]['apellidos'] }}</td>
-                                <td>{{ $array[$row]['email'] }}</td>
-                                <td>{{ $array[$row]['movil'] }}</td>
-                                <td>{{ $array[$row]['prof'] }}</td>
-                                <td class="text-center">
-                                <img src="{{ asset('storage/profile-pic')}}/{{ $array[$row]['avatar'] }}" alt="{{ $array[$row]['apellidos'] }}" data-email="{{ $array[$row]['email'] }}" style="width:85px;"> 
-                                
-                                </td>
-                                <td>
-                                    @foreach($array[$row]['tags'] as $r => $s)
-                                    #{{ $array[$row]['tags'][$r]['tagnom'] }},&nbsp;
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-success btn-sm btn-block mb-1 sendmail" onclick="mostform('{{$array[$row]["nombre"].' '. $array[$row]["apellidos"]}}', '{{$array[$row]["email"]}}', '{{ Crypt::encrypt($array[$row]["idus"]) }}' )"  style="width:200px;"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; {{ trans('multi-leng.formerror254')}}</button>
-                                    @if($array[$row]['movil'] != '')
-                                    <a href="tel:+56{{ $array[$row]['movil'] }}" role="button" class="btn btn-primary btn-sm mb-1" style="width:200px;"><i class="fa fa-phone" aria-hidden="true"></i>
-                                    &nbsp;{{ trans('multi-leng.formerror255')}}</a>
-                                    @endif
-                                    @if(substr($array[$row]['movil'], -9, 1) == 9)
-                                    <a href="https://api.whatsapp.com/send?phone=56{{ $array[$row]['movil'] }}&text=Hola%20,te%20contacto%20desde%20Red%20Docente%20Innovador%20para%20contactar%20por%20este%20canal." target="_blank" role="button" class="btn btn-sm mb-1" style="width:200px;background-color:#27d268"><i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;Whatsapp</a>
-                                    @endif
-                                    
-                                </td>
-                                <td>
-                                    @foreach($array[$row]['tags'] as $r => $s)
-                                    {{ $array[$row]['tags'][$r]['tagnom'] }},&nbsp;
-                                    @endforeach
-                                </td>
-                            </tr>   
-                            @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
@@ -122,22 +89,95 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         });
+
+
         $('#dt-mant-table').DataTable({
-            //"dom": 'lfrtip'
-            "dom": 'frtip', 
-            "pageLength": 15,
-            "fixedHeader": true,
-            "responsive": true,      
-            "order": [[ 1, "asc" ]],
-            "columnDefs": [
+            processing : true,
+            serverSide : true,
+            dom        : 'frtip',
+            fixedHeader: true,
+            order      : [[ 1, "asc" ]],
+            ajax: "{{ route('conectar.usuarios.registrado.datatables') }}",
+            columns: [
+                { data: 'name', name: 'name' },
+                { data: 'surname', name: 'surname' },
+                { data: 'email', name: 'email' },
+                { data: 'mobile', name: 'mobile' },
+                { data: 'profesion', name: 'profesion' }, 
+                { data: 'avatar', render: function ( data, type, row ) {
+                    
+                        return `<img style="width:100px;height:auto;" id="logouser${row.id}" src="{{asset('storage/profile-pic')}}/${row.avatar}" alt="${row.name}" style="width:85px;" class="avatar border-gray"/>`;
+                        return `<img 
+                            style="width:100px;height:auto;" 
+                            id="logouser${row.id}" 
+                            src="{{asset('storage/profile-pic')}}/${row.avatar}" 
+                            alt="${row.name}" 
+                            class="avatar border-gray"
+                            onerror="this.onerror=null;this.src='{{ asset('storage/profile-pic/sinregistro.png') }}';" 
+                        />`;
+                    } 
+                },
+                {   data: 'tags',
+                    render: function(data, type, row) {
+                        if (Array.isArray(data)) {
+                            // Usamos badge bg-primary y un pequeño margen-end
+                            return data.map(function(tag) {
+                                return '<span class="badge bg-primary p-2 me-1">#' + tag.tagnom + '</span>';
+                            }).join(' ');
+                        }
+                        if (typeof data === "string" && data[0] === '[') {
+                            try {
+                                var tagsArr = JSON.parse(data);
+                                return tagsArr.map(function(tag) {
+                                    return '<span class="badge bg-primary p-2 me-1">#' + tag.tagnom + '</span>';
+                                }).join(' ');
+                            } catch (e) {
+                                return '';
+                            }
+                        }
+                        return '';
+                    } 
+                },
+                { data: 'id', render: function ( data, type, row ) {
+                    
+                        let html = `<button type="button" class="btn btn-success btn-sm btn-block mb-1 sendmail" onclick="mostform('`+row.name+' '+row.surname+`', '${row.email}', '${row.encrypted_id}' )"  style="width:200px;"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; {{ trans('multi-leng.formerror254')}}</button>`;
+                        var mobileStr = (row.mobile || '').toString();
+                        if (mobileStr !== '') {
+                        html += `<a href="tel:+56${mobileStr}" role="button" class="btn btn-primary btn-sm btn-block mb-1" style="width:200px;"><i class="fa fa-phone" aria-hidden="true"></i>
+                        &nbsp;Llamar</a>`;
+                        }
+                        // Solo si es tipo string y cumple la condición
+                        if (mobileStr.length >= 9 && mobileStr[mobileStr.length - 9] == '9') {
+                        html += `<a href="https://api.whatsapp.com/send?phone=56${mobileStr}&text=Hola%20,te%20contacto%20desde%20Red%20Docente%20Innovador%20para%20contactar%20por%20este%20canal." target="_blank" role="button" class="btn btn-sm btn-block mb-1" style="width:200px;background-color:#27d268"><i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;Whatsapp</a>`;
+                        }
+                        return html;
+                        
+                    } 
+                },
+                
+                {
+                    data: 'tags_flat'
+                }
+            ],
+            columnDefs : [
                             {
                                 "targets": [ 8 ],
                                 "visible": false,
                                 "searchable": true
                             },
-                        ],  
+                            {
+                                "targets": [ 7 ],
+                                "visible": true,
+                                "searchable": false
+                            },
+            ],
+            
+            responsive: true,
+
             "language": {
+
                 "url": "{{asset('json')}}/{{ trans('multi-leng.idioma')}}.json"
+
             }
         });
     });

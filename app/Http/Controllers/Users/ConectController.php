@@ -44,6 +44,7 @@ use App\Mail\SendEmailContact;
 
 use Illuminate\Support\Facades\Mail;
 
+use Yajra\DataTables\DataTables;
 
 use File;
 
@@ -85,19 +86,46 @@ class ConectController extends Controller
     public function conusureg()
     {
         $env = array();
-        $array = User::where(['status_us' => 1, 'conectar' => 1])->get();
-        foreach($array as $row)
-        {
-            $tagsus = array();
-            $tag = TagUsers::where('tagidus', $row->id)->get();
-            foreach($tag as $r)
-            {
-                array_push($tagsus, array('tagnom' => $r->tagnom, 'idtag' => $r->idtag));
-            }
-            array_push($env, array('idus' => $row->id, 'prof' => $row->profesion, 'nombre' => $row->name, 'apellidos' => $row->surname, 'email' => $row->email, 'movil' => $row->mobile, 'avatar' => $row->avatar, 'tags' =>  $tagsus));
-        }
-
+       
+        
         return view('users.conectar', ["array" => $env]);
+    }
+
+    public function conusuregdatatables()
+    {
+        if (request()->ajax()) 
+        {
+            $query = User::select('id', 'profesion', 'name', 'surname', 'email', 'mobile', 'avatar')
+            ->where(['status_us' => 1, 'conectar' => 1])
+            ->where('id', '!=', Auth::user()->id)
+            ->with(['tagUsers:tagidus,tagnom,idtag']);
+
+            return datatables()->of($query)
+                    ->addColumn('tags', function($user) {
+                        return $user->tagUsers->map(function($tag) {
+                            return [
+                                'tagnom' => $tag->tagnom,
+                                'idtag' => $tag->idtag
+                            ];
+                        })->values();
+                    })
+                    ->addColumn('tags_flat', function($user) {
+                        return $user->tagUsers->pluck('tagnom')->implode(', ');
+                    })
+                    ->addColumn('encrypted_id', function($user) {
+                        return Crypt::encrypt($user->id);
+                    })
+
+                    // --- ¡Esto es lo importante que debes agregar! ---
+                    ->filterColumn('tags_flat', function($query, $keyword) {
+                        // Asumiendo que la relación se llama tagUsers y el nombre de la columna es tagnom
+                        $query->whereHas('tagUsers', function ($q) use ($keyword) {
+                            $q->where('tagnom', 'like', "%{$keyword}%");
+                        });
+                    })
+
+                    ->make(true);
+        }
     }
 
     public function envemaconusureg(Request $request)

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use App\TagUsers;
 
 class User extends Authenticatable
 {
@@ -54,5 +55,11 @@ class User extends Authenticatable
     public function admin()
     {
       return $this->type === 'admin';
+    }
+
+    public function tagUsers()
+    {
+        return $this->hasMany(TagUsers::class, 'tagidus', 'id');
+        // TagUsers es el modelo, 'tagidus' es la columna en tag_users que referencia a users.id
     }
 }

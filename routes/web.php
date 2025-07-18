@@ -57,7 +57,7 @@ Route::group(['middleware' => ['role:admin','translate']], function () {
     
     Route::get('agregar-usuarios-excel', [Admin\UsersController::class, 'agrusuexc'])->name('agregar.usuarios.excel');
     
-    
+    Route::get('buscar-usuarios-docentes-datatables', [Admin\UsersController::class, 'bususudoc'])->name('buscar.usuarios.docentes.datatables');
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -606,7 +606,8 @@ Route::group(['middleware' => ['auth', 'translate']], function () {
     ////////////////////////////////////////////// Conectar        ///////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Route::get('conectar-usuarios-registrado', [Users\ConectController::class, 'conusureg'])->name('conectar-usuarios-registrado'); 
+    Route::get('conectar-usuarios-registrado', [Users\ConectController::class, 'conusureg'])->name('conectar-usuarios-registrado');
+    Route::get('conectar-usuarios-registrado-datatables', [Users\ConectController::class, 'conusuregdatatables'])->name('conectar.usuarios.registrado.datatables'); 
     Route::post('enviar-email-conectar-usuarios-registrados', [Users\ConectController::class, 'envemaconusureg'])->name('enviar-email-conectar-usuarios-registrados');
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

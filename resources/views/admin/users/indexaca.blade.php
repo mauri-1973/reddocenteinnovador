@@ -87,70 +87,6 @@
 
                         </thead>
 
-                        <tbody>
-
-                            @foreach($users as $row)
-
-                            <tr>
-
-                                <td>{{ $row->name }}</td>
-
-                                <td>{{ $row->surname }}</td>
-
-                                <td>{{ $row->email }}</td>
-
-                                <td>{{ $row->mobile }}</td>
-
-                                <td>
-
-                                    {{ $row->cargo_us }}
-
-                                </td>
-
-                                <td class="text-center">
-
-                                    @if (file_exists(public_path('storage/profile-pic/').$row->avatar))
-
-                                        <img style="width:100px;height:auto;" id="logouser" src="{{asset('storage/profile-pic')}}/{{$row->avatar}}" alt="{{$row->name}}" class="avatar border-gray"/>
-
-                                    @else
-
-                                        <img style="width:100px;height:auto;" id="logouser" src="{{asset('storage/profile-pic/sinregistro.png')}}" alt="{{$row->name}}" class="avatar border-gray"/>
-
-                                    @endif
-
-                                </td>
-
-                                <td>
-
-                                    <div style="display:flex;">
-
-                                    <a href="{{route('users.edit',$row->id)}}" class="btn btn-warning btn-sm">{{ trans('lang.editar') }}</a>
-
-                                        &nbsp;
-
-                                    <form id="delete_form{{$row->id}}" method="POST" action="{{ route('users.destroy', Crypt::encrypt($row->id)) }}" onclick="return confirm('{{ trans("multi-leng.areyousur")}}')">
-
-                                        @csrf
-
-                                        <input name="_method" type="hidden" value="DELETE">
-
-                                        <input name="tipo" type="hidden" value="aca">
-
-                                        <button class="btn btn-danger btn-sm" type="submit">{{ trans('lang.eliminar')}}</button>
-
-                                    </form>
-
-                                    </div>
-
-                                </td>
-
-                            </tr>
-
-                            @endforeach
-
-                        </tbody>
-
                     </table>
 
                 </div>
@@ -220,26 +156,67 @@
             $('[data-toggle="tooltip"]').tooltip()
 
         });
-
         $('#dt-mant-table').DataTable({
+                processing: true,
+                serverSide: true,
+                dom: 'frtip', 
+                fixedHeader: true,
+                ajax: "{{ route('buscar.usuarios.docentes.datatables') }}",
+                columns: [
+                    { data: 'name', name: 'name' },
+                    { data: 'surname', name: 'surname' },
+                    { data: 'email', name: 'email' },
+                    { data: 'mobile', name: 'mobile' },
+                    { data: 'cargo_us', name: 'cargo_us' }, 
+                    { data: 'avatar', render: function ( data, type, row ) {
+                        
+                            return `<img style="width:100px;height:auto;" id="logouser" src="{{asset('storage/profile-pic')}}/${row.avatar}" alt="${row.name}" class="avatar border-gray"/>`;
+                        } 
+                    },
+                    { data: 'id', name: '{{ trans("multi-leng.formerror22")}}', render: function ( data, type, row ) {
+                        
+                            return `<div style="display:flex;">
 
-            //"dom": 'lfrtip'
+                                    <a href="{{url('') }}/users/`+row.id+`/edit" class="btn btn-warning btn-sm">{{ trans('lang.editar') }}</a>
 
-            "dom": 'frtip', 
+                                        &nbsp;
 
-            fixedHeader: true,
+                                    <form id="delete_form${row.id}" method="POST" action="{{ route('users.destroy', Crypt::encrypt(`+row.encrypted_id+`) ) }}" onclick="return confirm('{{ trans("multi-leng.areyousur")}}')">
 
-            responsive: true,      
+                                        @csrf
 
-            "order": [[ 0, "asc" ]],
+                                        <input name="_method" type="hidden" value="DELETE">
 
-            "language": {
+                                        <input name="tipo" type="hidden" value="aca">
 
-                "url": "{{asset('json')}}/{{ trans('multi-leng.idioma')}}.json"
+                                        <input name="idencript" type="hidden" value="`+row.encrypted_id+`">
 
-            }
+                                        <button class="btn btn-danger btn-sm" type="submit">{{ trans('lang.eliminar')}}</button>
 
-        });
+                                    </form>
+
+                                    </div>`;
+                        } 
+                    }
+                ],
+                columnDefs : [
+                                {
+                                    "targets": [ 6 ],
+                                    "visible": true,
+                                    "searchable": false
+                                },
+                ],
+                
+                responsive: true,      
+
+                "order": [[ 0, "asc" ]],
+
+                "language": {
+
+                    "url": "{{asset('json')}}/{{ trans('multi-leng.idioma')}}.json"
+
+                }
+            });
 
     });
 

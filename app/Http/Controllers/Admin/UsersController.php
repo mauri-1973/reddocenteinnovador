@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Mail;
 use App\UserLoginLog;
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
+use Yajra\DataTables\DataTables;
 use Excel;
 use Image;
 use Crypt;
@@ -79,9 +80,26 @@ class UsersController extends Controller
         };
         $cat = Category::join('subcategories as sub', 'sub.cat_id', '=', 'categories.id_cat')
                 ->get(['categories.*', 'sub.*']);
-        $users = User::where("cargo_us", "Docente")->get();
 
+        $users = User::where("cargo_us", "Docente")->get();
+        
         return view('admin.users.indexaca', compact('users', 'cat'), ['catego' => count($cat) , 'arraycat' => $arraycat]);
+    }
+    public function bususudoc()
+    {
+        
+        if (request()->ajax()) 
+            {
+            $query = User::select('id', 'name', 'surname', 'email', 'avatar', 'mobile', 'cargo_us')
+            ->where("cargo_us", "Docente");
+
+        
+            return DataTables::of($query)
+            ->addColumn('encrypted_id', function($user) {
+                return Crypt::encryptString($user->id);
+            })
+            ->make(true);
+        }
     }
     public function indexest()
     {
@@ -759,37 +777,41 @@ class UsersController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $id = Crypt::decrypt($id);
-        
-        $user = User::findOrFail($id);
-        $user->delete();
-        
-        switch (true) {
-            case ($request->tipo = "aca"):
-                return redirect()->route('agregar-usuarios-academicos')->with('danger', "$user->name". trans("multi-leng.a269") );
-            break;
-            case ($request->tipo = "adm"):
-                return redirect()->route('agregar-usuarios-administradores')->with('danger', "$user->name". trans("multi-leng.a269") );
-            break;
-            case ($request->tipo = "est"):
-                return redirect()->route('agregar-usuarios-estudiantes')->with('danger', "$user->name". trans("multi-leng.a269") );
-            break;
-            case ($request->tipo = "not"):
-                return redirect()->route('agregar-usuarios-noticias')->with('danger', "$user->name". trans("multi-leng.a269") );
-            break;
-            case ($request->tipo = "rev"):
-                return redirect()->route('agregar-usuarios-revisores')->with('danger', "$user->name". trans("multi-leng.a269") );
-            break;
-            case ($request->tipo = "aud"):
-                return redirect()->route('agregar-usuarios-auditores')->with('danger', "$user->name". trans("multi-leng.a269") );
-            break;
-            case ($request->tipo = "coo"):
-                return redirect()->route('agregar.usuarios.coordinadores')->with('danger', "$user->name". trans("multi-leng.a269") );
-            break;
-            default:
-                return redirect()->route('users.index')->with('danger', "$user->name". trans("multi-leng.a269") );
-            break;
+        if($request->idencript)
+        {
+            $id = Crypt::decrypt($request->idencript);
+            dd($id);
+            $user = User::findOrFail($id);
+            $user->delete();
+            
+            switch (true) {
+                case ($request->tipo = "aca"):
+                    return redirect()->route('agregar-usuarios-academicos')->with('danger', "$user->name". trans("multi-leng.a269") );
+                break;
+                case ($request->tipo = "adm"):
+                    return redirect()->route('agregar-usuarios-administradores')->with('danger', "$user->name". trans("multi-leng.a269") );
+                break;
+                case ($request->tipo = "est"):
+                    return redirect()->route('agregar-usuarios-estudiantes')->with('danger', "$user->name". trans("multi-leng.a269") );
+                break;
+                case ($request->tipo = "not"):
+                    return redirect()->route('agregar-usuarios-noticias')->with('danger', "$user->name". trans("multi-leng.a269") );
+                break;
+                case ($request->tipo = "rev"):
+                    return redirect()->route('agregar-usuarios-revisores')->with('danger', "$user->name". trans("multi-leng.a269") );
+                break;
+                case ($request->tipo = "aud"):
+                    return redirect()->route('agregar-usuarios-auditores')->with('danger', "$user->name". trans("multi-leng.a269") );
+                break;
+                case ($request->tipo = "coo"):
+                    return redirect()->route('agregar.usuarios.coordinadores')->with('danger', "$user->name". trans("multi-leng.a269") );
+                break;
+                default:
+                    return redirect()->route('users.index')->with('danger', "$user->name". trans("multi-leng.a269") );
+                break;
+            }
         }
+        abort(404);
     }
 
     /**
@@ -1907,6 +1929,18 @@ class UsersController extends Controller
         @rmdir($dir);
         return true;
     }
+    private function validarcelu($numero)
+    {
+        $val = User::where('mobile', $numero)->count();
+        if($val == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     
     private function generacelu()
     {
@@ -1917,6 +1951,7 @@ class UsersController extends Controller
         {
             $clave .= $caracteres[rand(0, $caractereslong - 1)];
         }
+        
         return $clave;
     }
 

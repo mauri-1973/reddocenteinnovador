@@ -39,6 +39,7 @@ class ComposerStaticInitcc0cd4f3e0e16364b6325ad53964bb76
         'c72349b1fe8d0deeedd3a52e8aa814d8' => __DIR__ . '/..' . '/mockery/mockery/library/helpers.php',
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
+        '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -49,6 +50,10 @@ class ComposerStaticInitcc0cd4f3e0e16364b6325ad53964bb76
         'Z' => 
         array (
             'ZipStream\\' => 10,
+        ),
+        'Y' => 
+        array (
+            'Yajra\\DataTables\\' => 17,
         ),
         'W' => 
         array (
@@ -201,6 +206,10 @@ class ComposerStaticInitcc0cd4f3e0e16364b6325ad53964bb76
         'ZipStream\\' => 
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
+        ),
+        'Yajra\\DataTables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -595,6 +604,8 @@ class ComposerStaticInitcc0cd4f3e0e16364b6325ad53964bb76
         'App\\Commentblog' => __DIR__ . '/../..' . '/app/Commentblog.php',
         'App\\Competitions' => __DIR__ . '/../..' . '/app/Competitions.php',
         'App\\CompetitionsTags' => __DIR__ . '/../..' . '/app/CompetitionsTags.php',
+        'App\\Console\\Commands\\NotifAdminActas' => __DIR__ . '/../..' . '/app/Console/Commands/NotifAdminActas.php',
+        'App\\Console\\Commands\\SeleccionadosCommand' => __DIR__ . '/../..' . '/app/Console/Commands/SeleccionadosCommand.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Corrections' => __DIR__ . '/../..' . '/app/Corrections.php',
         'App\\DetailsResources' => __DIR__ . '/../..' . '/app/DetailsResources.php',
@@ -610,9 +621,14 @@ class ComposerStaticInitcc0cd4f3e0e16364b6325ad53964bb76
         'App\\Http\\Controllers\\Admin\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoriesController.php',
         'App\\Http\\Controllers\\Admin\\LinkController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/LinkController.php',
         'App\\Http\\Controllers\\Admin\\PermissionsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PermissionsController.php',
+        'App\\Http\\Controllers\\Admin\\PresupuestosController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PresupuestosController.php',
         'App\\Http\\Controllers\\Admin\\RolesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/RolesController.php',
         'App\\Http\\Controllers\\Admin\\SubcategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SubcategoriesController.php',
         'App\\Http\\Controllers\\Admin\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UsersController.php',
+        'App\\Http\\Controllers\\Auditor\\ActasController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auditor/ActasController.php',
+        'App\\Http\\Controllers\\Auditor\\CompetitionsaudController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auditor/CompetitionsaudController.php',
+        'App\\Http\\Controllers\\Auditor\\PostulationNewController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auditor/PostulationNewController.php',
+        'App\\Http\\Controllers\\Auditor\\PostulationsaudController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auditor/PostulationsaudController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -628,7 +644,12 @@ class ComposerStaticInitcc0cd4f3e0e16364b6325ad53964bb76
         'App\\Http\\Controllers\\Competitions\\CompetitionsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Competitions/CompetitionsController.php',
         'App\\Http\\Controllers\\Competitions\\PostulationsrevController' => __DIR__ . '/../..' . '/app/Http/Controllers/Competitions/PostulationsrevController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Coordinador\\ViewController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinador/ViewController.php',
+        'App\\Http\\Controllers\\Docentes\\ActasController' => __DIR__ . '/../..' . '/app/Http/Controllers/Docentes/ActasController.php',
+        'App\\Http\\Controllers\\Docentes\\NewformController' => __DIR__ . '/../..' . '/app/Http/Controllers/Docentes/NewformController.php',
+        'App\\Http\\Controllers\\Docentes\\PostulatiosNewformController' => __DIR__ . '/../..' . '/app/Http/Controllers/Docentes/PostulatiosNewformController.php',
         'App\\Http\\Controllers\\Docentes\\PostulatiosdocController' => __DIR__ . '/../..' . '/app/Http/Controllers/Docentes/PostulatiosdocController.php',
+        'App\\Http\\Controllers\\Docentes\\PresupuestosController' => __DIR__ . '/../..' . '/app/Http/Controllers/Docentes/PresupuestosController.php',
         'App\\Http\\Controllers\\Docs\\DocumentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Docs/DocumentsController.php',
         'App\\Http\\Controllers\\Docs\\DocumentsExtController' => __DIR__ . '/../..' . '/app/Http/Controllers/Docs/DocumentsExtController.php',
         'App\\Http\\Controllers\\Forums\\ForumsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Forums/ForumsController.php',
@@ -655,8 +676,15 @@ class ComposerStaticInitcc0cd4f3e0e16364b6325ad53964bb76
         'App\\Link' => __DIR__ . '/../..' . '/app/Link.php',
         'App\\LinkExt' => __DIR__ . '/../..' . '/app/LinkExt.php',
         'App\\Listeners\\Users\\UserLoginListener' => __DIR__ . '/../..' . '/app/Listeners/Users/UserLoginListener.php',
+        'App\\Mail\\EmailNewActas' => __DIR__ . '/../..' . '/app/Mail/EmailNewActas.php',
+        'App\\Mail\\EmailNotAsesor' => __DIR__ . '/../..' . '/app/Mail/EmailNotAsesor.php',
+        'App\\Mail\\EmailNotAsesorDoc' => __DIR__ . '/../..' . '/app/Mail/EmailNotAsesorDoc.php',
+        'App\\Mail\\EmailNotifications' => __DIR__ . '/../..' . '/app/Mail/EmailNotifications.php',
+        'App\\Mail\\MailSeleccion' => __DIR__ . '/../..' . '/app/Mail/MailSeleccion.php',
         'App\\Mail\\MailUsersNew' => __DIR__ . '/../..' . '/app/Mail/MailUsersNew.php',
+        'App\\Mail\\MailUsersNewDoc' => __DIR__ . '/../..' . '/app/Mail/MailUsersNewDoc.php',
         'App\\Mail\\MailUsersNewPass' => __DIR__ . '/../..' . '/app/Mail/MailUsersNewPass.php',
+        'App\\Mail\\NewEmailUp' => __DIR__ . '/../..' . '/app/Mail/NewEmailUp.php',
         'App\\Mail\\SendEmailContact' => __DIR__ . '/../..' . '/app/Mail/SendEmailContact.php',
         'App\\MessageAuth' => __DIR__ . '/../..' . '/app/MessageAuth.php',
         'App\\Message_Users' => __DIR__ . '/../..' . '/app/Message_Users.php',
@@ -6554,6 +6582,22 @@ class ComposerStaticInitcc0cd4f3e0e16364b6325ad53964bb76
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'Yajra\\DataTables\\ApiResourceDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/ApiResourceDataTable.php',
+        'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
+        'Yajra\\DataTables\\Contracts\\DataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTable.php',
+        'Yajra\\DataTables\\Contracts\\Formatter' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/Formatter.php',
+        'Yajra\\DataTables\\DataTableAbstract' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTableAbstract.php',
+        'Yajra\\DataTables\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTables.php',
+        'Yajra\\DataTables\\DataTablesServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTablesServiceProvider.php',
+        'Yajra\\DataTables\\EloquentDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/EloquentDataTable.php',
+        'Yajra\\DataTables\\Exceptions\\Exception' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Exceptions/Exception.php',
+        'Yajra\\DataTables\\Facades\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Facades/DataTables.php',
+        'Yajra\\DataTables\\Processors\\DataProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php',
+        'Yajra\\DataTables\\Processors\\RowProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php',
+        'Yajra\\DataTables\\QueryDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/QueryDataTable.php',
+        'Yajra\\DataTables\\Utilities\\Config' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Config.php',
+        'Yajra\\DataTables\\Utilities\\Helper' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Helper.php',
+        'Yajra\\DataTables\\Utilities\\Request' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Request.php',
         'ZipStream\\Bigint' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Bigint.php',
         'ZipStream\\DeflateStream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/DeflateStream.php',
         'ZipStream\\Exception' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Exception.php',
