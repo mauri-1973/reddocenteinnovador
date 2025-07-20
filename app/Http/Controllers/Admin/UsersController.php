@@ -66,6 +66,18 @@ class UsersController extends Controller
     }
     public function indexaca()
     {
+        if (request()->ajax()) 
+        {
+            $query = User::select('id', 'name', 'surname', 'email', 'avatar', 'mobile', 'cargo_us')
+            ->where("cargo_us", "Docente");
+
+        
+            return DataTables::of($query)
+            ->addColumn('encrypted_id', function($user) {
+                return Crypt::encryptString($user->id);
+            })
+            ->make(true);
+        }
         $arraycat = array();
         $category = Category::all();
         foreach($category as $cat)
@@ -81,26 +93,11 @@ class UsersController extends Controller
         $cat = Category::join('subcategories as sub', 'sub.cat_id', '=', 'categories.id_cat')
                 ->get(['categories.*', 'sub.*']);
 
-        $users = User::where("cargo_us", "Docente")->get();
         
-        return view('admin.users.indexaca', compact('users', 'cat'), ['catego' => count($cat) , 'arraycat' => $arraycat]);
+        
+        return view('admin.users.indexaca', compact('cat'), ['catego' => count($cat) , 'arraycat' => $arraycat]);
     }
-    public function bususudoc()
-    {
-        
-        if (request()->ajax()) 
-            {
-            $query = User::select('id', 'name', 'surname', 'email', 'avatar', 'mobile', 'cargo_us')
-            ->where("cargo_us", "Docente");
-
-        
-            return DataTables::of($query)
-            ->addColumn('encrypted_id', function($user) {
-                return Crypt::encryptString($user->id);
-            })
-            ->make(true);
-        }
-    }
+    
     public function indexest()
     {
         $cat = Category::join('subcategories as sub', 'sub.cat_id', '=', 'categories.id_cat')

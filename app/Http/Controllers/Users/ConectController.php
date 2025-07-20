@@ -85,14 +85,6 @@ class ConectController extends Controller
      */
     public function conusureg()
     {
-        $env = array();
-       
-        
-        return view('users.conectar', ["array" => $env]);
-    }
-
-    public function conusuregdatatables()
-    {
         if (request()->ajax()) 
         {
             $query = User::select('id', 'profesion', 'name', 'surname', 'email', 'mobile', 'avatar')
@@ -126,7 +118,14 @@ class ConectController extends Controller
 
                     ->make(true);
         }
+
+        $env = array();
+       
+        
+        return view('users.conectar', ["array" => $env]);
     }
+
+    
 
     public function envemaconusureg(Request $request)
     {

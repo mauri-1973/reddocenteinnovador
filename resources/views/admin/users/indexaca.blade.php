@@ -161,7 +161,7 @@
                 serverSide: true,
                 dom: 'frtip', 
                 fixedHeader: true,
-                ajax: "{{ route('buscar.usuarios.docentes.datatables') }}",
+                ajax: "{{ route('agregar-usuarios-academicos') }}",
                 columns: [
                     { data: 'name', name: 'name' },
                     { data: 'surname', name: 'surname' },

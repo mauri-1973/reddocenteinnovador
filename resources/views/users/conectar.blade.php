@@ -97,7 +97,7 @@
             dom        : 'frtip',
             fixedHeader: true,
             order      : [[ 1, "asc" ]],
-            ajax: "{{ route('conectar.usuarios.registrado.datatables') }}",
+            ajax: "{{ route('conectar-usuarios-registrado') }}",
             columns: [
                 { data: 'name', name: 'name' },
                 { data: 'surname', name: 'surname' },
