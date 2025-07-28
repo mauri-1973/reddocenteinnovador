@@ -95,7 +95,7 @@
                         </div>
                         <div class="row d-flex flex-row op-7">
                             <div class="col-sm-12 flex-ew text-center py-4 border-top border-bottom">
-                                <button class="btn btn-link lead font-weight-bold viewus" data-idus="{{ $cat->id }}" style="color:#004238 !important;font-size:18px;" data-toggle="tooltip" data-placement="top" title="{{ trans('multi-leng.formerror149')}}" data-html="true">{{ $cat->name.' '.$cat->surname }}</button>
+                                <button class="btn btn-link lead font-weight-bold viewus" data-idus="{{ Crypt::encrypt($cat->iduser) }}" style="color:#004238 !important;font-size:18px;" data-toggle="tooltip" data-placement="top" title="{{ trans('multi-leng.formerror149')}}" data-html="true">{{ $cat->name.' '.$cat->surname }}</button>
                             </div>
                         </div>
                     </div>
