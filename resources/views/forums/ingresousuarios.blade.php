@@ -63,6 +63,19 @@
 
 <div class="content">
     <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
+            <div class="card">
+                <div class="card-body">
+
+                    @hasanyrole('docente|user')
+
+                        <a href="{{ route('ver.contenido.foro.publico.usuario.registrado') }}" class="btn btn-success btn-sm">{{ trans("lang.volver")}}</a>
+                        
+                    @endhasanyrole
+
+                </div>
+            </div>
+        </div>
         <div class="col-lg-3 mb-4 mb-lg-0 px-lg-0 mt-lg-0 card">
             <div style="visibility: hidden; display: none; width: 285px; height: 801px; margin: 0px; float: none; position: static; inset: 85px auto auto;">
             </div>
@@ -94,7 +107,7 @@
                         </div>
                         <div class="row d-flex flex-row op-7">
                             <div class="col-sm-12 flex-ew text-center py-4 border-top border-bottom">
-                                <button class="btn btn-link lead font-weight-bold viewus" data-idus="{{ $cat->id }}" style="color:#004238 !important;font-size:18px;" data-toggle="tooltip" data-placement="top" title="{{ trans('multi-leng.formerror149')}}" data-html="true">{{ $cat->name.' '.$cat->surname }}</button>
+                                <button class="btn btn-link lead font-weight-bold viewus" data-idus="{{ Crypt::encrypt($cat->iduser) }}" style="color:#004238 !important;font-size:18px;" data-toggle="tooltip" data-placement="top" title="{{ trans('multi-leng.formerror149')}}" data-html="true">{{ $cat->name.' '.$cat->surname }}</button>
                             </div>
                         </div>
                     </div>

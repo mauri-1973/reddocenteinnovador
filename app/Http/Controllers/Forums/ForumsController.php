@@ -938,7 +938,7 @@ class ForumsController extends Controller
         {
 
             $cat = DB::table('forum_public as fp')
-                ->select('fp.id', 'fp.created_at', 'fp.nameforum', 'u.name', 'u.surname', 'u.email')
+                ->select('fp.id', 'fp.created_at', 'fp.nameforum', 'u.name', 'u.surname', 'u.email' , 'u.id as iduser')
                 ->join('users as u', 'fp.iduser', '=', 'u.id')
                 ->where('fp.statusforum', 1)
                 ->orderBy('fp.id', 'desc')
