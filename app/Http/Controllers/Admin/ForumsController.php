@@ -350,6 +350,7 @@ class ForumsController extends Controller
                 }
             }
         }
+        
         return view('forums.listadousuariosforumpublico', ['tipo' => $tipo, "count" => count($array), "array" => $array ]);
     }
 
@@ -507,6 +508,7 @@ class ForumsController extends Controller
         switch (true) 
         {
             case ($us == 0):
+
                 $part = DB::table('forum_participants')->insertGetId([
                             'iduser' => Auth::user()->id,
                             'idforpub' => $idcat,
@@ -515,8 +517,10 @@ class ForumsController extends Controller
                             'created_at' => date('Y-m-d H:i:s'),
                             'updated_at' => date('Y-m-d H:i:s')
                 ]);
+
             break;
             case ($us == 1):
+
                 $us =   DB::table('forum_participants')
                 ->select('idforpar')
                 ->where([
@@ -525,7 +529,9 @@ class ForumsController extends Controller
                     'typeforum' => 'publico'
                 ])
                 ->first();
+
                 $part = $us->idforpar;
+
             break;
             default:
                 return redirect()->route('acceder.forum.usuarios.activos.foro.publico', ["idcat" => $request->idcat])->with('warnig', trans('multi-leng.formerror140'));
@@ -535,8 +541,6 @@ class ForumsController extends Controller
         if($part > 0)
         {
             $idforpar  = $part;
-
-            
 
             $part = DB::table('forumpubtheme')->insertGetId([
                         'idforpub' => $idcat,

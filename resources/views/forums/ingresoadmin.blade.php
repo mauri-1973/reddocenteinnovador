@@ -226,10 +226,10 @@
                     { data: 'idforthe', name: 'fpt.idforthe' },
                     { data: 'title', name: 'fpt.title' },
                     { data: 'comments', name: 'fpt.comments', render: function ( data, type, row ) {
-
-                            var clean = stripTags(data);
-                            var limited = limit(clean, 100);
-                            return `<p>${limited}</p>`;
+                            let textoLimpio = limpiarYExtraerTexto(data);
+                            var limited = limit(textoLimpio, 100);
+                            console.log(limited );
+                            return `<p style="color:#000">${limited}</p>`;
                         } 
                     },
                     { data: 'nombre', name: 'nombre' },
@@ -248,8 +248,9 @@
                                     var tags = ''; // O devuelve algún error visual
                                 }
                             }
-                            var clean = stripTags(row.comments);
-                            var limited = limit(clean, 100);
+                            
+                            let textoLimpio = limpiarYExtraerTexto(row.comments);
+                            var limited = limit(textoLimpio, 100);
                             return `<div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
                                     <div class="row align-items-center">
                                         <div class="col-12 mb-3">
@@ -258,7 +259,7 @@
                                             </h5>
                                         </div>
                                         <div class="col-12 mb-3">
-                                            <p><strong>{{ trans('multi-leng.formerror165')}}:</strong> ${limited}</p>
+                                            <br><p><strong>{{ trans('multi-leng.formerror165')}}:</strong> <br><br>${limited}</p>
                                         </div>
                                         <div class="col-md-8 mb-3 mb-sm-0">
                                             <p class="text-sm">
@@ -363,6 +364,22 @@
         
 
     });
+    function limpiarYExtraerTexto(htmlEscapedString) 
+    {
+        // 1. Lo desescapas de entidades HTML (de &lt; a <, &amp; a &)
+        let parser = new DOMParser();
+        let decodedDoc = parser.parseFromString(htmlEscapedString, 'text/html');
+        let html = decodedDoc.documentElement.textContent;
+
+        // 2. Ahora parsea el HTML y obtén solo el texto de los spans
+        let temporal = document.createElement('div');
+        temporal.innerHTML = html;
+
+        // 3. OBTIENE SOLO EL TEXTO DE LOS SPANs (puedes adaptar, aquí entrega TODO el texto de todos los spans concatenado)
+        let result = Array.from(temporal.querySelectorAll('span')).map(e => e.textContent.trim()).join(' ').trim();
+
+        return result;
+    }
     function eliminarforum(idcript)
     {
         $( "#staticBackdropLabelforo" ).html("{{ trans('lang.eliminar')}}");
