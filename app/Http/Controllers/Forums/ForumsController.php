@@ -1088,6 +1088,18 @@ class ForumsController extends Controller
         $idcom = Crypt::decrypt($idcom);
         //$idcom = 16;
         
+        $conteos =  DB::table('forumpubtheme')
+                    ->where(["idforthe" => $idcom])
+                    ->first();
+        $conteosest =  DB::table('forum_participants')
+                    ->where(["statusidfor" => 1, "idforpub" => $conteos->idforpub, "idcatfor" => NULL, "typeforum" => "publico", "iduser" => Auth::user()->id])
+                    ->count();
+        
+        if($conteosest == 0)
+        {
+            $conteos = DB::table('forum_participants')
+            ->insert(["statusidfor" => 1, "idforpub" => $conteos->idforpub, "idcatfor" => NULL, "typeforum" => "publico", "iduser" => Auth::user()->id, "created_at" => date('Y-m-d H:i:s'),  "updated_at" => date('Y-m-d H:i:s') ]);
+        }
 
         $votos = DB::table('forumpub_votos')->where(['id_commen' => $idcom, 'id_user' => Auth::user()->id])->whereBetween('created_at', [$from, $to])->count();
 
