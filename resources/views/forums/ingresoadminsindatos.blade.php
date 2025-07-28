@@ -46,7 +46,7 @@
                     @endrole
                     @hasanyrole('docente|user')
 
-                        <a href="{{ route('ver-contenido-foro-publico-usuario-registrado') }}" class="btn btn-success btn-sm">{{ trans("lang.volver")}}</a>
+                        <a href="{{ route('home') }}" class="btn btn-success btn-sm">{{ trans("lang.volver")}}</a>
                         
                     @endhasanyrole
                 </div>

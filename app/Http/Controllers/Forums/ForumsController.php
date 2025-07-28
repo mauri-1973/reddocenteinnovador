@@ -847,17 +847,21 @@ class ForumsController extends Controller
         
         if (request()->ajax()) 
         {
+            
             $conteos = DB::table('forum_participants')
             ->selectRaw("
                 SUM(CASE WHEN statusidfor = 0 AND iduser != ? AND idcatfor IS NULL AND typeforum = 'publico' THEN 1 ELSE 0 END) AS uspen,
                 SUM(CASE WHEN statusidfor = 1 AND iduser != ? AND idcatfor IS NULL AND typeforum = 'publico' THEN 1 ELSE 0 END) AS usact,
                 SUM(CASE WHEN statusidfor = 2 AND iduser != ? AND idcatfor IS NULL AND typeforum = 'publico' THEN 1 ELSE 0 END) AS useli
             ", [Auth::user()->id, Auth::user()->id, Auth::user()->id])
+            
             ->first();
             $forumQuery = DB::table('forum_public as fp')
                 ->select('fp.id', 'fp.created_at', 'fp.nameforum', 'u.name', 'u.surname', 'u.email')
                 ->join('users as u', 'fp.iduser', '=', 'u.id')
-                ->where('fp.statusforum', 1);
+                ->join('forum_participants as part', 'fp.id', '=', 'part.idforpub')
+                ->where([ "part.statusidfor" => 1, "part.iduser" => Auth::user()->id, 'fp.statusforum' => 1])
+                ->distinct('fp.id');
             return DataTables::of($forumQuery)
                 ->addColumn('nombre', function($row){
                     return $row->name  . ' ' . $row->surname ;
@@ -879,8 +883,40 @@ class ForumsController extends Controller
                 })
                 ->toJson();
         }
+        $cat = DB::table('forum_public as fp')
+                ->where(['fp.statusforum' => 1])
+                ->count();
+        switch (true) 
+        {
+            case ($cat > 0):
+                $cat = DB::table('forum_public as fp')
+                ->where(['fp.statusforum' => 1])
+                ->get();
+                foreach($cat as $c)
+                {
 
-        return view('forums.indexforumpublic');
+                    $conteos =  DB::table('forum_participants')
+                                ->where(["idforpub" => $c->id, "idcatfor" => NULL, "typeforum" => "publico", "iduser" => Auth::user()->id ])
+                                ->count();
+                    
+                    if($conteos == 0)
+                    {
+                        $conteos =  DB::table('forum_participants')
+                                    ->insert(["statusidfor" => 1, "idforpub" => $c->id, "idcatfor" => NULL, "typeforum" => "publico", "iduser" => Auth::user()->id, "created_at" => date('Y-m-d H:i:s'),  "updated_at" => date('Y-m-d H:i:s') ]);
+                    }
+                    
+                }
+                return view('forums.indexforumpublic');
+            break;
+            
+            default:
+
+                return view('forums.ingresoadminsindatos');
+
+            break;
+        }
+
+        
     }
 
     public function accforpubusuact($idcat = null)
