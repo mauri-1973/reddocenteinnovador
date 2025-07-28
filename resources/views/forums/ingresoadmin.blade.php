@@ -228,7 +228,6 @@
                     { data: 'comments', name: 'fpt.comments', render: function ( data, type, row ) {
                             let textoLimpio = limpiarYExtraerTexto(data);
                             var limited = limit(textoLimpio, 100);
-                            console.log(limited );
                             return `<p style="color:#000">${limited}</p>`;
                         } 
                     },
