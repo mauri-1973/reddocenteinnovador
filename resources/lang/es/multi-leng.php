@@ -1346,4 +1346,6 @@ return [
 
     'a298' =>  'Acceder al Foro',
 
+    'a299' =>  'Foros Disponibles',
+
 ];

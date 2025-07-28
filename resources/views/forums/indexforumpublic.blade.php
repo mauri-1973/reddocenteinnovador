@@ -42,11 +42,19 @@
 
                 <div class="">
 
-                    <h3>{{ trans('multi-leng.a291')}}</h3>
-                    @role('admin')
-                    <button onclick="addcat();" class="btn btn-success btn-sm">{{ trans('multi-leng.a292')}}</button>
-                    @endrole
                     
+                    @role('admin')
+
+                    <h3>{{ trans('multi-leng.a291')}}</h3>
+
+                    <button onclick="addcat();" class="btn btn-success btn-sm">{{ trans('multi-leng.a292')}}</button>
+
+                    @endrole
+                    @hasanyrole('docente|user')
+
+                    <h3>{{ trans('multi-leng.a299')}}</h3>
+                        
+                    @endhasanyrole
                     
                 </div>
 

@@ -1343,4 +1343,6 @@ return [
     'A297' => 'Public Forum',
 
     'A298' => 'Access The Forum',
+
+    'a299' => 'Available Forums',
 ];
