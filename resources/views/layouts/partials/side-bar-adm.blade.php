@@ -426,6 +426,17 @@
                 </a>
 
             </li>
+            <li {{Route::is('acciones.foro.publico.administrador')? 'class=active':''}}>
+
+                <a href="{{route('acciones.foro.publico.administrador')}}">
+
+                    <i class="nc-icon nc-tap-01"></i>
+
+                    <p>{{ trans('multi-leng.formerror75')}}</p>
+
+                </a>
+
+            </li>
 
             @endrole
 

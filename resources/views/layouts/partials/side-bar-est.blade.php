@@ -61,16 +61,48 @@
 
             </li>
 
-            <li {{Route::is('buscar-foros-usuario-registrado')? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
+            <li {{Route::is('buscar-foros-usuario-registrado') || Route::is('ver.contenido.foro.publico.usuario.registrado')  ? 'class=active':'' }} >
+            
+                <a data-toggle="collapse" href="#forums" aria-expanded="false" class="collapsed">
 
-                <a href="{{ route('buscar-foros-usuario-registrado') }}">
-
-                    <i class="nc-icon nc-chat-33"></i>
+                    <i class="nc-icon nc-tap-01"></i>
 
                     <p>{{ trans('multi-leng.formerror75')}}</p>
 
+                    <b class="caret"></b>
+
                 </a>
 
+                <div class="collapse" id="forums" aria-expanded="false" style="height: 0px;">
+
+                    <ul class="nav">
+
+                        <li {{Route::is('buscar-foros-usuario-registrado')? 'class=active':''}} style="display:none;">
+
+                            <a href="{{ route('buscar-foros-usuario-registrado') }}">
+
+                                <i class="nc-icon nc-chat-33"></i>
+
+                                <p>{{ trans('multi-leng.formerror75')}}</p>
+
+                            </a>
+
+                        </li>
+                        <li {{ Route::is('ver.contenido.foro.publico.usuario.registrado')  ? 'class=active':'' }}>
+
+                            <a href="{{route('ver.contenido.foro.publico.usuario.registrado')}}"> 
+
+                            <i class="nc-icon nc-badge"></i>
+
+                                <p>{{ __('multi-leng.a297') }}</p>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
             </li>
 
             <li {{Route::is('buscar-chats-usuario-registrado-est')? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">

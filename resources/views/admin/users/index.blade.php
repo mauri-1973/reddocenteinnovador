@@ -39,38 +39,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $row)
-                            <tr>
-                                <td>{{ $row->name }}</td>
-                                <td>{{ $row->surname }}</td>
-                                <td>{{ $row->email }}</td>
-                                <td>{{ $row->mobile }}</td>
-                                <td>
-                                    {{ $row->cargo_us }}
-                                </td>
-                                <td class="text-center">
-                                    @if (file_exists(public_path('storage/profile-pic/').$row->avatar))
-                                        <img style="width:100px;height:auto;" id="logouser" src="{{asset('storage/profile-pic')}}/{{$row->avatar}}" alt="{{$row->name}}" class="avatar border-gray"/>
-                                    @else
-                                        <img style="width:100px;height:auto;" id="logouser" src="{{asset('/imagenes/sinregistro.png')}}" alt="{{$row->name}}" class="avatar border-gray"/>
-                                    @endif
-                                </td>
-                                <td>
-                                    <div style="display:flex;">
-                                    <a href="{{route('users.edit',$row->id)}}" class="btn btn-warning btn-sm">{{ trans('lang.editar')}}</a>
-                                        &nbsp;
-                                    <form id="delete_form{{$row->id}}" method="POST" action="{{ route('users.destroy', Crypt::encrypt($row->id)) }}" onclick="return confirm('{{ trans("multi-leng.areyousur")}}')">
-                                        @csrf
-                                        <input name="_method" type="hidden" value="DELETE">
-                                        <input name="tipo" type="hidden" value="adm">
-                                        @if($row->id != Auth::user()->id)
-                                        <button class="btn btn-danger btn-sm" type="submit">{{ trans('lang.eliminar')}}</button>
-                                        @endif
-                                    </form>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
@@ -88,15 +57,75 @@
             $('[data-toggle="tooltip"]').tooltip()
         });
         $('#dt-mant-table').DataTable({
-            //"dom": 'lfrtip'
-            "dom": 'frtip', 
-            fixedHeader: true,
-            responsive: true,      
-            "order": [[ 0, "asc" ]],
-            "language": {
-                "url": "{{asset('json')}}/{{ trans('multi-leng.idioma')}}.json"
-            }
-        });
+                processing: true,
+                serverSide: true,
+                dom: 'frtip', 
+                fixedHeader: true,
+                ajax: "{{ route('agregar-usuarios-administradores') }}",
+                columns: [
+                    { data: 'name', name: 'name' },
+                    { data: 'surname', name: 'surname' },
+                    { data: 'email', name: 'email' },
+                    { data: 'mobile', name: 'mobile' },
+                    { data: 'cargo_us', name: 'cargo_us' }, 
+                    { data: 'avatar', render: function ( data, type, row ) 
+                        {
+                            
+                            return `<img 
+                            style="width:100px;height:auto;" 
+                            id="logouser${row.id}" 
+                            src="{{asset('storage/profile-pic')}}/${row.avatar}" 
+                            alt="${row.name}" 
+                            class="avatar border-gray"
+                            onerror="this.onerror=null;this.src='{{ asset('storage/profile-pic/sinregistro.png') }}'" 
+                        />`;
+                        } 
+                    },
+                    { data: 'id', name: '{{ trans("multi-leng.formerror22")}}', render: function ( data, type, row ) {
+                            var val = '';
+                            if(parseInt(row.id) ==! parseInt( row.userid ) )
+                            {
+                                
+                                val = `<button class="btn btn-danger btn-sm btn-block mb-1" type="submit">{{ trans('lang.eliminar')}}</button>`;
+                            }
+                        
+                            return `
+
+                                <a href="{{url('') }}/users/`+row.id+`/edit" class="btn btn-warning btn-sm btn-block mb-1">{{ trans('lang.editar') }}</a>
+
+                                <form id="delete_form${row.id}" method="POST" action="{{ route('users.destroy', Crypt::encrypt(1) ) }}" onclick="return confirm('{{ trans("multi-leng.areyousur")}}')">
+
+                                @csrf
+
+                                    <input name="_method" type="hidden" value="DELETE">
+
+                                    <input name="tipo" type="hidden" value="adm">
+                                    
+                                    <input name="idencript" type="hidden" value="`+row.encrypted_id+`">
+                                    
+                                ${val}
+                                </form>`;
+                        } 
+                    }
+                ],
+                columnDefs : [
+                                {
+                                    "targets": [ 6 ],
+                                    "visible": true,
+                                    "searchable": false
+                                },
+                ],
+                
+                responsive: true,      
+
+                "order": [[ 0, "asc" ]],
+
+                "language": {
+
+                    "url": "{{asset('json')}}/{{ trans('multi-leng.idioma')}}.json"
+
+                }
+        });       
     });
     
 </script>

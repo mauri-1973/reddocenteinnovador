@@ -106,7 +106,7 @@
                 { data: 'profesion', name: 'profesion' }, 
                 { data: 'avatar', render: function ( data, type, row ) {
                     
-                        return `<img style="width:100px;height:auto;" id="logouser${row.id}" src="{{asset('storage/profile-pic')}}/${row.avatar}" alt="${row.name}" style="width:85px;" class="avatar border-gray"/>`;
+                        
                         return `<img 
                             style="width:100px;height:auto;" 
                             id="logouser${row.id}" 

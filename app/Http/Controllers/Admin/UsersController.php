@@ -48,9 +48,26 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::where("cargo_us", "Administrador")->paginate(10);
 
-        return view('admin.users.index', compact('users'));
+        if (request()->ajax()) 
+        {
+            
+            $query = User::select('id', 'name', 'surname', 'email', 'avatar', 'mobile', 'cargo_us')
+            ->where("cargo_us", "Administrador");
+
+        
+            return DataTables::of($query)
+            ->addColumn('encrypted_id', function($user) {
+                return Crypt::encryptString($user->id);
+            })
+            ->addColumn('userid', function($user) {
+                return Auth::user()->id;
+            })
+            ->make(true);
+        }
+        
+
+        return view('admin.users.index');
     }
     
     /**
@@ -97,7 +114,7 @@ class UsersController extends Controller
         
         return view('admin.users.indexaca', compact('cat'), ['catego' => count($cat) , 'arraycat' => $arraycat]);
     }
-    
+
     public function indexest()
     {
         $cat = Category::join('subcategories as sub', 'sub.cat_id', '=', 'categories.id_cat')

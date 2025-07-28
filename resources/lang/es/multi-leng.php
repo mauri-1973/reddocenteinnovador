@@ -1319,6 +1319,31 @@ return [
     'a284' => 'Se eliminó correctamente la categoría ingresada, en la solicitud de ingreso.',
 
     'a285' => 'Se ingresó correctamente la categoría, solicitada por el docente',
-    
+
+    'a286' => 'Creador del Foro',
+
+    'a287' => 'Nombre del Foro',
+
+    'a288' => 'Agregar Temas Foro',
+
+    'a289' => 'El nombre del foro es obligatorio, con un mínimo de 2 caracteres y máximo 50 caracteres. El nombre del foro es único y no debe repetirse',
+
+    'a290' =>  'Sin Foros Disponibles Aún',
+
+    'a291' =>  'Agregar Nuevos Foros',
+
+    'a292' =>  'Agregar Foro',
+
+    'a293' =>  'Editar Foro',
+
+    'a294' =>  'Eliminar Foro',
+
+    'a295' =>  'El usuario ha sido eliminado para participar en el foro.',
+
+    'a296' =>  'El usuario ha sido habilitado para participar en el foro',
+
+    'a297' =>  'Foro Público',
+
+    'a298' =>  'Acceder al Foro',
 
 ];

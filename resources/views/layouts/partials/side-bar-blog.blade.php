@@ -95,6 +95,17 @@
                 </div>
 
             </li>
+            <li {{Route::is('acciones.foro.publico.blog')? 'class=active':''}}>
+
+                <a href="{{route('acciones.foro.publico.blog')}}">
+
+                    <i class="nc-icon nc-tap-01"></i>
+
+                    <p>{{ trans('multi-leng.formerror75')}}</p>
+
+                </a>
+
+            </li>
 
             @endrole
 

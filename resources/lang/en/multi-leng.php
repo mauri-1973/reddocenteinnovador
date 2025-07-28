@@ -1317,4 +1317,30 @@ return [
     'a284' => 'The entered category was correctly deleted in the entry application.',
 
     'a285' => 'The category requested by the teacher was entered correctly',
+
+    'a286' => 'Forum Creator',
+
+    'a287' => 'Forum Name',
+
+    'a288' => 'Add Forum Topics',
+
+    'a289' => 'The forum name is required, with a minimum of 2 characters and a maximum of 50 characters. The forum name is unique and must not be repeated.',
+
+    'a290' => 'No Forums Available Yet',
+
+    'a291' => 'Add New Forums',
+
+    'a292' => 'Add Forum',
+
+    'a293' => 'Edit Forum',
+
+    'a294' => 'Delete Forum',
+
+    'a295' => 'The user has been removed from the forum.',
+
+    'a296' => 'The user has been enabled to participate in the forum.',
+
+    'A297' => 'Public Forum',
+
+    'A298' => 'Access The Forum',
 ];

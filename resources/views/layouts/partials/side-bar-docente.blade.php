@@ -146,6 +146,17 @@
                             </a>
 
                         </li>
+                        <li {{ Route::is('ver.contenido.foro.publico.usuario.registrado')  ? 'class=active':'' }}>
+
+                            <a href="{{route('ver.contenido.foro.publico.usuario.registrado')}}"> 
+
+                            <i class="nc-icon nc-badge"></i>
+
+                                <p>{{ __('multi-leng.a297') }}</p>
+
+                            </a>
+
+                        </li>
 
                     </ul>
 

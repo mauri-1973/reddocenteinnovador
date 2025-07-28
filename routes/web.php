@@ -208,6 +208,31 @@ Route::group(['middleware' => ['role:admin','translate']], function () {
 
 
     /*--------------------------Nuevo Formulario Postulación Docente----------------------------------------*/
+
+
+    //Funcioinalidades Foro Público Administrador
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Route::get('acciones-foro-publico-administrador', [Admin\ForumsController::class, 'accforpubadm'])->name('acciones.foro.publico.administrador');
+    Route::post('ingreso-foro-publico-administrador', [Admin\ForumsController::class, 'ingforpubadm'])->name('ingreso.foro.publico.administrador');
+
+    Route::get('acceder-forum-usuarios-activos-foro-publico/{idcat}', [Admin\ForumsController::class, 'accforusuact'])->name('acceder.forum.usuarios.activos.foro.publico');
+
+    Route::get('acceder-forum-usuarios-activos-foro-publico-ajax', [Admin\ForumsController::class, 'accforusuactaja'])->name('acceder.forum.usuarios.activos.foro.publico.ajax');
+
+    Route::post('agregar-nuevo-tema-forum-publico-admin', [Admin\ForumsController::class, 'addnuetemforpubadm'])->name('agregar.nuevo.tema.forum.publico.admin');
+
+    Route::get('ver-contenido-tema-foro-publico/{idfortem}', [Admin\ForumsController::class, 'vercontemforpub'])->name('ver.contenido.tema.foro.publico');
+
+    Route::post('busquedas-info-forums-publicos', [Admin\ForumsController::class, 'businfforpub'])->name('busquedas.info.forums.publicos');
+
+    Route::get('listado-usuarios-estado-ingreso-foro-publico/{idcat}/{tipo}', [Admin\ForumsController::class, 'lisusuestingforpub'])->name('listado.usuarios.estado.ingreso.foro.publico');
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Funcioinalidades Foro Público Administrador
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 });
 
 Route::group(['middleware' => ['role:docente', 'translate']], function () {
@@ -448,6 +473,17 @@ Route::group(['middleware' => ['role:blog', 'translate']], function () {
     Route::post('validar-nombre-tag-blog', [Blog\TagsBlogController::class, 'valnomtag'])->name('validar-nombre-tag-blog');
     Route::post('editar-tag-blog', [Blog\TagsBlogController::class, 'edittagadm'])->name('editar-tag-blog');
     Route::post('eliminar-tag-blog', [Blog\TagsBlogController::class, 'elimtagadm'])->name('eliminar-tag-blog');
+
+    //Funcioinalidades Foro Blog
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Route::get('acciones-foro-publico-blog', [Blog\ForumsController::class, 'accforpubblo'])->name('acciones.foro.publico.blog');
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Funcioinalidades Foro Blog
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
 });
@@ -471,6 +507,12 @@ Route::group(['middleware' => ['auth', 'translate']], function () {
         'as' => 'profile-update-pass',
         'uses' => 'Users\ProfileController@updatepass'
     ]);
+    Route::get('ver-contenido-foro-publico-usuario-registrado', [Forums\ForumsController::class, 'verconforpubusureg'])->name('ver.contenido.foro.publico.usuario.registrado');
+    Route::get('acceder-forum-publico-usuarios-activos/{idfor}', [Forums\ForumsController::class, 'accforpubusuact'])->name('acceder.forum.publico.usuarios.activos');
+    Route::get('acceder-forum-publico-usuarios-activos-ajax', [Forums\ForumsController::class, 'accforusuactaja'])->name('acceder.forum.publico.usuarios.activos.ajax');
+    Route::get('ver-contenido-tema-foro-publico-usuario-registrado/{idfortem}', [Forums\ForumsController::class, 'vercontemforpub'])->name('ver.contenido.tema.foro.publico.usuario.registrado');
+    Route::post('busquedas-info-forums-publicos-usuario-registrado', [Forums\ForumsController::class, 'businfforpub'])->name('busquedas.info.forums.publicos.usuario.registrado');
+    
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////// Documentos-Digitales  /////////////////////////////////////////////////
