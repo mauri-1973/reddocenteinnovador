@@ -850,7 +850,7 @@ class ForumsController extends Controller
 
             break;
             default:
-                return redirect()->route('acceder.forum.usuarios.activos.foro.publico.blog', ["idcat" => $request->idcat])->with('warnig', trans('multi-leng.formerror140'));
+                return redirect()->route('acceder.forum.usuarios.activos.foro.publico.blog', ["idcat" => $request->idcat])->with('warnig', trans('multi-leng.formerror140')); 
             break;
         }
         
