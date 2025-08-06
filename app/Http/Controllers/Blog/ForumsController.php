@@ -833,13 +833,6 @@ class ForumsController extends Controller
                             'created_at' => date('Y-m-d H:i:s'),
                             'updated_at' => date('Y-m-d H:i:s')
                 ]);
-                
-                $ustemp =   DB::table('forum_participants')
-                ->insertGetId([
-                    'iduser' => Auth::user()->id,
-                    'idforpub' => $idcat,
-                    'typeforum' => 'publico'
-                ]);
 
             break;
             case ($us == 1):
