@@ -55,7 +55,11 @@
                     <a class="btn btn-success" href="{{route('acceder.forum.publico.usuarios.activos', ['idfor' => Crypt::encrypt($idcat) ])}}" role="button">{{ trans('lang.volver')}}</a>
                         
                     @endhasanyrole
-                
+                    @hasanyrole('blog')
+
+                    <a class="btn btn-success" href="{{route('acceder.forum.usuarios.activos.foro.publico.blog', ['idcat' => Crypt::encrypt($idcat) ])}}" role="button">{{ trans('lang.volver')}}</a>
+                        
+                    @endhasanyrole
 
                 </div>
 

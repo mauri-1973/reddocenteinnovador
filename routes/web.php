@@ -477,8 +477,19 @@ Route::group(['middleware' => ['role:blog', 'translate']], function () {
     //Funcioinalidades Foro Blog
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     Route::get('acciones-foro-publico-blog', [Blog\ForumsController::class, 'accforpubblo'])->name('acciones.foro.publico.blog');
-    
+    Route::post('ingreso-foro-publico-blog', [Blog\ForumsController::class, 'ingforpubblo'])->name('ingreso.foro.publico.blog');
+    Route::get('listado-usuarios-estado-ingreso-foro-publico-blog/{idcat}/{tipo}', [Blog\ForumsController::class, 'lisusuestingforpubblo'])->name('listado.usuarios.estado.ingreso.foro.publico.blog');
+    Route::get('acceder-forum-usuarios-activos-foro-publico-blog/{idcat}', [Blog\ForumsController::class, 'accforusuactblo'])->name('acceder.forum.usuarios.activos.foro.publico.blog');
+
+    Route::get('acceder-forum-usuarios-activos-foro-publico-ajax-blog', [Blog\ForumsController::class, 'accforusuactajablo'])->name('acceder.forum.usuarios.activos.foro.publico.ajax.blog');
+    Route::post('busquedas-info-forums-publicos-blog', [Blog\ForumsController::class, 'businfforpubblo'])->name('busquedas.info.forums.publicos.blog');
+    Route::get('ver-contenido-tema-foro-publico-blog/{idfortem}', [Blog\ForumsController::class, 'vercontemforpubblo'])->name('ver.contenido.tema.foro.publico.blog');
+    Route::post('agregar-nuevo-tema-forum-publico-admin-blog', [Blog\ForumsController::class, 'addnuetemforpubadmblo'])->name('agregar.nuevo.tema.forum.publico.admin.blog');
+    Route::post('buscar-informacion-usuario-contacto-blog', [Forums\ForumsController::class, 'businfusucon'])->name('buscar-informacion-usuario-contacto-blog');
+    Route::post('ingreso-foro-publico-administrador-blog', [Blog\ForumsController::class, 'ingforpubadmblo'])->name('ingreso.foro.publico.administrador.blog');
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Funcioinalidades Foro Blog
