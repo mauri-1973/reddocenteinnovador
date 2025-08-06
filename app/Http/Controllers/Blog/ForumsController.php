@@ -856,7 +856,35 @@ class ForumsController extends Controller
         
         if($part > 0)
         {
+
             $idforpar  = $part;
+
+            $us =   DB::table('forum_participants')
+                ->where([
+                    'iduser' => Auth::user()->id,
+                    'idforpub' => $idcat,
+                    'typeforum' => 'publico'
+                ])
+                ->count();
+            switch (true) 
+            {
+                case ($us == 0):
+
+                    $part = DB::table('forum_participants')->insertGetId([
+                                'iduser' => Auth::user()->id,
+                                'idforpub' => $idcat,
+                                'typeforum' => 'publico', 
+                                'statusidfor' => 1, 
+                                'created_at' => date('Y-m-d H:i:s'),
+                                'updated_at' => date('Y-m-d H:i:s')
+                    ]);
+
+                break;
+
+                default:
+                
+                break;
+            }
 
             $part = DB::table('forumpubtheme')->insertGetId([
                         'idforpub' => $idcat,

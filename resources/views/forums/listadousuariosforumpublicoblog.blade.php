@@ -50,7 +50,12 @@
                         @if($tipo == 2)
                             <h3>{{ trans('multi-leng.formerror172') }}</h3>
                         @endif
-                    <a href="{{route('acciones.foro.publico.administrador')}}" class="btn btn-success btn-sm" role="button">{{ trans('lang.volver')}}</a>
+                        @role('admin')
+                            <a href="{{route('acciones.foro.publico.administrador')}}" class="btn btn-success btn-sm" role="button">{{ trans('lang.volver')}}</a>
+                        @endrole
+                        @role('blog')
+                            <a href="{{route('acciones.foro.publico.blog')}}" class="btn btn-success btn-sm" role="button">{{ trans('lang.volver')}}</a>
+                        @endrole
                     
                 </div>
 
