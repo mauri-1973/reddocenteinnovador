@@ -582,21 +582,21 @@ return [
 
     '0290' => 'Instructivo',
 
-    '0291' => '' ,
+    '0291' => 'Actividad Usuarios' ,
 
-    '0292' => '',
+    '0292' => 'Ingreso',
 
-    '0293' => '',
+    '0293' => 'Dispositivo',
 
-    '0294' => '',
+    '0294' => 'Fecha de Ingreso',
     
-    '0295' => '',
+    '0295' => 'Ingresos a la Plataforma',
 
-    '0296' => '',
+    '0296' => 'Visitantes',
 
-    '0297' => '',
+    '0297' => 'Usuarios Activos',
 
-    '0298' => '',
+    '0298' => 'Concursos Activos',
 
     '0299' => '',
 

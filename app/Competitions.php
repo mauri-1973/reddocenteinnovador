@@ -29,4 +29,8 @@ class Competitions extends Model
        $user = User::find($id)->first();
        return $user->name.' '.$user->surname;
     }
+    
+    public static function getCount(){
+        return Competitions::where('date_off', '>', date('Y-m-d H:i:s'))->count();
+    }
 }

@@ -1,7 +1,7 @@
 @extends('home')
 
 @section('title')
- Login Activities
+{{ trans('multi-new.0291')}}
 @endsection
 
 @section('extra-css')
@@ -15,7 +15,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card card-stats">
             <div class="">
-                <h3>User Login Activities</h3>
+                <h3>{{ trans('multi-new.0291')}}</h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -23,14 +23,14 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Ingreso</th>
+                                <th>{{ trans('multi-new.0292')}}</th>
                                 <!-- <th>Email</th> -->
-                                <th>Nombre</th>
+                                <th>{{ trans('multi-new.0095')}}</th>
                                 <!-- <th>Url</th> -->
                                 <!-- <th>Method</th> -->
                                 <th>IP</th>
-                                <th>Dispositivo</th>
-                                <th>Fecha de Ingreso</th>
+                                <th>{{ trans('multi-new.0293')}}</th>
+                                <th>{{ trans('multi-new.0294')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,10 +75,17 @@
                         } 
                     },
                 ],
+                columnDefs: [
+                    {
+                        targets: 0,         // El índice de la columna que quieres ocultar. Empieza en 0.
+                        visible: false,     // Oculta la columna
+                        searchable: false   // Opcional: para que no se busque en esa columna
+                    }
+                ],
                 
                 responsive: true,      
 
-                "order": [[ 0, "asc" ]],
+                "order": [[ 0, "desc" ]],
 
                 "language": {
 

@@ -584,4 +584,20 @@ return [
 
     '0290' => 'How to',
 
+    '0291' => "Users' Activity", 
+
+    '0292' => 'Income', 
+
+    '0293' => 'Device', 
+
+    '0294' => 'Entry Date',
+
+    '0295' => 'Platform Income', 
+
+    '0296' => 'Visitors',
+
+    '0297' => 'Active Users',
+
+    '0298' => 'Active Competitions',
+
 ];
