@@ -28,6 +28,7 @@ use Yajra\DataTables\DataTables;
 use Excel;
 use Image;
 use Crypt;
+use Carbon\Carbon;
 
 class UsersController extends Controller
 {
@@ -152,9 +153,30 @@ class UsersController extends Controller
      */
     public function indexLoginLogs()
     {
-        $userLoginActivities = UserLoginLog::paginate(10);
+        Carbon::setLocale('es');
+        setlocale(LC_TIME, 'es_ES.UTF-8');
+        if (request()->ajax()) 
+        {
+            
+            $query = UserLoginLog::select(
+                        'user_login_logs.*',
+                        'u.name',
+                        'u.surname',
+                        DB::raw("CONCAT(u.name, ' ', u.surname) as full_name")
+                    )->join('users as u', 'user_login_logs.user_id', '=', 'u.id')->where('user_login_logs.ip', '!=', '127.0.0.1');
 
-        return view('admin.activity.logs', compact('userLoginActivities'));
+        
+            return DataTables::of($query)
+            ->addColumn('fecha', function($user) {
+                return $user->created_at->isoFormat('dddd, D [de] MMMM [de] YYYY H:mm');;
+            })
+            ->addColumn('fecha1', function($user) {
+                return $user->created_at->diffForHumans();
+            })
+            ->make(true);
+        }
+
+        return view('admin.activity.logs');
     }
 
     /**

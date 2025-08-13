@@ -23,35 +23,21 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Message</th>
+                                <th>Ingreso</th>
                                 <!-- <th>Email</th> -->
-                                <th>Mobile</th>
+                                <th>Nombre</th>
                                 <!-- <th>Url</th> -->
                                 <!-- <th>Method</th> -->
                                 <th>IP</th>
-                                <th>Agent</th>
-                                <th>Date and Time</th>
+                                <th>Dispositivo</th>
+                                <th>Fecha de Ingreso</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (count($userLoginActivities) > 0)
-                                @foreach($userLoginActivities as $key => $row)
-                                <tr>                                        	
-                                    <td>{{ $key+1 }}</td>
-                                    <td style="width: 1%;">{{ $row->subject }} </td> 
-                                    <!-- <td>{{ $row->email }}</td> -->
-                                    <td>{{ $row->mobile?$row->mobile:'NA' }}</td>
-                                    <!-- <td>{{ $row->url }}</td> -->     
-                                    <!-- <td>{{ $row->method }}</td> -->
-                                    <td>{{ $row->ip }}</td>
-                                    <td style="width: 1%;">{{ $row->agent }}</td>
-                                    <td>{{ $row->created_at->toDayDateTimeString() }}<br> ({{ $row->created_at->diffForHumans() }})</td>                
-                                </tr>
-                                @endforeach
-                            @endif
+                            
                         </tbody>
                     </table>
-                    {{ $userLoginActivities->links() }}
+                    
                 </div>
             </div>
         </div>
@@ -63,5 +49,44 @@
 @endsection
 
 @section('extra-script')
+<script type="text/javascript">
+    
+    $(document).ready(function() {
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        
+        $('#dt-mant-table').DataTable({
+                processing: true,
+                serverSide: true,
+                dom: 'frtip', 
+                fixedHeader: true,
+                ajax: "{{ route('login-activities') }}",
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'subject', name: 'subject' },
+                    { data: 'full_name', name: 'full_name' },
+                    { data: 'ip', name: 'ip' },
+                    { data: 'agent', name: 'agent' }, 
+                    { data: 'fecha', name: 'fecha', render: function ( data, type, row ) 
+                        {
+                            
+                            return `${row.fecha}<br>${row.fecha1}`;
+                        } 
+                    },
+                ],
+                
+                responsive: true,      
 
+                "order": [[ 0, "asc" ]],
+
+                "language": {
+
+                    "url": "{{asset('json')}}/{{ trans('multi-leng.idioma')}}.json"
+
+                }
+        });       
+    });
+    
+</script>
 @endsection

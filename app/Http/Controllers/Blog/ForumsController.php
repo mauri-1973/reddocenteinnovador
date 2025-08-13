@@ -850,7 +850,7 @@ class ForumsController extends Controller
 
             break;
             default:
-                return redirect()->route('acceder.forum.usuarios.activos.foro.publico.blog', ["idcat" => $request->idcat])->with('warnig', trans('multi-leng.formerror140')); 
+                return redirect()->route('acceder.forum.usuarios.activos.foro.publico.blog', ["idcat" => $request->idcat])->with('warnig', trans('multi-leng.formerror140'));
             break;
         }
         
@@ -858,33 +858,6 @@ class ForumsController extends Controller
         {
 
             $idforpar  = $part;
-
-            $us =   DB::table('forum_participants')
-                ->where([
-                    'iduser' => Auth::user()->id,
-                    'idforpub' => $idcat,
-                    'typeforum' => 'publico'
-                ])
-                ->count();
-            switch (true) 
-            {
-                case ($us == 0):
-
-                    $part = DB::table('forum_participants')->insertGetId([
-                                'iduser' => Auth::user()->id,
-                                'idforpub' => $idcat,
-                                'typeforum' => 'publico', 
-                                'statusidfor' => 1, 
-                                'created_at' => date('Y-m-d H:i:s'),
-                                'updated_at' => date('Y-m-d H:i:s')
-                    ]);
-
-                break;
-
-                default:
-                
-                break;
-            }
 
             $part = DB::table('forumpubtheme')->insertGetId([
                         'idforpub' => $idcat,
