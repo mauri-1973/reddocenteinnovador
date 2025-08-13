@@ -10,117 +10,111 @@
 @section('index')
 <div class="content">
     <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-
-        <div class="card card-stats">
-        <a href="{{ route('users.index') }}">
-            <div class="card-body ">
-            <div class="row">
-                <div class="col-5 col-md-4">
-                <div class="icon-big text-center icon-warning">
-                    <i class="nc-icon nc-globe text-warning"></i>
+        <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+            <div class="card card-stats flex-fill">
+                <a href="{{ route('users.index') }}">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-globe text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category">{{ trans('multi-new.0297')}}</p>
+                                    <p class="card-title">{{ App\User::userCount() }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-refresh"></i>
+                    </div>
                 </div>
-                </div>
-                <div class="col-7 col-md-8">
-                <div class="numbers">
-                    <p class="card-category">{{ trans('multi-new.0297')}}</p>
-                    <p class="card-title">{{ App\User::userCount() }}
-                    <p>
-                </div>
-                </div>
-            </div>
-            </div>
-            <div class="card-footer ">
-            <hr>
-            <div class="stats">
-                <i class="fa fa-refresh"></i>
-            </div>
-            </div>
-            </a>
-        </div>
-
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-        <a href="#">
-            <div class="card-body ">
-            <div class="row">
-                <div class="col-5 col-md-4">
-                <div class="icon-big text-center icon-warning">
-                    <i class="nc-icon nc-money-coins text-success"></i>
-                </div>
-                </div>
-                <div class="col-7 col-md-8">
-                <div class="numbers">
-                    <p class="card-category">{{ trans('multi-new.0298')}}</p>
-                    <p class="card-title">{{ App\Competitions::getCount() }}
-                    <p>
-                </div>
-                </div>
-            </div>
-            </div>
-            </a>
-            <div class="card-footer ">
-            <hr>
-            <div class="stats">
-                <i class="fa fa-calendar-o"></i>
-            </div>
             </div>
         </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-        <a href="{{ route('login-activities') }}">
-            <div class="card-body ">
-            <div class="row">
-                <div class="col-5 col-md-4">
-                <div class="icon-big text-center icon-warning">
-                    <i class="nc-icon nc-vector text-danger"></i>
+        <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+            <div class="card card-stats flex-fill">
+                <a href="#">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-money-coins text-success"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category">{{ trans('multi-new.0298')}}</p>
+                                    <p class="card-title">{{ App\Competitions::getCount() }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-calendar-o"></i>
+                    </div>
                 </div>
-                </div>
-                <div class="col-7 col-md-8">
-                <div class="numbers">
-                    <p class="card-category">{{ trans('multi-new.0291')}}</p>
-                    <p class="card-title">
-                    <p>
-                </div>
-                </div>
-            </div>
-            </div>
-        </a>
-            <div class="card-footer ">
-            <hr>
-            <div class="stats">
-                <i class="fa fa-clock-o"></i> {{ trans('multi-new.0295')}}
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-            <div class="card-body ">
-            <div class="row">
-                <div class="col-5 col-md-4">
-                <div class="icon-big text-center icon-warning">
-                    <i class="nc-icon nc-favourite-28 text-primary"></i>
-                </div>
-                </div>
-                <div class="col-7 col-md-8">
-                <div class="numbers">
-                    <p class="card-category">{{ trans('multi-new.0296')}}</p>
-                    <p class="card-title">{{ App\Tracker::getCount() }}
-                    <p>
-                </div>
-                </div>
-            </div>
-            </div>
-            <div class="card-footer ">
-            <hr>
-            <div class="stats">
-                <i class="fa fa-refresh"></i>
-            </div>
             </div>
         </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+            <div class="card card-stats flex-fill">
+                <a href="{{ route('login-activities') }}">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-vector text-danger"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category">{{ trans('multi-new.0291')}}</p>
+                                    <p class="card-title"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-clock-o"></i> {{ trans('multi-new.0295')}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
+            <div class="card card-stats flex-fill">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-favourite-28 text-primary"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">{{ trans('multi-new.0296')}}</p>
+                                <p class="card-title">{{ App\Tracker::getCount() }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
