@@ -21,7 +21,7 @@
     </div>
 
     <div class="sidebar-wrapper">
-        @if(Auth::user()->id == 3460 || Auth::user()->id == 3461)
+        @if(Auth::user()->id == 3486 || Auth::user()->id == 3487)
         <ul class="nav">
 
             <li {{Route::is('home')? 'class=active':''}}>
