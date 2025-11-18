@@ -103,7 +103,7 @@
 
             </li>
 
-            <li {{Route::is('change-password')? 'class=active':''}}>
+            <li {{Route::is('change-password')? 'class=active':''}} style="display:none;">
 
                 <a href="{{ route('change-password') }}">
 
