@@ -168,7 +168,7 @@ class UsersController extends Controller
         
             return DataTables::of($query)
             ->addColumn('fecha', function($user) {
-                return $user->created_at->isoFormat('dddd, D [de] MMMM [de] YYYY H:mm');;
+                return $user->created_at->isoFormat('dddd, D [de] MMMM [de] YYYY H:mm');
             })
             ->addColumn('fecha1', function($user) {
                 return $user->created_at->diffForHumans();

@@ -91,6 +91,10 @@
                                                                 <h3 class="card-text"> {{$posts->title}}</h3>
 
                                                             </a>
+                                                            @if($posts->id == 33)
+                                                            <a class="btn btn-warning btn-sm mt-3" href="{{ route('buscar-concursos-registrados-docentes') }}">POSTULAR
+                                                            </a>
+                                                            @endif
 
                                                             <p class="text-white">
 
