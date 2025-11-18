@@ -21,7 +21,101 @@
     </div>
 
     <div class="sidebar-wrapper">
+        @if(Auth::user()->id == 3460 || Auth::user()->id == 3461)
+        <ul class="nav">
 
+            <li {{Route::is('home')? 'class=active':''}}>
+
+                <a href="{{route('home')}}">
+
+                    <i class="nc-icon nc-bank"></i>
+
+                    <p>{{ trans('multi-leng.ininav')}}</p>
+
+                </a>
+
+            </li>
+            <li {{Route::is('actualizar-documentos-digitales-administrador') || Route::is('buscar-documentos-digitales-administrador') || Route::is('categorias-documentos-digitales-administrador') ? 'class=active':''}}>
+
+                <a data-toggle="collapse" href="#biblio" aria-expanded="false" class="collapsed">
+
+                    <i class="nc-icon nc-book-bookmark"></i>
+
+                    <p>{{ trans('multi-leng.formerror74')}}</p>
+
+                    <b class="caret"></b>
+
+                </a>
+
+                <div class="collapse" id="biblio" aria-expanded="false" style="height: 0px;">
+
+                    <ul class="nav">
+
+                        <li {{ Route::is('actualizar-documentos-digitales-administrador')? 'class=active':''}} style="display:none;">
+
+                            <a href="{{url('actualizar-documentos-digitales-administrador')}}"> 
+
+                            <i class="nc-icon nc-minimal-up"></i>
+
+                                <p>{{ __('multi-leng.formerror89') }}</p>
+
+                            </a>
+
+                        </li>
+
+                        <li {{Route::is('buscar-documentos-digitales-administrador') ? 'class=active':''}}>
+
+                            <a href="{{url('buscar-documentos-digitales-administrador')}}">
+
+                            <i class="nc-icon nc-zoom-split"></i>
+
+                                <p>{{ __('multi-leng.formerror76') }}</p>
+
+                            </a>
+
+                        </li>
+                        <li {{Route::is('categorias-documentos-digitales-administrador') ? 'class=active':''}} style="display:none;">
+
+                            <a href="{{url('categorias-documentos-digitales-administrador')}}">
+
+                            <i class="nc-icon nc-paper"></i>
+
+                                <p>{{ __('multi-leng.admcat') }}</p>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </li>
+            <li {{Route::is('profile.index')? 'class=active':''}}>
+
+                <a href="{{ route('profile.index') }}">
+
+                    <i class="nc-icon nc-circle-10"></i>
+
+                    <p>{{ trans('multi-leng.admprof')}}</p>
+
+                </a>
+
+            </li>
+
+            <li {{Route::is('change-password')? 'class=active':''}}>
+
+                <a href="{{ route('change-password') }}">
+
+                    <i class="nc-icon nc-key-25"></i>
+
+                    <p>{{ __('lang.respassc') }}</p>
+
+                </a>
+
+            </li>
+        </ul> 
+        @else
         <ul class="nav">
 
             <li {{Route::is('home')? 'class=active':''}}>
@@ -36,7 +130,7 @@
 
             </li>
 
-
+            
 
             @role('admin')
 
@@ -477,6 +571,9 @@
             </li>
 
         </ul>
+        @endif
+
+        
 
     </div>
 

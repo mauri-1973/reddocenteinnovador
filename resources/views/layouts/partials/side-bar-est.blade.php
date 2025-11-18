@@ -37,7 +37,7 @@
             </li>
 
             @role('user')
-            <li {{Route::is('buscar-documentos-digitales-administrador') ? 'class=active':''}} style="display:@if(Auth::user()->vermenu == 1) block @else none @endif;">
+            <li {{Route::is('buscar-documentos-digitales-administrador') ? 'class=active':''}} style="display:none;">
 
                 <a href="{{url('buscar-documentos-digitales-administrador')}}">
 
