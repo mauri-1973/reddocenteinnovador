@@ -182,7 +182,7 @@
                             },
                         ],
 
-            "dom": 'frti', 
+            "dom": 'frtip', 
 
             "fixedHeader": true,
 
